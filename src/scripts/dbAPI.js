@@ -26,7 +26,7 @@ const dbAPI = {
             method: "DELETE"
         })
     },
-    putObejectByResource(resourceObject, resource) {
+    putObjectByResource(resourceObject, resource) {
         return fetch(`${baseUrl}/${resource}/${resourceObject.id}`,{
             method: "PUT",
             headers: {
@@ -36,7 +36,7 @@ const dbAPI = {
         })
             .then(resp => resp.json())
     },
-    patchObejectByResource(resourceObject, resource) {
+    patchObjectByResource(resourceObject, resource) {
         return fetch(`${baseUrl}/${resource}/${resourceObject.id}`,{
             method: "PATCH",
             headers: {
