@@ -48,4 +48,4 @@ const dbAPI = {
     }
 }
 
-export default dbAPI.js;
+export default dbAPI;
