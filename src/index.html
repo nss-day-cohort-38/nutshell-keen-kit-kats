@@ -5,13 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./styles/main.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <title>Everything In Your Nutshell</title>
 </head>
 
 <body>
+
+  <header>
+    <h1>Welcome to Your Nutshell</h1>
+  </header>
+
+  <section id="createObj">
+    <div id="selectResourceContainer">
+      <select id="selectResource">
+        <option>News</option>
+        <option>Events</option>
+        <option>Tasks</option>
+      </select>
+    </div>
+    <div class='cardContainer hidden' id="createResourceContainer"></div>
+  </section>
+
+
+  <section id="resourceButtons">
+    <button type="button" id="myFriends">Friends</button>
+    <button type="button" id="myNews">News</button>
+    <button type="button" id="myEvents">Events</button>
+    <button type="button" id="myTasks">Tasks</button>
+    <button type="button" id="myAll">See All</button> 
+  </section>
+
+
   <article id="container"></article>
-  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="/src/styles/main.css"></script>
 </body>
 
 </html>
