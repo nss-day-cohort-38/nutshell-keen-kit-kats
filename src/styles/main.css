@@ -80,14 +80,15 @@ nav {
     position: fixed;
     width: 75%;
     right: 0;
-    margin-top: 25px;
+    margin-top: 22px;
 }
 
 nav button {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    background-color: var(--brownSugar);
+    /* color: var(--darkLiver); */
+    background-color: var(--deepBlue);
     box-shadow: none;
     padding: 5px;
     padding-left: 7px;
