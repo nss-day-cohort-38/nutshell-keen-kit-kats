@@ -1,19 +1,163 @@
 :root {
-    --background-color: lightblue;
+    --background-color: rgb(255, 255, 240);
+    --mindaro: rgba(223, 239, 202, 1);
+    --lightSage: rgba(204, 221, 211, 1);
+    --mediumSage: rgb(145, 176, 159);
+    --darkSage: rgb(135, 164, 148);
+    --hansaYellow: rgba(255, 249, 165, 1);
+    --earthYellow: rgba(229, 178, 93, 1);
+    --brownSugar: rgb(167, 133, 104);
+    --darkLiver: rgba(82, 58, 52, 1);
+    --red: rgb(195, 69, 69);
+    --wine: rgb(185, 39, 39);
+    --plum: rgb(136, 112, 145);
+    --sunset: rgb(235, 150, 26);
+    --deepBlue: rgb(60, 111, 138);
 }
 
-header{
+.hidden {
+    display: none;
+}
+
+
+.background {
+    height: 100% !important;
+    width: 100% !important;
+    position: fixed !important;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+button {
+    transition: 0.5s ease;
+}
+
+
+/* ******************************************************** */
+/*              Begin Header Styling                        */
+/* ******************************************************** */
+
+header {
+    background-color: var(--deepBlue);
+    border-top: 15px solid var(--darkLiver);
+    border-bottom: 2px solid var(--darkLiver);
+    height: 70px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    
+}
+
+header section h1 {
+    margin-top: 21px;
+    margin-left: 25px;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    position: fixed;
+}
+
+header section img {
+    width: 26px;
+    position: fixed;
+    margin-left: 158px;
+    margin-top: 24px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: fixed;
+    width: 75%;
+    right: 0;
+    margin-top: 22px;
+}
+
+nav button {
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    /* color: var(--darkLiver); */
+    background-color: var(--deepBlue);
+    box-shadow: none;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+nav button:hover {
+    color: var(--mindaro);
+    background-color: var(--darkSage);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+#logout:hover {
+    color: white;
+    background-color: var(--red);
+    transition: 0.5s ease;
+}
+/* ******************************************************** */
+/*                   Begin Body Styling                     */
+/* ******************************************************** */
+
+
+/*            Styling for welcome messages                  */
+
+.welcomeContainer {
+    width: 50%;
+    max-width: 450px;
+    min-width: 250px;
+    border-radius: 30px;
+    box-shadow: 5px 5px var(--darkLiver);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 22%;
+    padding: 50px;
     text-align: center;
+    background-color: var(--mediumSage);
 }
-
-header h1 {
+.welcomeContainer h1 {
+    color: var(--darkLiver);
+    background-color: var(--mindaro);
+    border-radius: 6px;
+    box-shadow: 2px 2px var(--darkLiver);
+    width: 70%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.welcomeContainer p {
+    color: var(--darkLiver);
+    background-color: var(--mindaro);
+    box-shadow: 2px 2px var(--darkLiver);
+    border-radius: 6px;
+    width: 50%;
+    padding: 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
-#resourceButtons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-content: space-between;
+.form-wrap {
+    margin-top: 150px;
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+/* ******************************************************** */
+/*                Begin Footer Styling                      */
+/* ******************************************************** */
+
+
