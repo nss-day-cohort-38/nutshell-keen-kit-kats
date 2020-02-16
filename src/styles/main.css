@@ -1,11 +1,13 @@
 :root {
-    --background-color: rgb(219, 246, 255);
-    --mindaro: rgba(207, 242, 126, 1);
-    --lightYellow: rgb(255, 241, 164);
-    --hansaYellow: rgba(242, 221, 110, 1);
+    --background-color: rgb(255, 255, 240);
+    --mindaro: rgba(223, 239, 202, 1);
+    --lightblue: rgba(204, 221, 211, 1);
+    --hansaYellow: rgba(255, 249, 165, 1);
     --earthYellow: rgba(229, 178, 93, 1);
-    --brownSugar: rgba(184, 125, 75, 1);
+    --brownSugar: rgb(167, 133, 104);
     --darkLiver: rgba(82, 58, 52, 1);
+    --red: rgb(195, 69, 69);
+    --plum: rgb(136, 112, 145);
 }
 
 .hidden {
@@ -13,14 +15,15 @@
 }
 
 body {
-    background-color: var(--lightYellow);
+    background-color: var(--background-color);
 }
 
 button {
     transition: 0.5s ease;
 }
-button:hover {
-    background-color: var(--hansaYellow);
+nav button:hover {
+    color: white;
+    background-color: var(--plum);
     transition: 0.5s ease;
 }
 
@@ -81,8 +84,10 @@ nav button {
     padding-left: 7px;
     padding-right: 7px;
 }
+
 #logout:hover {
-    background-color: red;
+    color: white;
+    background-color: var(--red);
     transition: 0.5s ease;
 }
 /* ******************************************************** */
@@ -103,11 +108,11 @@ nav button {
     margin-top: 150px;
     padding: 50px;
     text-align: center;
-    background-color: var(--brownSugar);
+    background-color: var(--lightblue);
 }
 .welcomeContainer h1 {
     color: var(--darkLiver);
-    background-color: var(--hansaYellow);
+    background-color: var(--mindaro);
     border-radius: 6px;
     box-shadow: 2px 2px var(--darkLiver);
     width: 70%;
@@ -117,7 +122,7 @@ nav button {
 }
 .welcomeContainer p {
     color: var(--darkLiver);
-    background-color: var(--hansaYellow);
+    background-color: var(--mindaro);
     box-shadow: 2px 2px var(--darkLiver);
     border-radius: 6px;
     width: 50%;
