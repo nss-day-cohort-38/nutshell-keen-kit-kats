@@ -12,18 +12,21 @@
     --wine: rgb(185, 39, 39);
     --plum: rgb(136, 112, 145);
     --sunset: rgb(235, 150, 26);
+    --deepBlue: rgb(60, 111, 138);
 }
 
 .hidden {
     display: none;
 }
 
-body {
-    background-image: url(/src/images/fallSky.jpeg);
-    /* background-size: 100%; */
-    height: 100%;
-    background-repeat: no-repeat;
-    /* background-color: var(--background-color); */
+
+.background {
+    height: 100% !important;
+    width: 100% !important;
+    position: fixed !important;
+    z-index: -1;
+    top: 0;
+    left: 0;
 }
 
 button {
@@ -36,7 +39,7 @@ button {
 /* ******************************************************** */
 
 header {
-    background-color: var(--wine);
+    background-color: var(--deepBlue);
     border-top: 15px solid var(--darkLiver);
     border-bottom: 2px solid var(--darkLiver);
     height: 70px;
@@ -48,7 +51,7 @@ header {
 }
 
 header section h1 {
-    margin-top: 25px;
+    margin-top: 21px;
     margin-left: 25px;
     font-family: Georgia, serif;
     font-size: 25px;
@@ -67,7 +70,7 @@ header section img {
     width: 26px;
     position: fixed;
     margin-left: 158px;
-    margin-top: 31px;
+    margin-top: 24px;
 }
 
 nav {
@@ -86,13 +89,13 @@ nav button {
     font-size: 16px;
     background-color: var(--brownSugar);
     box-shadow: none;
-    padding: 8px;
-    padding-left: 9px;
-    padding-right: 9px;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 nav button:hover {
-    color: white;
+    color: var(--mindaro);
     background-color: var(--darkSage);
     transition: 0.5s ease;
     cursor: pointer;
@@ -118,7 +121,7 @@ nav button:hover {
     box-shadow: 5px 5px var(--darkLiver);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 150px;
+    margin-top: 22%;
     padding: 50px;
     text-align: center;
     background-color: var(--mediumSage);
