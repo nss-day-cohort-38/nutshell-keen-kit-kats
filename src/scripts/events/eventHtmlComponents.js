@@ -42,3 +42,5 @@ const eventHtmlComponents = {
         `
     }
 }
+
+export default eventHtmlComponents
