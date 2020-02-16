@@ -8,6 +8,8 @@ const addToDom = {
             this.addLoginForm()
         } else {
             this.addReturningUserMessage()
+            // making nav buttons appear
+            document.getElementById('resourceButtons').classList.toggle('hidden')
         }
     },
 

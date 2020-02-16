@@ -8,6 +8,10 @@
     --darkLiver: rgba(82, 58, 52, 1);
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background-color: var(--lightYellow);
 }

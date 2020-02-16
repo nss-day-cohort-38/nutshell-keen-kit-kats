@@ -27,8 +27,9 @@ const eventListeners = {
                             // It is then stored in the browsers session memory, which is ended if you close the tab or window.
                            sessionStorage.setItem('user', JSON.stringify(userDatabaseObject[0]));
                             mainContainer.innerHTML = ""
-
                             addToDom.addReturningUserMessage();
+                            // making nav buttons appear
+                            document.getElementById('resourceButtons').classList.toggle('hidden');
                         };
                     });
             };
@@ -68,8 +69,9 @@ const eventListeners = {
                                 .then(newUserObject => {
                                     sessionStorage.setItem('user', JSON.stringify(newUserObject));
                                     mainContainer.innerHTML = "";
-
                                     addToDom.addNewUserMessage();
+                                    // making nav buttons appear
+                                    document.getElementById('resourceButtons').classList.toggle('hidden');
                                 })
                         };
                     });
@@ -86,6 +88,8 @@ const eventListeners = {
                 sessionStorage.clear();
                 mainContainer.innerHTML = "";
                 addToDom.addLoginForm();
+                // making nav buttons disappear
+                document.getElementById('resourceButtons').classList.toggle('hidden')
             }
         });
     }
