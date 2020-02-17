@@ -5,7 +5,7 @@ const mainContainer = document.getElementById("mainContainer");
 
 const eventCardsContainer = document.getElementById("objCards--events");
 
-const renderToDom = {
+const eventsRenderToDom = {
     renderEventContainerWithCreateEventButton() {
 
         mainContainer.innerHTML = eventHtmlComponents.createEventContainerWithCreateEventButton()
@@ -35,13 +35,13 @@ const renderToDom = {
             .then(events => {
             mainContainer.innerHTML = ""; 
 
-            renderToDom.renderEventContainerWithCreateEventButton()
+            eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-            renderToDom.renderEventCardsContainerHeader()
+            eventsRenderToDom.renderEventCardsContainerHeader()
             
             events.forEach(event => mainContainer.innerHTML += eventHtmlComponents.createEventCard(event))
         })
     }
 }
 
-export default renderToDom;
+export default eventsRenderToDom;

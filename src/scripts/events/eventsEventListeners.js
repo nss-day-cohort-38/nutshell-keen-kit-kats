@@ -1,4 +1,4 @@
-import renderToDom from './renderToDom.js';
+import eventsRenderToDom from './eventsRenderToDom.js';
 import dbAPI from '../dbAPI.js';
 
 const mainContainer = document.getElementById("mainContainer");
@@ -13,8 +13,8 @@ const eventsEventListeners = {
             const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
             dbAPI.getObjectByResource("events", loggedInUserId)
-                .then(renderToDom.renderEventContainerWithCreateEventButton)
-                .then(renderToDom.renderEventCards)
+                .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
+                .then(eventsRenderToDom.renderEventCards)
 
         })
     },
@@ -23,7 +23,7 @@ const eventsEventListeners = {
        mainContainer.addEventListener("click", (event) => {
             if (event.target.id.startsWith("createFormButton--")) {
 
-              renderToDom.renderEventForm();
+              eventsRenderToDom.renderEventForm();
             }
         })
     },
@@ -49,7 +49,7 @@ const eventsEventListeners = {
                     }
 
                     dbAPI.postObjectByResource("events", event)
-                        .then(renderToDom.renderEventCards)
+                        .then(eventsRenderToDom.renderEventCards)
                 }
             
             }
@@ -61,7 +61,7 @@ const eventsEventListeners = {
                 const eventId = event.target.id.split("--")[1]
 
                 dbAPI.deleteObjectByResource("events", eventId)
-                    .then(renderToDom.renderEventCards)
+                    .then(eventsRenderToDom.renderEventCards)
             }
         })
     }
