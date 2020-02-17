@@ -34,8 +34,11 @@ const renderToDom = {
         dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
             mainContainer.innerHTML = ""; 
+
             renderToDom.renderEventContainerWithCreateEventButton()
+
             renderToDom.renderEventCardsContainerHeader()
+            
             events.forEach(event => mainContainer.innerHTML += eventHtmlComponents.createEventCard(event))
         })
     }

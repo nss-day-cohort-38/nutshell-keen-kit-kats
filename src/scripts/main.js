@@ -27,5 +27,6 @@ profileEventListeners.submitChangedPasswordEventListener()
 eventsEventListeners.addEventButtonEventListener();
 eventsEventListeners.addCreateEventButtonEventListener();
 eventsEventListeners.addSaveEventButtonEventListener();
+eventsEventListeners.addDeleteEventButtonEventListener();
 
 

@@ -49,6 +49,8 @@ const eventHtmlComponents = {
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
                 <p>${event.date}</p>
+                <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
+                <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
 
             </div>
         </article>
