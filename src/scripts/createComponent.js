@@ -5,7 +5,12 @@ const createObjects = {
 			"email": newEmail,
 			"password": newPassword
 		}
-    }
+	},
+	
+	// this function creates a key/value pair to be PATCHed
+	patchedKeyValueObjectCreator (key, value) {
+		return { [key]: value }
+	}
 }
 
 const createHTML = {
