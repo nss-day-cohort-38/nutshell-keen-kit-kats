@@ -59,6 +59,7 @@ const eventHtmlComponents = {
         `
     },
     createEditEventForm(event) {
+
         return `
         <input type="hidden" id="event_id" value="${event.id}"/>
 

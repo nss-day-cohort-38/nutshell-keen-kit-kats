@@ -46,9 +46,18 @@ const eventsRenderToDom = {
     },
     renderEditEventFields(eventId) {
 
+        const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+
         const eventDiv = document.getElementById(`cards--${eventId}`)
 
-        eventDiv.innerHTML = eventHtmlComponents.createEditEventForm(event)
+        dbAPI.getObjectByResource("events", loggedInUserId)
+            .then(events => {
+                const filteredEvents = events.filter(event => {
+                    return event.id === parseInt(eventId)
+                })
+
+                eventDiv.innerHTML = eventHtmlComponents.createEditEventForm(filteredEvents[0])
+            })
     }
 }
 

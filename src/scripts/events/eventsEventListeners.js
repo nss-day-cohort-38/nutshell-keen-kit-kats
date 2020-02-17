@@ -36,6 +36,7 @@ const eventsEventListeners = {
                 const eventNameInput = document.getElementById("event_name");
                 const eventDateInput = document.getElementById("event_date");
                 const eventLocationInput = document.getElementById("event_location");
+                const eventIdInput = document.getElementById("event_id")
 
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length ===0){
                     alert("Please fill out all fields before saving event")
@@ -48,8 +49,15 @@ const eventsEventListeners = {
                         "location": eventLocationInput.value
                     }
 
-                    dbAPI.postObjectByResource("events", event)
+                    if (eventIdInput.value !== "") {
+                        event.id = parseInt(eventIdInput.value);
+
+                        dbAPI.putObjectByResource("events", event)
+                            .then(eventsRenderToDom.renderEventCards)
+                    } else {
+                        dbAPI.postObjectByResource("events", event)
                         .then(eventsRenderToDom.renderEventCards)
+                    }
                 }
             
             }
