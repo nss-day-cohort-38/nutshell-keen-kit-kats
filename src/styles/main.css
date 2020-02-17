@@ -16,7 +16,8 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+    transition: 1s ease;
 }
 
 
@@ -31,6 +32,7 @@
 
 button {
     transition: 0.5s ease;
+    cursor: pointer;
 }
 
 
@@ -78,16 +80,22 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
     position: fixed;
-    width: 75%;
+    width: 60%;
     right: 0;
     margin-top: 22px;
+    margin-right: 60px;
+}
+
+@media (max-width: 500px) {
+    nav { display: none; }
 }
 
 nav button {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    /* color: var(--darkLiver); */
+    font-weight: bold;
+    color: rgb(51, 38, 35);
     background-color: var(--deepBlue);
     box-shadow: none;
     padding: 5px;
@@ -99,14 +107,66 @@ nav button:hover {
     color: var(--mindaro);
     background-color: var(--darkSage);
     transition: 0.5s ease;
-    cursor: pointer;
 }
+
+#profileIcon {
+    width: 26px;
+    transition: 0.5s ease;
+    position: fixed;
+    right: 0;
+    margin-top: 23px;
+    margin-right: 44px;
+}
+#profileIcon:hover {
+    cursor: pointer;
+    transition: 0.5s ease;
+    background-color: var(--mindaro);
+    padding: 7px;
+    border-radius: 50px;
+    margin-top: 16px;
+    margin-right: 37px;
+
+}
+
+#profileDropDown {
+    background-color: var(--mediumSage);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px var(--darkLiver);
+    height: 150px;
+    width: 160px;
+    position: fixed;
+    right: 0;
+    margin-top: 59px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#profileDropDown button {
+    padding: 9px;
+    border: none;
+    background-color: var(--mediumSage);
+    color: white;
+    font-weight: bold;
+    
+}
+
+#profileDropDown button:hover {
+    background-color: var(--deepBlue);
+    box-shadow: 1px 1px 1px var(--darkLiver);
+    transition: 0.5s ease;
+}   
 
 #logout:hover {
     color: white;
-    background-color: var(--red);
+    background-color: var(--red) !important;
     transition: 0.5s ease;
 }
+
+
+
 /* ******************************************************** */
 /*                   Begin Body Styling                     */
 /* ******************************************************** */
@@ -122,14 +182,22 @@ nav button:hover {
     box-shadow: 5px 5px var(--darkLiver);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 22%;
+    margin-top: 20%;
     padding: 50px;
     text-align: center;
     background-color: var(--mediumSage);
 }
+
+@media (max-width: 550px) {
+    .welcomeContainer { 
+        display: fixed;
+        margin-top: 120px; 
+    }
+}
+
 .welcomeContainer h1 {
     color: var(--darkLiver);
-    background-color: var(--mindaro);
+    background-color: rgb(247, 255, 237);
     border-radius: 6px;
     box-shadow: 2px 2px var(--darkLiver);
     width: 70%;
@@ -155,6 +223,50 @@ nav button:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+
+/* ******* Begin My Profile Styling ********** */
+
+#myProfileContainer {
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(239, 168, 79);
+    box-shadow: 5px 5px 5px 5px var(--darkLiver);
+    border-radius: 5px;
+}
+
+#myProfileContainer img {
+    width: 30%;
+    box-shadow: 3px 3px 3px 3px var(--hansaYellow);
+    border-radius: 100%;
+}
+
+#myProfileContainer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+    height: 60px;
+    background-color: var(--hansaYellow);
+    padding: 8px;
+    box-shadow: 2px 2px 2px var(--darkLiver);
+}
+
+/* #myProfileContainer p {
+    background-color: var(--hansaYellow);
+    padding: 8px;
+    box-shadow: 1px var(--darkLiver);
+} */
 
 /* ******************************************************** */
 /*                Begin Footer Styling                      */
