@@ -1,6 +1,8 @@
 import renderToDom from './renderToDom.js';
 
-const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+// const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+
+const mainContainer = document.getElementById("mainContainer");
 
 const eventsEventListeners = {
     addEventButtonEventListener() {

@@ -11,7 +11,7 @@ const eventCardsContainer = document.getElementById("objCards--events");
 const renderToDom = {
     renderEventContainerWithCreateEventButton() {
 
-        mainContainer.innerHTML += eventHtmlComponents.createEventContainerWithCreateEventButton()
+        mainContainer.innerHTML = eventHtmlComponents.createEventContainerWithCreateEventButton()
     },
     renderEventForm() {
         
