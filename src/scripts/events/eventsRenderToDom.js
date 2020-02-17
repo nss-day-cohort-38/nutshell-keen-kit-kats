@@ -3,8 +3,6 @@ import dbAPI from '../dbAPI.js';
 
 const mainContainer = document.getElementById("mainContainer");
 
-const eventCardsContainer = document.getElementById("objCards--events");
-
 const eventsRenderToDom = {
     renderEventContainerWithCreateEventButton() {
 
@@ -25,6 +23,8 @@ const eventsRenderToDom = {
     },
     renderNoEventsMessage() {
 
+        const eventCardsContainer = document.getElementById("objCards--events");
+
         eventCardsContainer.innerHTML += eventHtmlComponents.createNoEventsMessage();
 
     },
@@ -38,9 +38,17 @@ const eventsRenderToDom = {
             eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
             eventsRenderToDom.renderEventCardsContainerHeader()
+
+            const eventCardsContainer = document.getElementById("objCards--events");
             
-            events.forEach(event => mainContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+            events.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
         })
+    },
+    renderEditEventFields(eventId) {
+
+        const eventDiv = document.getElementById(`cards--${eventId}`)
+
+        eventDiv.innerHTML = eventHtmlComponents.createEditEventForm(event)
     }
 }
 

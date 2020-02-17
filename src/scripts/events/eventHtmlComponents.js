@@ -31,7 +31,11 @@ const eventHtmlComponents = {
     },
     createEventCardsContainerHeader() {
         return `
+        <article class="objCards" id="objCards--events">
+
         <h1>Your Events:</h1>
+
+        </article>
         `
     },
     createNoEventsMessage() {
@@ -43,8 +47,7 @@ const eventHtmlComponents = {
     },
     createEventCard(event) {
         return `
-        <article class="objCards" id="objCards--events">
-            <div class="cards" id="cards--events">
+            <div class="cards" id="cards--${event.id}">
         
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
@@ -53,9 +56,29 @@ const eventHtmlComponents = {
                 <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
 
             </div>
-        </article>
+        `
+    },
+    createEditEventForm(event) {
+        return `
+        <input type="hidden" id="event_id" value="${event.id}"/>
+
+        <input type="hidden" id="event_userId" value="${event.userId}"/>
+
+        <fieldset>
+            <input type="text" id="event_name" class="form_input" value="${event.name}"/>
+        </fieldset>
+
+        <fieldset>
+            <input type="date" id="event_date" class="form_input" value="${event.date}"/>
+        </fieldset>
+
+        <fieldset>
+            <input type="text" id="event_location" class="form_input" value="${event.location}"/>
+        </fieldset>
+
+        <button class="saveFormButton" id="saveFormButton--${event.id}">Save Event</button>
         `
     }
 }
 
-export default eventHtmlComponents
+export default eventHtmlComponents;

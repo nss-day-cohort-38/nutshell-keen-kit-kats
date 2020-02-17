@@ -3,6 +3,7 @@ import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
 import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
+import eventsRenderToDom from "./events/eventsRenderToDom.js";
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -28,5 +29,6 @@ eventsEventListeners.addEventButtonEventListener();
 eventsEventListeners.addCreateEventButtonEventListener();
 eventsEventListeners.addSaveEventButtonEventListener();
 eventsEventListeners.addDeleteEventButtonEventListener();
+eventsEventListeners.addEditEventButtonEventListener();
 
 
