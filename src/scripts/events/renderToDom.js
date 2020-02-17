@@ -17,11 +17,6 @@ const renderToDom = {
         formContainer.innerHTML = eventHtmlComponents.createEventForm();
 
     },
-    renderEventCardsContainer() {
-
-        mainContainer.innerHTML += eventHtmlComponents.renderEventCardsContainer();
-
-    },
     renderEventCardsContainerHeader() {
 
         mainContainer.innerHTML += 

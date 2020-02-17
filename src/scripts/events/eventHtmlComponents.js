@@ -29,13 +29,6 @@ const eventHtmlComponents = {
         <button class="saveFormButton" id="saveFormButton--events">Save Event</button>
         `
     },
-    createEventCardsContainer() {
-        return `
-        
-
-        
-        `
-    },
     createEventCardsContainerHeader() {
         return `
         <h1>Your Events:</h1>

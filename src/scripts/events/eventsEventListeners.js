@@ -37,15 +37,21 @@ const eventsEventListeners = {
                 const eventDateInput = document.getElementById("event_date");
                 const eventLocationInput = document.getElementById("event_location");
 
-                const event = {
-                    "userId": loggedInUserId,
-                    "name": eventNameInput.value,
-                    "date": eventDateInput.value,
-                    "location": eventLocationInput.value
+                if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length ===0){
+                    alert("Please fill out all fields before saving event")
+                } else {
+
+                    const event = {
+                        "userId": loggedInUserId,
+                        "name": eventNameInput.value,
+                        "date": eventDateInput.value,
+                        "location": eventLocationInput.value
+                    }
+
+                    dbAPI.postObjectByResource("events", event)
+                        .then(renderToDom.renderEventCards)
                 }
-                
-                dbAPI.postObjectByResource("events", event)
-                .then(renderToDom.renderEventCards)
+            
             }
         })
     }
