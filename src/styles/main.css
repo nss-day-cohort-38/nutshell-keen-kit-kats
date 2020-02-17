@@ -16,7 +16,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 
@@ -78,16 +78,18 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
     position: fixed;
-    width: 75%;
+    width: 60%;
     right: 0;
     margin-top: 22px;
+    margin-right: 60px;
 }
 
 nav button {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    /* color: var(--darkLiver); */
+    font-weight: bold;
+    color: rgb(51, 38, 35);
     background-color: var(--deepBlue);
     box-shadow: none;
     padding: 5px;
@@ -102,9 +104,59 @@ nav button:hover {
     cursor: pointer;
 }
 
+#profileIcon {
+    width: 26px;
+    transition: 0.5s ease;
+    position: fixed;
+    right: 0;
+    margin-top: 23px;
+    margin-right: 44px;
+}
+#profileIcon:hover {
+    cursor: pointer;
+    transition: 0.5s ease;
+    background-color: white;
+    padding: 7px;
+    border-radius: 50px;
+    margin-top: 16px;
+    margin-right: 37px;
+
+}
+
+#profileDropDown {
+    background-color: var(--mediumSage);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px var(--darkLiver);
+    height: 150px;
+    width: 160px;
+    position: fixed;
+    right: 0;
+    margin-top: 59px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#profileDropDown button {
+    padding: 9px;
+    border: none;
+    background-color: var(--mediumSage);
+    color: white;
+    font-weight: bold;
+    
+}
+
+#profileDropDown button:hover {
+    background-color: var(--deepBlue);
+    transition: 0.5s ease;
+}   
+
 #logout:hover {
     color: white;
-    background-color: var(--red);
+    background-color: var(--red) !important;
     transition: 0.5s ease;
 }
 /* ******************************************************** */

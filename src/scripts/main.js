@@ -8,4 +8,5 @@ addToDom.checkIfLoggedIn()
 // Calling event listeners for login form!
 eventListeners.loginButtonEventListener()
 eventListeners.signupButtonEventListener()
+eventListeners.profileDropDownEventListener()
 eventListeners.logoutButtonEventListener()

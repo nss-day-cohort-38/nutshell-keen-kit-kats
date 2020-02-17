@@ -30,6 +30,7 @@ const eventListeners = {
                             addToDom.addReturningUserMessage();
                             // making nav buttons appear
                             document.getElementById('resourceButtons').classList.toggle('hidden');
+                            document.getElementById('profileIcon').classList.toggle('hidden');
                         };
                     });
             };
@@ -72,12 +73,19 @@ const eventListeners = {
                                     addToDom.addNewUserMessage();
                                     // making nav buttons appear
                                     document.getElementById('resourceButtons').classList.toggle('hidden');
+                                    document.getElementById('profileIcon').classList.toggle('hidden');
                                 })
                         };
                     });
             };
         });
     },
+
+    profileDropDownEventListener() {
+        const profileIcon = document.getElementById('profileIcon')
+
+        profileIcon.addEventListener('click', () => document.getElementById('profileDropDown').classList.toggle('hidden'))
+    }, 
 
     logoutButtonEventListener() {
         const logoutButton = document.getElementById('logout');
@@ -89,7 +97,10 @@ const eventListeners = {
                 mainContainer.innerHTML = "";
                 addToDom.addLoginForm();
                 // making nav buttons disappear
-                document.getElementById('resourceButtons').classList.toggle('hidden')
+                document.getElementById('resourceButtons').classList.toggle('hidden');
+                document.getElementById('profileIcon').classList.toggle('hidden');
+                // making drop-down disappear
+                document.getElementById('profileDropDown').classList.toggle('hidden');
             }
         });
     }
