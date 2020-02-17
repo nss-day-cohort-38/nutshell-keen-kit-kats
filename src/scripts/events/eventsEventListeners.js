@@ -1,32 +1,54 @@
 import renderToDom from './renderToDom.js';
-
-// const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+import dbAPI from '../dbAPI.js';
 
 const mainContainer = document.getElementById("mainContainer");
 
 const eventsEventListeners = {
     addEventButtonEventListener() {
-    
+
         const eventButton = document.getElementById("myEvents");
 
         eventButton.addEventListener("click", () => {
 
-            renderToDom.renderEventContainerWithCreateEventButton()
+            const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+
+            dbAPI.getObjectByResource("events", loggedInUserId)
+                .then(renderToDom.renderEventContainerWithCreateEventButton)
+                .then(renderToDom.renderEventCards)
+
         })
     },
     addCreateEventButtonEventListener() {
-        
-        const createEventButton = document.getElementById("createFormButton--events");
 
+       mainContainer.addEventListener("click", (event) => {
+            if (event.target.id.startsWith("createFormButton--")) {
 
-        createEventButton.addEventListener("click", (event) => {
-            // createEventContainer.innerHTML = "";
+              renderToDom.renderEventForm();
+            }
+        })
+    },
+    addSaveEventButtonEventListener() {
+        mainContainer.addEventListener("click", (event) => {
+            if (event.target.id.startsWith("saveForm")) {
 
-            renderToDom.renderEventForm();
+                const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
+                const eventNameInput = document.getElementById("event_name");
+                const eventDateInput = document.getElementById("event_date");
+                const eventLocationInput = document.getElementById("event_location");
+
+                const event = {
+                    "userId": loggedInUserId,
+                    "name": eventNameInput.value,
+                    "date": eventDateInput.value,
+                    "location": eventLocationInput.value
+                }
+                
+                dbAPI.postObjectByResource("events", event)
+                .then(renderToDom.renderEventCards)
+            }
         })
     }
-    
 }
 
 export default eventsEventListeners;

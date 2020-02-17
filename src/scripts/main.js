@@ -11,9 +11,7 @@ addToDom.checkIfLoggedIn()
 eventListeners.loginButtonEventListener()
 eventListeners.signupButtonEventListener()
 eventListeners.logoutButtonEventListener()
-
 eventListeners.profileDropDownEventListener()
-eventListeners.logoutButtonEventListener()
 
 
 // calling My Profile Event Listeners
@@ -24,6 +22,10 @@ profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
 
-// calling Events Event Listeners
+// Calling Events Event Listeners
+
 eventsEventListeners.addEventButtonEventListener();
+eventsEventListeners.addCreateEventButtonEventListener();
+eventsEventListeners.addSaveEventButtonEventListener();
+
 

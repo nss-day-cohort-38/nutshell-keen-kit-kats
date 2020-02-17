@@ -31,30 +31,34 @@ const eventHtmlComponents = {
     },
     createEventCardsContainer() {
         return `
-        <article class="objCards" id="objCards--events">
+        
 
-        </article>
+        
         `
     },
     createEventCardsContainerHeader() {
         return `
-        <h1>Your Events</h1>
+        <h1>Your Events:</h1>
         `
     },
     createNoEventsMessage() {
         return `
-        You have no saved events. Please create an event!
+        <article class="objCards" id="objCards--events">
+            You have no saved events. Please create an event!
+        </article>
         `
     },
     createEventCard(event) {
         return `
-        <div class="cards" id="cards--events">
+        <article class="objCards" id="objCards--events">
+            <div class="cards" id="cards--events">
         
-        <h3>${event.name}</h3>
-        <h4>${event.location}</h4>
-        <p>${event.date}</p>
+                <h3>${event.name}</h3>
+                <h4>${event.location}</h4>
+                <p>${event.date}</p>
 
-        </div>
+            </div>
+        </article>
         `
     }
 }

@@ -1,10 +1,7 @@
 import eventHtmlComponents from './eventHtmlComponents.js';
 import dbAPI from '../dbAPI.js';
 
-
 const mainContainer = document.getElementById("mainContainer");
-
-const createEventContainer = document.getElementById("createFormContainer--events");
 
 const eventCardsContainer = document.getElementById("objCards--events");
 
@@ -14,8 +11,10 @@ const renderToDom = {
         mainContainer.innerHTML = eventHtmlComponents.createEventContainerWithCreateEventButton()
     },
     renderEventForm() {
+
+        const formContainer = document.getElementById("createFormContainer--events")
         
-        createEventContainer.innerHTML += eventHtmlComponents.createEventForm();
+        formContainer.innerHTML = eventHtmlComponents.createEventForm();
 
     },
     renderEventCardsContainer() {
@@ -25,7 +24,7 @@ const renderToDom = {
     },
     renderEventCardsContainerHeader() {
 
-        eventCardsContainer.innerHTML += 
+        mainContainer.innerHTML += 
         eventHtmlComponents.createEventCardsContainerHeader();
 
     },
@@ -34,17 +33,16 @@ const renderToDom = {
         eventCardsContainer.innerHTML += eventHtmlComponents.createNoEventsMessage();
 
     },
-    renderEventCards(events, userId) {
+    renderEventCards() {
+        const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
-        dbAPI.getObjectByResource(events, `${userId}`)
+        dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
-                eventCardsContainer.innerHTML = "";
-
-                eventCardsContainer.innerHTML += eventHtmlComponents.createEventCardsContainerHeader();
-
-                events.forEach(event =>
-                    eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
-            })      
+            mainContainer.innerHTML = ""; 
+            renderToDom.renderEventContainerWithCreateEventButton()
+            renderToDom.renderEventCardsContainerHeader()
+            events.forEach(event => mainContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+        })
     }
 }
 
