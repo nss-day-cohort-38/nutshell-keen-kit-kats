@@ -10,6 +10,7 @@ const addToDom = {
             this.addReturningUserMessage()
             // making nav buttons appear
             document.getElementById('resourceButtons').classList.toggle('hidden')
+            document.getElementById('profileIcon').classList.toggle('hidden')
         }
     },
 
