@@ -1,3 +1,3 @@
-import renderToDom from './renderToDom.js';
+import eventsEventListeners from './eventsEventListeners.js';
 
-renderToDom.renderCreateButton();
+eventsEventListeners.addEventButtonEventListener(2);

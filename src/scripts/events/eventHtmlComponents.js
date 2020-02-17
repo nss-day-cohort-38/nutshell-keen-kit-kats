@@ -1,28 +1,49 @@
 const eventHtmlComponents = {
-    createEventFormButton() {
+    createEventContainerWithCreateEventButton() {
         return `
         <article class="createFormContainer" id="createFormContainer--events">
-            <button class="createFormButton" id="createFormButton--events">Create Event</button>
+
+        <button class="createFormButton" id="createFormButton--events">Create Event</button>
+            
         </article>
         `
     },
     createEventForm() {
         return `
-        <article class="createFormContainer" id="createFormContainer--events">
+        <input type="hidden" id="event_id" value=""/>
 
-            <fieldset>
-                <input type="text" id="event_name" class="form_input" placeholder="Event Name"/>
-            </fieldset>
+        <input type="hidden" id="event_userId" value=""/>
 
-            <fieldset>
-                <input type="date" id="event_date" class="form_input" placeholder="Event Date"/>
-            </fieldset>
+        <fieldset>
+            <input type="text" id="event_name" class="form_input" placeholder="Event Name"/>
+        </fieldset>
 
-            <fieldset>
-                <input type="text" id="event_location" class="form_input" placeholder="Event Location"/>
-            </fieldset>
+        <fieldset>
+            <input type="date" id="event_date" class="form_input" placeholder="Event Date"/>
+        </fieldset>
+
+        <fieldset>
+            <input type="text" id="event_location" class="form_input" placeholder="Event Location"/>
+        </fieldset>
+
+        <button class="saveFormButton" id="saveFormButton--events">Save Event</button>
+        `
+    },
+    createEventCardsContainer() {
+        return `
+        <article class="objCards" id="objCards--events">
 
         </article>
+        `
+    },
+    createEventCardsContainerHeader() {
+        return `
+        <h1>Your Events</h1>
+        `
+    },
+    createNoEventsMessage() {
+        return `
+        You have no saved events. Please create an event!
         `
     },
     createEventCard(event) {
@@ -34,11 +55,6 @@ const eventHtmlComponents = {
         <p>${event.date}</p>
 
         </div>
-        `
-    },
-    createEventCardsContainerHeader() {
-        return `
-        <h1>Your Events</h1>
         `
     }
 }
