@@ -1,9 +1,11 @@
 import renderToDom from './renderToDom.js';
 
-const eventsEventListeners = {
-    addEventButtonEventListener(userId) {
+const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
-        const eventButton = document.getElementById(`myEvents-${userId}`);
+const eventsEventListeners = {
+    addEventButtonEventListener() {
+    
+        const eventButton = document.getElementById("myEvents");
 
         eventButton.addEventListener("click", () => {
 

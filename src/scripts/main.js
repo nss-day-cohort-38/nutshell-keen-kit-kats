@@ -1,6 +1,7 @@
 
 import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
+import eventsEventListeners from './events/eventsEventListeners.js';
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -9,3 +10,5 @@ addToDom.checkIfLoggedIn()
 eventListeners.loginButtonEventListener()
 eventListeners.signupButtonEventListener()
 eventListeners.logoutButtonEventListener()
+
+eventsEventListeners.addEventButtonEventListener();

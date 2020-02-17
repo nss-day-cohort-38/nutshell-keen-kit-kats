@@ -1,6 +1,6 @@
 import eventHtmlComponents from './eventHtmlComponents.js';
-import dbAPI from './dbAPI.js';
-import eventsEventListeners from './eventsEventListeners.js';
+import dbAPI from '../dbAPI.js';
+
 
 const mainContainer = document.getElementById("mainContainer");
 
