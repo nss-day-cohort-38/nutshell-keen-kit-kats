@@ -35,13 +35,13 @@ const dbAPI = {
         })
             .then(resp => resp.json())
     },
-    patchObjectByResource(resource, resourceObject) {
-        return fetch(`${baseUrl}/${resource}/${resourceObject.id}`,{
+    patchObjectByResource(resource, id, keyValueObj) {
+        return fetch(`${baseUrl}/${resource}/${id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(resourceObject)
+            body: JSON.stringify(keyValueObj)
         })
             .then(resp => resp.json())
     }

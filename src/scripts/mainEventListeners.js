@@ -2,6 +2,9 @@ import dbAPI from "./dbAPI.js"
 import addToDom from "./addToDom.js"
 import {createHTML, createObjects} from "./createComponent.js"
 
+
+const passwordMinLength = 3
+
 const eventListeners = {
     
     loginButtonEventListener(){
@@ -30,6 +33,7 @@ const eventListeners = {
                             addToDom.addReturningUserMessage();
                             // making nav buttons appear
                             document.getElementById('resourceButtons').classList.toggle('hidden');
+                            document.getElementById('profileIcon').classList.toggle('hidden');
                         };
                     });
             };
@@ -59,6 +63,10 @@ const eventListeners = {
                             alert('Usernames must be at least three characters long. Please try again.')
                         } else if (userNameObject.length !== 0) {
                             alert('That username is already in use. Please choose another one and try again.')
+                        } else if (newUserPassword.value.length < passwordMinLength) {
+                            alert(`Passwords must be at least ${passwordMinLength} characters long. Please try again.`)
+                        } else if (newUserPassword.value.includes(' ')) {
+                            alert('Passwords cannot include spaces. Please try again.')
                         } else {
                             // This is a successful new account creation
                             // The newUserObject is POSTed, and then returns the new object
@@ -72,12 +80,19 @@ const eventListeners = {
                                     addToDom.addNewUserMessage();
                                     // making nav buttons appear
                                     document.getElementById('resourceButtons').classList.toggle('hidden');
+                                    document.getElementById('profileIcon').classList.toggle('hidden');
                                 })
                         };
                     });
             };
         });
     },
+
+    profileDropDownEventListener() {
+        const profileIcon = document.getElementById('profileIcon')
+
+        profileIcon.addEventListener('click', () => document.getElementById('profileDropDown').classList.toggle('hidden'))
+    }, 
 
     logoutButtonEventListener() {
         const logoutButton = document.getElementById('logout');
@@ -89,7 +104,10 @@ const eventListeners = {
                 mainContainer.innerHTML = "";
                 addToDom.addLoginForm();
                 // making nav buttons disappear
-                document.getElementById('resourceButtons').classList.toggle('hidden')
+                document.getElementById('resourceButtons').classList.toggle('hidden');
+                document.getElementById('profileIcon').classList.toggle('hidden');
+                // making drop-down disappear
+                document.getElementById('profileDropDown').classList.toggle('hidden');
             }
         });
     }
