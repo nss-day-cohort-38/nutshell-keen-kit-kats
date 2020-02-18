@@ -2,6 +2,7 @@
 import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
 import profileEventListeners from "./myProfile/profileEventListeners.js"
+import newsEventListeners from "./articles/eventListenersNews.js"
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -20,3 +21,9 @@ profileEventListeners.changeUsernameButtonEventListener()
 profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
+
+
+
+    // News section Event Listeners
+newsEventListeners.mainNavNewsButtonAddEventListener();
+newsEventListeners.createSaveEditAndDeleteBtnsAddEventListener();

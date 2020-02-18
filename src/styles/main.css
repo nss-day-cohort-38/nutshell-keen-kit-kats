@@ -171,6 +171,11 @@ nav button:hover {
 /*                   Begin Body Styling                     */
 /* ******************************************************** */
 
+/* main container */
+
+#mainContainer {
+    margin-top: 20%;
+}
 
 /*            Styling for welcome messages                  */
 
@@ -182,7 +187,6 @@ nav button:hover {
     box-shadow: 5px 5px var(--darkLiver);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
     padding: 50px;
     text-align: center;
     background-color: var(--mediumSage);
