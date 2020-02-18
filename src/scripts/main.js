@@ -3,6 +3,7 @@ import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
 import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
+import tasksEventListeners from "./tasks/tasksEventListeners.js"
 import eventsRenderToDom from "./events/eventsRenderToDom.js";
 import friendsEventListeners from "./friends/eventListeners.js"
 import chatButtonClickEvent from "./messages/eventListeners.js"
@@ -28,6 +29,17 @@ profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
 
+// Tasks event listeners
+
+tasksEventListeners.taskNavBarEventListener()
+tasksEventListeners.createTaskEventListener()
+tasksEventListeners.saveTaskEventListener()
+tasksEventListeners.editTaskNameEventListener()
+tasksEventListeners.saveEditedNameEventListener()
+tasksEventListeners.taskCompleteEventListener()
+tasksEventListeners.deleteTaskEventListener()
+tasksEventListeners.nevermindButtonEventListener()
+
 // Calling Events Event Listeners
 
 eventsEventListeners.addEventButtonEventListener();
@@ -36,7 +48,7 @@ eventsEventListeners.addSaveEventButtonEventListener();
 eventsEventListeners.addDeleteEventButtonEventListener();
 eventsEventListeners.addEditEventButtonEventListener();
 
-
+// Chat event listeners
 chatButtonClickEvent.chatButtonFirstClick()
 addMessagesToDOM.messageButtonEventListener()
 addMessagesToDOM.exitMessages()
