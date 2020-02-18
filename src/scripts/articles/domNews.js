@@ -5,10 +5,13 @@ const domAdditionHandler = {
     addArticlesToDOM() { 
         const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
         dbAPI.getObjectByResource('news', currentUserId)
-        .then(arrayOfNewsArticles => arrayOfNewsArticles.forEach(article => {
+        .then(arrayOfNewsArticles => {
+            console.table(this.sortArticlesByTimestamp(arrayOfNewsArticles))
+            arrayOfNewsArticles.forEach(article => {
         const newsCardsContainer = document.getElementById("newsCardsContainer")
         newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article) 
-    }))
+        
+    })})
     },
     renderNewsContainers () {
         const mainContainer = document.getElementById("mainContainer")
@@ -19,11 +22,18 @@ const domAdditionHandler = {
         entryFormContainer.innerHTML = ""
         entryFormContainer.innerHTML = createNewsComponents.createNewsArticleInput()
     },
-    editArticleinPlace (articleId, articleObject) {
+    editArticleInPlace (articleId, articleObject) {
         const reviewInPlaceContainer = document.getElementById(`newsCard--${articleId}`)
         
         reviewInPlaceContainer.innerHTML = ""
         reviewInPlaceContainer.innerHTML = createNewsComponents.createEditForm(articleObject)
+    },
+    sortArticlesByTimestamp(arrayOfObjects) {
+         arrayOfObjects.sort(function(a,b) {
+            let timestampA = a.timestamp
+            let timestampB = b.timestamp
+            return timestampA - timestampB
+        })
     }
 
 }

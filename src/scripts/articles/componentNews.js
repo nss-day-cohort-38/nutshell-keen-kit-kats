@@ -23,7 +23,7 @@ const createNewsComponents = {
     },
     createNewsArticleInput () {
         return `
-            <div id="class="inputForms">
+            <div id="newArticleInputForm"class="inputForms">
                 <fieldset>
                     <input type="text" placeholder="Article Title" name="newsTitle" id="newsTitle">
                 </fieldset>
@@ -56,17 +56,18 @@ const createNewsComponents = {
     },
     createEditForm (newsObject) {
         return `
-            <div id="class="inputForms">
+            <div id="editInPlaceForm"class="inputForms">
                 <fieldset>
+                    <input type="hidden" id="hiddenObjectId" value="${newsObject.id}">
                     <input type="text" name="newsTitle" value="${newsObject.title}" id="newsTitle">
                 </fieldset>
                 <fieldset>
-                    <input type="text" name="newsSynopsis" id="newsSynopsis">${newsObject.synopsis}</input>
+                    <input type="text" name="newsSynopsis" value="${newsObject.synopsis}" id="newsSynopsis">
                 </fieldset>
                 <fieldset>
-                    <input type="url" name="newsURL" id="newsURL">${newsObject.url}</input>
+                    <input type="url" name="newsURL" value="${newsObject.url}" id="newsURL">
                 </fieldset>
-                <button class="saveFormButtons" id="saveEditedNewsArticleButton">Save Article</button>
+                <button class="saveFormButtons" id="saveEditedNewsArticleButton--${newsObject.id}">Save Article</button>
             </div>
         `
     }

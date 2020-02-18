@@ -7,7 +7,7 @@ const newsEventListeners = {
 
     // event listener to wait for click of "News" button on navbar
 
-    mainNavNewsButtonAddEventListener () {
+    mainNavNewsButtonAddEventListener() {
         const mainNavNewsBtn = document.getElementById("myNews")
 
         mainNavNewsBtn.addEventListener("click", () => {
@@ -18,7 +18,7 @@ const newsEventListeners = {
             domAdditionHandler.addArticlesToDOM()
         })
     },
-    
+
     // event listener to watch the create, save, edit, and delete buttons for the form and articles
 
     createSaveEditAndDeleteBtnsAddEventListener() {
@@ -28,7 +28,7 @@ const newsEventListeners = {
             if (event.target.id.includes("createNewArticleBtn")) {
                 domAdditionHandler.renderFormContainerNewArticle()
             } else if (event.target.id.startsWith("saveNewsArticleButton")) {
-                
+
                 // this creates a new article in the database and timestamps it
 
                 const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id;
@@ -37,9 +37,9 @@ const newsEventListeners = {
                 const webAddressInfo = document.getElementById("newsURL").value;
                 const currentTimeDate = new Date();
 
-                const createdNewsObject = createNewsComponents.newsArticleObjectFactory(currentUserId, webAddressInfo ,newsTitleInfo, newsSynopsisInfo, currentTimeDate);
+                const createdNewsObject = createNewsComponents.newsArticleObjectFactory(currentUserId, webAddressInfo, newsTitleInfo, newsSynopsisInfo, currentTimeDate);
                 dbAPI.postObjectByResource('news', createdNewsObject)
-                    .then(()=>{
+                    .then(() => {
                         const newsCardsContainer = document.getElementById("newsCardsContainer")
                         newsCardsContainer.innerHTML = "";
                         domAdditionHandler.addArticlesToDOM()
@@ -49,26 +49,54 @@ const newsEventListeners = {
                 const focusedArticleId = event.target.id.split("--")[1]
 
                 if (confirm("Do you really want to delete this article?")) {
-                dbAPI.deleteObjectByResource('news', focusedArticleId )
-                    .then(() => {
-                        const newsCardsContainer = document.getElementById("newsCardsContainer")
-                        newsCardsContainer.innerHTML = "";
-                        domAdditionHandler.addArticlesToDOM()
-                    })    
+                    dbAPI.deleteObjectByResource('news', focusedArticleId)
+                        .then(() => {
+                            const newsCardsContainer = document.getElementById("newsCardsContainer")
+                            newsCardsContainer.innerHTML = "";
+                            domAdditionHandler.addArticlesToDOM()
+                        })
                 }
             } else if (event.target.id.startsWith("newsEditButton")) {
                 const focusedArticleId = event.target.id.split("--")[1]
 
-                
+
                 dbAPI.getObjectByIdAndResource('news', focusedArticleId)
-                    .then(newsObject => { 
-                        domAdditionHandler.editArticleinPlace(focusedArticleId, newsObject)
+                    .then(newsObject => {
+                        JSON.stringify(domAdditionHandler.editArticleInPlace(focusedArticleId, newsObject))
                     })
+                } else if (event.target.id.startsWith("saveEditedNewsArticleButton")) {
+                const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id;
+                const newsTitleInfo = document.getElementById("newsTitle").value;
+                const newsSynopsisInfo = document.getElementById("newsSynopsis").value;
+                const webAddressInfo = document.getElementById("newsURL").value;
+                const currentTimeDate = new Date();
+
+                const focusedArticleId = document.getElementById("hiddenObjectId").value
+                
+                
+                if (focusedArticleId === event.target.id.split("--")[1]) {
+                    const editedNewsObject = {
+                    id: focusedArticleId,    
+                    userId: currentUserId,
+                    url: webAddressInfo,
+                    title: newsTitleInfo,
+                    synopsis: newsSynopsisInfo,
+                    timestamp: currentTimeDate
+                    }   
+                    dbAPI.putObjectByResource('news', editedNewsObject)
+                        .then(() => {
+                            const newsCardsContainer = document.getElementById("newsCardsContainer")
+                            newsCardsContainer.innerHTML = "";
+                            domAdditionHandler.addArticlesToDOM()
+                        })
+                } else {
+                    alert("Too many edit boxes open at once")
+                }
             }
         })
     }
-    
-    
+
+
 }
 
 export default newsEventListeners
