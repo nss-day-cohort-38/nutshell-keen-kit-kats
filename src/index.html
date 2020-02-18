@@ -11,14 +11,15 @@
 
 <body>
 
-  <img src="./images/fallSky.jpeg" class="background"alt="Fall Sky Image">
+  <img src="./images/fallSky.jpeg" class="background" alt="Fall Sky Image">
 
   <header id='headerContainer'>
     <section id="banner">
       <h1 id='bannerText'>Nutshell</h1>
-      <a href="https://github.com/nss-day-cohort-38/nutshell-keen-kit-kats" target="_blank"><img src="./images/nutshell-logo.png" alt="Nutshell"></a>
+      <a href="https://github.com/nss-day-cohort-38/nutshell-keen-kit-kats" target="_blank"><img
+          src="./images/nutshell-logo.png" alt="Nutshell"></a>
     </section>
-    <nav class="hidden"id="resourceButtons">
+    <nav class="hidden" id="resourceButtons">
       <button type="button" id="myNews">News</button>
       <button type="button" id="myEvents">Events</button>
       <button type="button" id="myTasks">Tasks</button>
@@ -28,17 +29,33 @@
     <div class="hidden" id="profileDropDown">
       <button type="button" id="myProfile">My Profile</button>
       <button type="button" id="myFriends">My Friends</button>
+      <button id="chatButton" class="">Open Chat</button>
       <button type="button" id="logout">Logout</button>
     </div>
   </header>
 
-  <section id="mainContainer">
-    
-  </section>
+
+  <div id="chatContainer" class="hidden">
+    <button id="chatButtonClose">Exit Chat</button>
+      <section>
+        <h1>Chat Room</h1>
+      </section>
+      <fieldset>
+      <div id="messages">
+      </div>
+    </fieldset>
+      <div class="chat-room-field">
+          <label for="writeMessage">Write Message!</label>
+          <input type="text" name="writeMessage" id="writeMessage">
+          <button id="sendMessage">Send</button>
+      </div>
+
+  </div>
+  <div id="mainContainer">
+
+  </div>
 
   <script type="module" src="./scripts/main.js"></script>
 </body>
 
 </html>
-
-

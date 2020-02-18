@@ -1,12 +1,12 @@
-const baseUrl = "http://localhost:8088"
-
+const baseUrl = "http://localhost:8088";
 
 const dbAPI = {
-
-    getUsers() {
-        return fetch(`${baseUrl}/users`).then(resp=>resp.json())
-    },
-
+  getUsers() {
+    return fetch(`${baseUrl}/users`).then(resp => resp.json());
+  },
+  getFriends() {
+    return fetch(`${baseUrl}/friends`).then(resp => resp.json());
+  },
     getObjectByResource(resource, userId) {
         return fetch(`${baseUrl}/${resource}/?userId=${userId}&_expand=user`)
                 .then(resp => resp.json())
@@ -48,7 +48,10 @@ const dbAPI = {
             body: JSON.stringify(keyValueObj)
         })
             .then(resp => resp.json())
+    },
+    getMessages() {
+      return fetch(`${baseUrl}/messages`).then(resp => resp.json())
     }
-}
+};
 
 export default dbAPI;

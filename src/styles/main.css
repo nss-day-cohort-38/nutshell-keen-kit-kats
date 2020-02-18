@@ -177,6 +177,11 @@ nav button:hover {
     margin-top: 20%;
 }
 
+/* mainContainer
+*/
+#mainContainer {
+    margin-top: 20%;
+}
 /*            Styling for welcome messages                  */
 
 .welcomeContainer {
@@ -227,9 +232,28 @@ nav button:hover {
     margin-left: auto;
     margin-right: auto;
 }
+/* Message Board Styling */
 
+#chatContainer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 500px;
+    height: 400px;
+    margin-top: 100px;
+    background-color: aliceblue;
+}
+ .shrink {
+     width: 65% !important;
+ }
 
-
+#writeMessage {
+    width: 300px;
+}
+.chat-room-field {
+    position: absolute;
+    bottom: 0;
+}
 /* ******* Begin My Profile Styling ********** */
 
 #myProfileContainer {
@@ -275,5 +299,3 @@ nav button:hover {
 /* ******************************************************** */
 /*                Begin Footer Styling                      */
 /* ******************************************************** */
-
-
