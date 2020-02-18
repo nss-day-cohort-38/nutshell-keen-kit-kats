@@ -11,14 +11,14 @@ const eventsRenderToDom = {
     renderEventForm() {
 
         const formContainer = document.getElementById("createFormContainer--events")
-        
+
         formContainer.innerHTML = eventHtmlComponents.createEventForm();
 
     },
     renderEventCardsContainerHeader() {
 
-        mainContainer.innerHTML += 
-        eventHtmlComponents.createEventCardsContainerHeader();
+        mainContainer.innerHTML +=
+            eventHtmlComponents.createEventCardsContainerHeader();
 
     },
     renderNoEventsMessage() {
@@ -33,20 +33,29 @@ const eventsRenderToDom = {
 
         dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
-            mainContainer.innerHTML = "";
-            
-            //insert conditional for no events message
-            
-            eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                mainContainer.innerHTML = "";
 
-            eventsRenderToDom.renderEventCardsContainerHeader()
+                if (events.length === 0) {
+                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-            const eventCardsContainer = document.getElementById("objCards--events");
+                    eventsRenderToDom.renderEventCardsContainerHeader()
 
-            const eventsSorted = events.sort((a,b) => {return new Date(a.date) - new Date(b.date)})
-            
-            eventsSorted.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
-        })
+                    eventsRenderToDom.renderNoEventsMessage()
+
+                } else {
+
+                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
+
+                    eventsRenderToDom.renderEventCardsContainerHeader()
+
+                    const eventCardsContainer = document.getElementById("objCards--events");
+
+                    const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+                    eventsSorted.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+
+                }
+            })
     },
     renderEditEventFields(eventId) {
 

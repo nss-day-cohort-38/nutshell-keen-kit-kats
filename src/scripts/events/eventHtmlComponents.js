@@ -42,9 +42,7 @@ const eventHtmlComponents = {
     },
     createNoEventsMessage() {
         return `
-        <article class="objCards" id="objCards--events">
-            You have no saved events. Please create an event!
-        </article>
+            <h3 class="noCards">You have no saved events. Please create an event above!</h3>
         `
     },
     createEventCard(event) {
