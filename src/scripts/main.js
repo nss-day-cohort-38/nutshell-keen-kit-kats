@@ -4,6 +4,10 @@ import eventListeners from "./mainEventListeners.js"
 import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
 import eventsRenderToDom from "./events/eventsRenderToDom.js";
+import friendsEventListeners from "./friends/eventListeners.js"
+import chatButtonClickEvent from "./messages/eventListeners.js"
+//import messageButtonEventListener from "./messages/addMessagesToDOM.js"
+import addMessagesToDOM from "./messages/addMessagesToDOM.js"
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -12,6 +16,7 @@ addToDom.checkIfLoggedIn()
 eventListeners.loginButtonEventListener()
 eventListeners.signupButtonEventListener()
 eventListeners.logoutButtonEventListener()
+friendsEventListeners.friendsButtonEventListener()
 eventListeners.profileDropDownEventListener()
 
 
@@ -32,3 +37,6 @@ eventsEventListeners.addDeleteEventButtonEventListener();
 eventsEventListeners.addEditEventButtonEventListener();
 
 
+chatButtonClickEvent.chatButtonFirstClick()
+addMessagesToDOM.messageButtonEventListener()
+addMessagesToDOM.exitMessages()
