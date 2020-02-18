@@ -171,8 +171,15 @@ nav button:hover {
 /*                   Begin Body Styling                     */
 /* ******************************************************** */
 
+/*             mainContainer styling                        */
+
+#mainContainer {
+    margin-top: 15%;
+    text-align: center;
+}
 
 /*            Styling for welcome messages                  */
+
 
 .welcomeContainer {
     width: 50%;
@@ -182,7 +189,6 @@ nav button:hover {
     box-shadow: 5px 5px var(--darkLiver);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
     padding: 50px;
     text-align: center;
     background-color: var(--mediumSage);
@@ -224,7 +230,26 @@ nav button:hover {
     margin-right: auto;
 }
 
+/* *********** Styling Cards! **************** */
 
+.objCards {
+    width: 80%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.cards {
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+}
 
 /* ******* Begin My Profile Styling ********** */
 

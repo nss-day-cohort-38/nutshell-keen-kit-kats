@@ -2,6 +2,7 @@
 import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
 import profileEventListeners from "./myProfile/profileEventListeners.js"
+import tasksEventListeners from "./tasks/tasksEventListeners.js"
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -20,3 +21,11 @@ profileEventListeners.changeUsernameButtonEventListener()
 profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
+
+// Tasks event listeners
+
+tasksEventListeners.taskNavBarEventListener()
+tasksEventListeners.createTaskEventListener()
+tasksEventListeners.saveTaskEventListener()
+tasksEventListeners.editTaskNameEventListener()
+tasksEventListeners.saveEditedNameEventListener()

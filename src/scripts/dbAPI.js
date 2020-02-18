@@ -6,7 +6,9 @@ const dbAPI = {
     getUsers() {
         return fetch(`${baseUrl}/users`).then(resp=>resp.json())
     },
-
+    fetchObjectById(resource, id) {
+        return fetch(`${baseUrl}/${resource}/${id}`).then(resp=>resp.json())
+    },
     getObjectByResource(resource, userId) {
         return fetch(`${baseUrl}/${resource}/?userId=${userId}&_expand=user`)
                 .then(resp => resp.json())
