@@ -35,6 +35,7 @@ eventsEventListeners.addCreateEventButtonEventListener();
 eventsEventListeners.addSaveEventButtonEventListener();
 eventsEventListeners.addDeleteEventButtonEventListener();
 eventsEventListeners.addEditEventButtonEventListener();
+eventsEventListeners.addNevermindButtonEventListener();
 
 
 chatButtonClickEvent.chatButtonFirstClick()

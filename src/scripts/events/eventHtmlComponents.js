@@ -27,6 +27,8 @@ const eventHtmlComponents = {
         </fieldset>
 
         <button class="saveFormButton" id="saveFormButton--events">Save Event</button>
+
+        <button class="nevermindFormButton" id="nevermindFormButton--events">Nevermind</button>
         `
     },
     createEventCardsContainerHeader() {

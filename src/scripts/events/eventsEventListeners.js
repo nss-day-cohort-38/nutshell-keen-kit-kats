@@ -85,6 +85,19 @@ const eventsEventListeners = {
                 eventsRenderToDom.renderEditEventFields((eventIdToEdit))
             }
         })
+    },
+    addNevermindButtonEventListener() {
+        mainContainer.addEventListener("click", (event) => {
+            if (event.target.id.startsWith("nevermindFormButton--")) {
+
+                eventsRenderToDom.renderEventContainerWithCreateEventButton()
+
+                dbAPI.postObjectByResource("events", event)
+                            .then(eventsRenderToDom.renderEventCards)
+
+
+            }
+        })
     }
 }
 
