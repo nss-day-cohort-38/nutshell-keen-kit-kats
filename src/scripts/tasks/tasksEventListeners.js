@@ -39,6 +39,10 @@ const tasksEventListeners = {
                 const completionDateTime = document.getElementById('completionDate').value
                 const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
 
+                if (taskName === "" || completionDateTime === "") {
+                    return alert('Please fill out all fields!')
+                }
+                
                 const taskObject = {
                     "task": taskName,
                     "completionDate": completionDateTime,
