@@ -171,18 +171,17 @@ nav button:hover {
 /*                   Begin Body Styling                     */
 /* ******************************************************** */
 
-/* main container */
+/*             mainContainer styling                        */
 
 #mainContainer {
-    margin-top: 20%;
+    margin-top: 15%;
+    text-align: center;
 }
 
 /* mainContainer
-*/
-#mainContainer {
-    margin-top: 20%;
-}
+
 /*            Styling for welcome messages                  */
+
 
 .welcomeContainer {
     width: 50%;
@@ -234,6 +233,7 @@ nav button:hover {
 }
 /* Message Board Styling */
 
+
 #chatContainer {
     position: fixed;
     right: 0;
@@ -254,6 +254,71 @@ nav button:hover {
     position: absolute;
     bottom: 0;
 }
+
+/* Styling Forms */
+
+.createFormContainer {
+    width: 50%;
+    padding: 15px;
+    margin-left: auto;  
+    margin-right: auto;
+    background-color: var(--sunset);
+    border-radius: 5px;
+}
+
+.createFormContainer fieldset {
+    border: none;
+}
+
+#mainContainer h1 {
+    background-color: white;
+    padding: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.noCards {
+    width: 50%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--lightSage);
+}
+
+/* *********** Styling Cards! **************** */
+
+.objCards {
+    width: 80%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.cards {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/*   extra task card styling  */
+
+.incomplete {
+    background-color: var(--wine) ;
+}
+
+.complete {
+    background-color: green !important;
+}
+
+.taskName h2:hover {
+    border-bottom: 2px solid blue;
+}
+
 /* ******* Begin My Profile Styling ********** */
 
 #myProfileContainer {
