@@ -171,6 +171,11 @@ nav button:hover {
 /*                   Begin Body Styling                     */
 /* ******************************************************** */
 
+/* main container */
+
+#mainContainer {
+    margin-top: 20%;
+}
 
 /* mainContainer
 */
