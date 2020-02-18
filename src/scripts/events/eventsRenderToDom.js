@@ -33,7 +33,10 @@ const eventsRenderToDom = {
 
         dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
-            mainContainer.innerHTML = ""; 
+            mainContainer.innerHTML = "";
+            
+            //insert conditional for no events message
+            
             eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
             eventsRenderToDom.renderEventCardsContainerHeader()
