@@ -318,6 +318,10 @@ nav button:hover {
     background-color: green !important;
 }
 
+.taskName h2:hover {
+    border-bottom: 2px solid blue;
+}
+
 /* ******* Begin My Profile Styling ********** */
 
 #myProfileContainer {

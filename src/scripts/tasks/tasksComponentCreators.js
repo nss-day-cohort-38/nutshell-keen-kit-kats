@@ -38,8 +38,8 @@ const taskExample =
         createTaskCard(task) {
             return `
                 <figure class='cards ${task.isComplete ? 'complete' : "incomplete"}' id='taskContainer-${task.id}'>
-                    <div id="taskText">
-                        <div id='taskNameContainer-${task.id}'>
+                    <div class="taskText">
+                        <div class="taskName" id='taskNameContainer-${task.id}'>
                         <h2 id="taskName-${task.id}">Task: ${task.task}</h2>
                         </div>
                         <h3>Deadline: ${this.convertDateAndTime(task.completionDate)}</h3>
@@ -57,11 +57,10 @@ const taskExample =
             <article id="taskFormContainer">
             <form name="taskForm" id="taskForm" action="">
                 <fieldset form="taskForm" id="taskNameField">
-                    <label for="taskName">Date of entry</label>
                     <input type="text" name="taskName" id="taskName" placeholder='Enter Task Here'>
                 </fieldset>
                 <fieldset form="taskForm" id="completionDateField">
-                    <label for="completionDate">When do you want it done?</label>
+                    <label for="completionDate">Deadline:</label>
                     <input type="datetime-local" name="completionDate" id="completionDate">
                 </fieldset>
             </form>
