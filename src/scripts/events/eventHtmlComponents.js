@@ -19,7 +19,7 @@ const eventHtmlComponents = {
         </fieldset>
 
         <fieldset>
-            <input type="date" id="event_date" class="form_input" placeholder="Event Date"/>
+            <input type="datetime-local" id="event_date" class="form_input" placeholder="Event Date"/>
         </fieldset>
 
         <fieldset>
@@ -51,7 +51,7 @@ const eventHtmlComponents = {
         
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
-                <p>${event.date}</p>
+                <p>${this.convertDateAndTime(event.date)}</p>
                 <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
                 <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
 
@@ -70,7 +70,7 @@ const eventHtmlComponents = {
         </fieldset>
 
         <fieldset>
-            <input type="date" id="event_date" class="form_input" value="${event.date}"/>
+            <input type="datetime-local" id="event_date" class="form_input" value="${event.date}"/>
         </fieldset>
 
         <fieldset>
@@ -79,6 +79,13 @@ const eventHtmlComponents = {
 
         <button class="saveFormButton" id="saveFormButton--${event.id}">Save Event</button>
         `
+    },
+    convertDateAndTime(date) {
+        const dateTimeArr = date.split('T');
+        const time = dateTimeArr[1]
+        const oldDate = dateTimeArr[0]
+        const dateArr = oldDate.split('-')
+        return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]} @ ${time}`
     }
 }
 

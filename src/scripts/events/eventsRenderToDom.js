@@ -34,14 +34,15 @@ const eventsRenderToDom = {
         dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
             mainContainer.innerHTML = ""; 
-
             eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
             eventsRenderToDom.renderEventCardsContainerHeader()
 
             const eventCardsContainer = document.getElementById("objCards--events");
+
+            const eventsSorted = events.sort((a,b) => {return new Date(a.date) - new Date(b.date)})
             
-            events.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+            eventsSorted.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
         })
     },
     renderEditEventFields(eventId) {
