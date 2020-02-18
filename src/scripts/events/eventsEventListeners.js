@@ -20,10 +20,10 @@ const eventsEventListeners = {
     },
     addCreateEventButtonEventListener() {
 
-       mainContainer.addEventListener("click", (event) => {
+        mainContainer.addEventListener("click", (event) => {
             if (event.target.id.startsWith("createFormButton--")) {
 
-              eventsRenderToDom.renderEventForm();
+                eventsRenderToDom.renderEventForm();
             }
         })
     },
@@ -38,7 +38,7 @@ const eventsEventListeners = {
                 const eventLocationInput = document.getElementById("event_location");
                 const eventIdInput = document.getElementById("event_id")
 
-                if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length ===0){
+                if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
                     alert("Please fill out all fields before saving event")
                 } else {
 
@@ -56,20 +56,24 @@ const eventsEventListeners = {
                             .then(eventsRenderToDom.renderEventCards)
                     } else {
                         dbAPI.postObjectByResource("events", event)
-                        .then(eventsRenderToDom.renderEventCards)
+                            .then(eventsRenderToDom.renderEventCards)
                     }
                 }
-            
+
             }
         })
     },
     addDeleteEventButtonEventListener() {
         mainContainer.addEventListener("click", (event) => {
             if (event.target.id.startsWith("deleteFormButton--")) {
-                const eventIdToDelete = event.target.id.split("--")[1]
 
-                dbAPI.deleteObjectByResource("events", eventIdToDelete)
-                    .then(eventsRenderToDom.renderEventCards)
+                if (confirm("Are you sure you want to delete this event?")) {
+                    const eventIdToDelete = event.target.id.split("--")[1]
+
+                    dbAPI.deleteObjectByResource("events", eventIdToDelete)
+                        .then(eventsRenderToDom.renderEventCards)
+
+                }
             }
         })
     },

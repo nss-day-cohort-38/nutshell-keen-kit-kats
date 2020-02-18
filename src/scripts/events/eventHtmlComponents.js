@@ -31,9 +31,9 @@ const eventHtmlComponents = {
     },
     createEventCardsContainerHeader() {
         return `
-        <article class="objCards" id="objCards--events">
-
         <h1>Your Events:</h1>
+
+        <article class="objCards" id="objCards--events">
 
         </article>
         `
