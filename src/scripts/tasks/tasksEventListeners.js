@@ -2,15 +2,15 @@
 import tasksAddToDom from "./tasksAddToDom.js"
 import tasksComponentCreators from "./tasksComponentCreators.js"
 import dbAPI from "../dbAPI.js"
-import {createHTML, createObjects}  from "../createComponent.js"
+import { createHTML, createObjects } from "../createComponent.js"
 
 const tasksEventListeners = {
 
     taskNavBarEventListener() {
         const tasksButton = document.getElementById('myTasks')
         const mainContainer = document.getElementById('mainContainer')
-        
-        tasksButton.addEventListener('click', ()=>{
+
+        tasksButton.addEventListener('click', () => {
             mainContainer.innerHTML = ""
             tasksAddToDom.addTasksContainers()
             tasksAddToDom.addTaskCards()
@@ -20,7 +20,7 @@ const tasksEventListeners = {
     createTaskEventListener() {
         const mainContainer = document.getElementById('mainContainer')
 
-        mainContainer.addEventListener('click', (event)=>{
+        mainContainer.addEventListener('click', (event) => {
             if (event.target.id === 'createTaskForm') {
                 const taskFormContainer = document.getElementById('taskFormContainer')
 
@@ -32,7 +32,7 @@ const tasksEventListeners = {
     saveTaskEventListener() {
         const mainContainer = document.getElementById('mainContainer')
 
-        mainContainer.addEventListener('click', (event)=>{
+        mainContainer.addEventListener('click', (event) => {
             if (event.target.id === 'saveBtn') {
                 const taskFormContainer = document.getElementById('taskFormContainer')
                 const taskName = document.getElementById('taskName').value
@@ -42,7 +42,7 @@ const tasksEventListeners = {
                 if (taskName === "" || completionDateTime === "") {
                     return alert('Please fill out all fields!')
                 }
-                
+
                 const taskObject = {
                     "task": taskName,
                     "completionDate": completionDateTime,
@@ -51,33 +51,51 @@ const tasksEventListeners = {
                 }
 
                 dbAPI.postObjectByResource("tasks", taskObject)
-                    .then(()=>{
+                    .then(() => {
                         tasksAddToDom.addTasksContainers()
                         tasksAddToDom.addTaskCards()
                         console.log(completionDateTime)
                     })
-                
+
             }
         })
-    }, 
+    },
 
-    // Not Done
+    nevermindButtonEventListener () {
+        const mainContainer = document.getElementById('mainContainer')
+
+        mainContainer.addEventListener('click', (event) => {
+            if (event.target.id === 'nevermind') {
+                const taskFormContainer = document.getElementById('taskFormContainer')
+                taskFormContainer.innerHTML = `<button class='createFormButton' id='createTaskForm'>Create New Tasks</button>`
+            };
+        
+        }); 
+    },
+
     taskCompleteEventListener() {
         const mainContainer = document.getElementById('mainContainer')
 
-        mainContainer.addEventListener('click', (event)=>{
-            if (event.target.id === 'markTaskComplete') {
-                const taskFormContainer = document.getElementById('taskFormContainer')
-                const taskName = document.getElementById('taskName').value
-                const completionDateTime = document.getElementById('completionDate')
-                const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
+        mainContainer.addEventListener('click', (event) => {
+            if (event.target.id.startsWith('markTaskCom')) {
+                const taskId = event.target.id.split('-')[1]
 
-                dbAPI.patchObjectByResource("tasks", taskObject)
-                    .then(()=>{
-                        tasksAddToDom.addTasksContainers()
+                const taskPromise = fetch(`http://localhost:8088/tasks/${taskId}`).then(resp=>resp.json())
+                Promise.all([taskPromise])
+                    .then(array => array[0])
+                    .then(task => {
+                        if (task.isComplete === true) {
+                            const patchedIsCompleteObj = createObjects.patchedKeyValueObjectCreator('isComplete', false)
+                            return dbAPI.patchObjectByResource("tasks", taskId, patchedIsCompleteObj)
+                        } else {
+                            const patchedIsCompleteObj = createObjects.patchedKeyValueObjectCreator('isComplete', true)
+                            return dbAPI.patchObjectByResource("tasks", taskId, patchedIsCompleteObj)
+                        }
+                    })
+                    .then(() => {
+                        document.getElementById('taskCardsContainer').innerHTML = ""
                         tasksAddToDom.addTaskCards()
                     })
-                
             }
         })
     },
@@ -89,8 +107,7 @@ const tasksEventListeners = {
 
             if (event.target.id.startsWith('taskName')) {
                 const taskId = event.target.id.split('-')[1]
-                const taskName = document.getElementById(`taskName-${taskId}`).value
-                
+
                 dbAPI.fetchObjectById('tasks', taskId)
                     .then(task => {
                         tasksAddToDom.addEditNameComponent(task.task, task.id)
@@ -99,7 +116,6 @@ const tasksEventListeners = {
         });
     },
 
-    // Not Done
     saveEditedNameEventListener() {
         const mainContainer = document.getElementById('mainContainer')
 
@@ -111,6 +127,10 @@ const tasksEventListeners = {
                 const editedName = document.getElementById(`editName-${taskId}`).value
                 const patchedNameObj = createObjects.patchedKeyValueObjectCreator('task', editedName)
 
+                if (editedName.length < 3) {
+                    return alert('Please enter valid task name.')
+                }
+
                 dbAPI.patchObjectByResource('tasks', taskId, patchedNameObj)
                     .then(() => {
                         document.getElementById('taskCardsContainer').innerHTML = ""
@@ -118,9 +138,28 @@ const tasksEventListeners = {
                     })
             };
         });
+    },
+
+    deleteTaskEventListener() {
+        const mainContainer = document.getElementById('mainContainer')
+
+        mainContainer.addEventListener('click', (event) => {
+            if (event.target.id.startsWith('deleteTask')){
+                const taskId = event.target.id.split('-')[1]
+
+                if(confirm('Are you sure you want to delete task?')){
+                    dbAPI.deleteObjectByResource('tasks', taskId)
+                        .then(()=>{
+                            document.getElementById('taskCardsContainer').innerHTML = ""
+                            tasksAddToDom.addTaskCards()
+                        })
+                }
+
+            }
+            
+        })
+
     }
-
-
 
 }
 

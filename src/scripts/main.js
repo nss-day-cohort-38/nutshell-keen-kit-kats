@@ -36,6 +36,9 @@ tasksEventListeners.createTaskEventListener()
 tasksEventListeners.saveTaskEventListener()
 tasksEventListeners.editTaskNameEventListener()
 tasksEventListeners.saveEditedNameEventListener()
+tasksEventListeners.taskCompleteEventListener()
+tasksEventListeners.deleteTaskEventListener()
+tasksEventListeners.nevermindButtonEventListener()
 
 // Calling Events Event Listeners
 

@@ -28,6 +28,7 @@ const taskExample =
             <article class='createFormContainer' id='taskFormContainer'>
                 <button class='createFormButton' id='createTaskForm'>Create New Tasks</button>
             </article>
+            <h1>Your To-Do List!</h1>
             <article class='objCards' id='taskCardsContainer'>
     
             </article>
@@ -36,7 +37,7 @@ const taskExample =
 
         createTaskCard(task) {
             return `
-                <figure class='cards' id='taskContainer-${task.id}'>
+                <figure class='cards ${task.isComplete ? 'complete' : "incomplete"}' id='taskContainer-${task.id}'>
                     <div id="taskText">
                         <div id='taskNameContainer-${task.id}'>
                         <h2 id="taskName-${task.id}">Task: ${task.task}</h2>
@@ -44,8 +45,9 @@ const taskExample =
                         <h3>Deadline: ${this.convertDateAndTime(task.completionDate)}</h3>
                     </div>
                     <div id="markCompleteContainer">
-                        <p>Mark Complete? <input type='checkbox' id='markTaskComplete' value=${task.complete}></p>
+                    ${task.isComplete ? `<p>Complete! <button id='markTaskCompletionStatus-${task.id}'>Undo</button?</p>` : `<p>Mark Complete? <input type='checkbox' id='markTaskCompletionStatus-${task.id}'></p>`}
                     </div>
+                    <button class='deleteButton' id="deleteTask-${task.id}">Delete</button>
                 </figure>
             `
         },
@@ -64,6 +66,7 @@ const taskExample =
                 </fieldset>
             </form>
             <button id='saveBtn' class='button'>Save Task</button>
+            <button class='createFormButton' id='nevermind'>Nevermind</button>
             </article>
             `
         }, 

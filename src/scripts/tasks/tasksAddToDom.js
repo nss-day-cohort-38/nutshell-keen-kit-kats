@@ -31,9 +31,13 @@ const tasksAddToDom = {
         dbAPI.getObjectByResource('tasks',currentUserId)
             .then(tasks => {
 
-                tasks.forEach(task => {
+                if(tasks.length === 0) {
+                    tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
+                } else{tasks.forEach(task => {
                     tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
-                });
+                })
+                }
+
             })
     },
 
