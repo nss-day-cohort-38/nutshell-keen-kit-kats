@@ -35,12 +35,21 @@ const eventsRenderToDom = {
             .then(events => {
                 mainContainer.innerHTML = "";
 
+                const todayDate = new Date().toISOString().slice(0, 10);
+
+                const pastEventIdToDelete = events.date
+
                 if (events.length === 0) {
                     eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
                     eventsRenderToDom.renderEventCardsContainer()
 
                     eventsRenderToDom.renderNoEventsMessage()
+
+                } else if (pastEventIdToDelete < todayDate) {
+
+                    dbAPI.deleteObjectByResource("events", pastEventIdToDelete)
+                        .then(eventsRenderToDom.renderEventCards)
 
                 } else {
 

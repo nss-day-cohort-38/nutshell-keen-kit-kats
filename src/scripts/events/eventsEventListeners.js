@@ -38,9 +38,15 @@ const eventsEventListeners = {
                 const eventLocationInput = document.getElementById("event_location");
                 const eventIdInput = document.getElementById("event_id")
 
+                const todayDate = new Date().toISOString().slice(0, 10);
+
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
-                    alert("Please fill out all fields before saving event")
-                } else {
+                    alert("Please fill out all fields before saving event.")
+                } 
+                // else if (eventDateInput.value < todayDate) { 
+                //     alert("Please create a future event. Past dates are not accepted.") 
+                // } 
+                else {
 
                     const event = {
                         "userId": loggedInUserId,
