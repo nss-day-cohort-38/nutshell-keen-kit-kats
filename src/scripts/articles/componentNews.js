@@ -20,6 +20,7 @@ const createNewsComponents = {
         </article>
         <article class="objCards" id="newsCardsContainer">
         </article>
+        <article class="objCards friendsCards" id=friendsNewsContainer></article>
         `
     },
     createNewsArticleInput() {
@@ -40,7 +41,8 @@ const createNewsComponents = {
     },
     createNewsCard(newsObject) {
         return `
-       <div class="cards newsCards__styles" id="newsCard--${newsObject.id}">
+       <figure class="cards newsCards__styles" id="newsCard--${newsObject.id}">
+       <h1 class="userName hidden" id="friendName">${newsObject.user.username}</h1> 
         <div>
           <p><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
           </p>
@@ -52,7 +54,7 @@ const createNewsComponents = {
           <button class="editFormButton" id="newsEditButton--${newsObject.id}">Edit News Article</button>
           <button class="deleteFormButton" id="newsDeleteButton--${newsObject.id}">Delete News Article</button>  
         </div>
-       </div>
+       </figure>
         `
     },
     createEditForm(newsObject) {

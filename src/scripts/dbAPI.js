@@ -4,8 +4,8 @@ const dbAPI = {
   getUsers() {
     return fetch(`${baseUrl}/users`).then(resp => resp.json());
   },
-  getFriends() {
-    return fetch(`${baseUrl}/friends`).then(resp => resp.json());
+  getFriends(currentUserId) {
+    return fetch(`${baseUrl}/friends?loggedInUserId=${currentUserId}&_expand=user`).then(resp => resp.json());
   },
 
   getObjectByResource(resource, userId) {
