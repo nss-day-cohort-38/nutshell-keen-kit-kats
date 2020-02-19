@@ -3,6 +3,7 @@ import addToDom from "./addToDom.js"
 import eventListeners from "./mainEventListeners.js"
 import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
+import newsEventListeners from "./articles/eventListenersNews.js"
 import tasksEventListeners from "./tasks/tasksEventListeners.js"
 import eventsRenderToDom from "./events/eventsRenderToDom.js";
 // import friendsEventListeners from "./friends/eventListeners.js"
@@ -28,6 +29,13 @@ profileEventListeners.changeUsernameButtonEventListener()
 profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
+
+
+
+    // News section Event Listeners
+newsEventListeners.mainNavNewsButtonAddEventListener();
+newsEventListeners.createSaveEditAndDeleteBtnsAddEventListener();
+
 
 // Tasks event listeners
 
