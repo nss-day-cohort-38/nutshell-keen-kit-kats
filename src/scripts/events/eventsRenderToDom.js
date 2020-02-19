@@ -15,10 +15,10 @@ const eventsRenderToDom = {
         formContainer.innerHTML = eventHtmlComponents.createEventForm();
 
     },
-    renderEventCardsContainerHeader() {
+    renderEventCardsContainer() {
 
         mainContainer.innerHTML +=
-            eventHtmlComponents.createEventCardsContainerHeader();
+            eventHtmlComponents.createEventCardsContainer();
 
     },
     renderNoEventsMessage() {
@@ -38,7 +38,7 @@ const eventsRenderToDom = {
                 if (events.length === 0) {
                     eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-                    eventsRenderToDom.renderEventCardsContainerHeader()
+                    eventsRenderToDom.renderEventCardsContainer()
 
                     eventsRenderToDom.renderNoEventsMessage()
 
@@ -46,7 +46,7 @@ const eventsRenderToDom = {
 
                     eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-                    eventsRenderToDom.renderEventCardsContainerHeader()
+                    eventsRenderToDom.renderEventCardsContainer()
 
                     const eventCardsContainer = document.getElementById("objCards--events");
 
@@ -61,12 +61,6 @@ const eventsRenderToDom = {
                             eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
                         }
                     }
-
-                    //  eventsSorted.forEach(event => 
-                    //     eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
-
-                    
-
                 }
             })
     },

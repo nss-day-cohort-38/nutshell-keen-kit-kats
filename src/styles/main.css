@@ -313,6 +313,7 @@ nav button:hover {
 .firstCard {
     background-color: rgba(99, 226, 198, 1);
     margin: 5px;
+    text-shadow: 1px 1px 1px #1C6EA4;
 }
 
 .otherCards {

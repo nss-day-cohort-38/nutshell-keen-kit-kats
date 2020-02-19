@@ -1,6 +1,8 @@
 const eventHtmlComponents = {
     createEventContainerWithCreateEventButton() {
         return `
+        <h1 class="sectionHeader">Your Events:</h1>
+
         <article class="createFormContainer" id="createFormContainer--events">
 
         <button class="createFormButton" id="createFormButton--events">Create Event</button>
@@ -31,10 +33,8 @@ const eventHtmlComponents = {
         <button class="nevermindFormButton" id="nevermindFormButton--events">Nevermind</button>
         `
     },
-    createEventCardsContainerHeader() {
+    createEventCardsContainer() {
         return `
-        <h1>Your Events:</h1>
-
         <article class="objCards" id="objCards--events">
 
         </article>
