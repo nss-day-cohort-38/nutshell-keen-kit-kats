@@ -5,12 +5,14 @@ import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
 import newsEventListeners from "./articles/eventListenersNews.js"
 import tasksEventListeners from "./tasks/tasksEventListeners.js"
-import eventsRenderToDom from "./events/eventsRenderToDom.js";
-// import friendsEventListeners from "./friends/eventListeners.js"
+import friendsEventListeners from "./friends/friendEventListeners.js"
 import chatButtonClickEvent from "./messages/eventListeners.js"
 import init from "./messages/addMessagesToDOM.js"
 import messageAPIManager from "./messages/messagesManager.js"
 
+// import eventsRenderToDom from "./events/eventsRenderToDom.js"
+
+// eventsRenderToDom.renderFriendsEventsToDom()
 
 // Calling initial render of messages
 init()
@@ -43,7 +45,7 @@ chatButtonClickEvent.exitMessages()
 
 
 // Friends event listeners
-//friendsEventListeners.friendsButtonEventListener()
+friendsEventListeners.friendsButtonEventListener()
 
 
 

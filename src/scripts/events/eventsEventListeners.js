@@ -13,9 +13,11 @@ const eventsEventListeners = {
             const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
             dbAPI.getObjectByResource("events", loggedInUserId)
-                .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
-                .then(eventsRenderToDom.renderEventCards)
-
+                .then(() => {
+                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                    eventsRenderToDom.renderEventCards()
+                    eventsRenderToDom.renderFriendsEventsToDom()
+                })
         })
     },
     addCreateEventButtonEventListener() {
@@ -59,10 +61,16 @@ const eventsEventListeners = {
                         event.id = parseInt(eventIdInput.value);
 
                         dbAPI.putObjectByResource("events", event)
-                            .then(eventsRenderToDom.renderEventCards)
+                            .then(() => {
+                                eventsRenderToDom.renderEventCards()
+                                eventsRenderToDom.renderFriendsEventsToDom()
+                            })
                     } else {
                         dbAPI.postObjectByResource("events", event)
-                            .then(eventsRenderToDom.renderEventCards)
+                            .then(() => {
+                                eventsRenderToDom.renderEventCards()
+                                eventsRenderToDom.renderFriendsEventsToDom()
+                            })
                     }
                 }
 
@@ -77,7 +85,10 @@ const eventsEventListeners = {
                     const eventIdToDelete = event.target.id.split("--")[1]
 
                     dbAPI.deleteObjectByResource("events", eventIdToDelete)
-                        .then(eventsRenderToDom.renderEventCards)
+                        .then(() => {
+                            eventsRenderToDom.renderEventCards()
+                            eventsRenderToDom.renderFriendsEventsToDom()
+                        })
 
                 }
             }
@@ -99,7 +110,10 @@ const eventsEventListeners = {
                 eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
                 dbAPI.postObjectByResource("events", event)
-                            .then(eventsRenderToDom.renderEventCards)
+                    .then(() => {
+                        eventsRenderToDom.renderEventCards()
+                        eventsRenderToDom.renderFriendsEventsToDom()
+                    })
 
 
             }

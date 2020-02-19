@@ -8,6 +8,13 @@ const eventHtmlComponents = {
         <button class="createFormButton" id="createFormButton--events">Create Event</button>
             
         </article>
+        
+        <article class="objCards" id="objCards--events">
+        </article>
+        <article class="objCards friendsCards" id="friendsEventsContainer">
+        <h1 class ="sectionHeader" id="friendEventsHeader">Friends Events</h1>
+        </article>
+        
         `
     },
     createEventForm() {
@@ -33,13 +40,6 @@ const eventHtmlComponents = {
         <button class="nevermindFormButton" id="nevermindFormButton--events">Nevermind</button>
         `
     },
-    createEventCardsContainer() {
-        return `
-        <article class="objCards" id="objCards--events">
-
-        </article>
-        `
-    },
     createNoEventsMessage() {
         return `
             <h3 class="noCards">You have no saved events. Please create an event above!</h3>
@@ -47,28 +47,46 @@ const eventHtmlComponents = {
     },
     createEventCard(event) {
         return `
-            <div class="cards eventCards otherCards" id="cards--${event.id}">
-        
+            <figure class="cards eventCards otherCards" id="cards--${event.id}">
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
                 <p>${this.convertDateAndTime(event.date)}</p>
                 <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
                 <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
 
-            </div>
+            </figure>
         `
     },
+    
+    createFriendEventCard(event){
+        return `
+            <figure class="cards eventCards friendCard" id="cards--${event.id}">
+            <h1 class="userName" id="friendName">${event.user.username}</h1> 
+                <h3>${event.name}</h3>
+                <h4>${event.location}</h4>
+                <p>${this.convertDateAndTime(event.date)}</p>
+            </figure>
+        `
+    },
+    
     createFirstEventCard(event) {
         return `
+<<<<<<< HEAD
             <div class="cards eventCards firstCard" id="cards--${event.id}">
         
                 <h2><strong>${event.name}</strong></h2>
                 <h3><strong>${event.location}</strong></h3>
+=======
+            <figure class="cards eventCards firstCard" id="cards--${event.id}">
+
+                <h2>${event.name}</h2>
+                <h3>${event.location}</h3>
+>>>>>>> master
                 <p><strong>${this.convertDateAndTime(event.date)}</strong></p>
                 <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
                 <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
 
-            </div>
+            </figure>
         `
     },
     createEditEventForm(event) {
