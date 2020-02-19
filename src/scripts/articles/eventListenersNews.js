@@ -2,6 +2,15 @@ import dbAPI from "../dbAPI.js"
 import domAdditionHandler from "./domNews.js"
 import createNewsComponents from "./componentNews.js"
 
+const clearFormFields = () => {
+    const newsTitleForm = document.getElementById("newsTitle");
+    const newsSynopsisForm = document.getElementById("newsSynopsis");
+    const webAddressForm = document.getElementById("newsURL");
+
+    newsTitleForm.value = ""
+    newsSynopsisForm.value = ""
+    webAddressForm.value = ""
+}
 
 const newsEventListeners = {
 
@@ -43,6 +52,7 @@ const newsEventListeners = {
                         const newsCardsContainer = document.getElementById("newsCardsContainer")
                         newsCardsContainer.innerHTML = "";
                         domAdditionHandler.addArticlesToDOM()
+                        clearFormFields()
                     });
 
             } else if (event.target.id.startsWith("newsDeleteButton")) {
@@ -62,27 +72,26 @@ const newsEventListeners = {
 
                 dbAPI.getObjectByIdAndResource('news', focusedArticleId)
                     .then(newsObject => {
-                        JSON.stringify(domAdditionHandler.editArticleInPlace(focusedArticleId, newsObject))
+                        domAdditionHandler.editArticleInPlace(focusedArticleId, newsObject)
                     })
-                } else if (event.target.id.startsWith("saveEditedNewsArticleButton")) {
+            } else if (event.target.id.startsWith("saveEditedNewsArticleButton")) {
                 const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id;
-                const newsTitleInfo = document.getElementById("newsTitle").value;
-                const newsSynopsisInfo = document.getElementById("newsSynopsis").value;
-                const webAddressInfo = document.getElementById("newsURL").value;
+                const newsTitleInfo = document.getElementById("newsTitleEdit").value;
+                const newsSynopsisInfo = document.getElementById("newsSynopsisEdit").value;
+                const webAddressInfo = document.getElementById("newsURLEdit").value;
                 const currentTimeDate = new Date();
-
                 const focusedArticleId = document.getElementById("hiddenObjectId").value
-                
-                
+
+
                 if (focusedArticleId === event.target.id.split("--")[1]) {
                     const editedNewsObject = {
-                    id: focusedArticleId,    
-                    userId: currentUserId,
-                    url: webAddressInfo,
-                    title: newsTitleInfo,
-                    synopsis: newsSynopsisInfo,
-                    timestamp: currentTimeDate
-                    }   
+                        id: focusedArticleId,
+                        userId: currentUserId,
+                        url: webAddressInfo,
+                        title: newsTitleInfo,
+                        synopsis: newsSynopsisInfo,
+                        timestamp: currentTimeDate
+                    }
                     dbAPI.putObjectByResource('news', editedNewsObject)
                         .then(() => {
                             const newsCardsContainer = document.getElementById("newsCardsContainer")

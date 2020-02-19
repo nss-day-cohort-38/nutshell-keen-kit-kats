@@ -305,6 +305,12 @@ nav button:hover {
     border-radius: 5px;
 }
 
+.newsCards__styles{
+    background-color: hsl(192, 54%, 40%);
+    margin: 5px;
+    
+}
+
 /*   extra task card styling  */
 
 .incomplete {
