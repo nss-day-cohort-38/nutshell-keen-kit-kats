@@ -71,17 +71,10 @@ const eventHtmlComponents = {
     
     createFirstEventCard(event) {
         return `
-<<<<<<< HEAD
-            <div class="cards eventCards firstCard" id="cards--${event.id}">
-        
-                <h2><strong>${event.name}</strong></h2>
-                <h3><strong>${event.location}</strong></h3>
-=======
             <figure class="cards eventCards firstCard" id="cards--${event.id}">
 
                 <h2>${event.name}</h2>
                 <h3>${event.location}</h3>
->>>>>>> master
                 <p><strong>${this.convertDateAndTime(event.date)}</strong></p>
                 <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
                 <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
