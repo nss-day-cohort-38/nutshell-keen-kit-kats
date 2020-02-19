@@ -48,7 +48,7 @@ const eventsRenderToDom = {
 
                 } else if (pastEventIdToDelete < todayDate) {
 
-                    dbAPI.deleteObjectByResource("events", pastEventIdToDelete)
+                    dbAPI.deleteObjectByResource("events", event.date)
                         .then(eventsRenderToDom.renderEventCards)
 
                 } else {
