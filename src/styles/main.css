@@ -314,10 +314,25 @@ nav button:hover {
     background-color: var(--lightSage);
 }
 
+/* extra event card styling */
+
+.firstCard {
+    background-color: rgba(99, 226, 198, 1);
+    margin: 5px;
+    text-shadow: 1px 2px 2px gray;
+    width: 300px;
+    border: 3px solid black;
+    box-shadow: 2px 2px 5px 2px black;
+}
+
+.otherCards {
+    background-color: rgba(99, 226, 198, .7);
+    margin: 5px;
+}
+
 .newsCards__styles{
     background-color: hsl(192, 54%, 40%);
     margin: 5px;
-    
 }
 
 /*   extra task card styling  */

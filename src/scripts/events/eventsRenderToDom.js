@@ -11,14 +11,14 @@ const eventsRenderToDom = {
     renderEventForm() {
 
         const formContainer = document.getElementById("createFormContainer--events")
-        
+
         formContainer.innerHTML = eventHtmlComponents.createEventForm();
 
     },
-    renderEventCardsContainerHeader() {
+    renderEventCardsContainer() {
 
-        mainContainer.innerHTML += 
-        eventHtmlComponents.createEventCardsContainerHeader();
+        mainContainer.innerHTML +=
+            eventHtmlComponents.createEventCardsContainer();
 
     },
     renderNoEventsMessage() {
@@ -33,16 +33,36 @@ const eventsRenderToDom = {
 
         dbAPI.getObjectByResource("events", loggedInUserId)
             .then(events => {
-            mainContainer.innerHTML = ""; 
+                mainContainer.innerHTML = "";
 
-            eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                if (events.length === 0) {
+                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-            eventsRenderToDom.renderEventCardsContainerHeader()
+                    eventsRenderToDom.renderEventCardsContainer()
 
-            const eventCardsContainer = document.getElementById("objCards--events");
-            
-            events.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
-        })
+                    eventsRenderToDom.renderNoEventsMessage()
+
+                } else {
+
+                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
+
+                    eventsRenderToDom.renderEventCardsContainer()
+
+                    const eventCardsContainer = document.getElementById("objCards--events");
+
+                    const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+
+                    for (let i = 0; i < eventsSorted.length; i++) {
+                        let firstCard = eventsSorted[0]
+                        if (eventsSorted[i] === firstCard) {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+                        } else {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+                        }
+                    }
+                }
+            })
     },
     renderEditEventFields(eventId) {
 
