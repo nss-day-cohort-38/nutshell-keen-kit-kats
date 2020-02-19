@@ -5,7 +5,7 @@ import eventsEventListeners from './events/eventsEventListeners.js';
 import profileEventListeners from "./myProfile/profileEventListeners.js"
 import tasksEventListeners from "./tasks/tasksEventListeners.js"
 import eventsRenderToDom from "./events/eventsRenderToDom.js";
-import friendsEventListeners from "./friends/eventListeners.js"
+// import friendsEventListeners from "./friends/eventListeners.js"
 import chatButtonClickEvent from "./messages/eventListeners.js"
 //import messageButtonEventListener from "./messages/addMessagesToDOM.js"
 import addMessagesToDOM from "./messages/addMessagesToDOM.js"
@@ -17,7 +17,7 @@ addToDom.checkIfLoggedIn()
 eventListeners.loginButtonEventListener()
 eventListeners.signupButtonEventListener()
 eventListeners.logoutButtonEventListener()
-friendsEventListeners.friendsButtonEventListener()
+// friendsEventListeners.friendsButtonEventListener()
 eventListeners.profileDropDownEventListener()
 
 
