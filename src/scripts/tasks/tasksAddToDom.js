@@ -33,7 +33,10 @@ const tasksAddToDom = {
 
                 if(tasks.length === 0) {
                     tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
-                } else{tasks.forEach(task => {
+                } else{
+                    const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
+
+                    tasksSorted.forEach(task => {
                     tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
                 })
                 }
