@@ -174,15 +174,10 @@ nav button:hover {
 /*             mainContainer styling                        */
 
 #mainContainer {
-    margin-top: 15%;
+    margin-top: 115px;
     text-align: center;
 }
 
-/* mainContainer
-*/
-#mainContainer {
-    margin-top: 20%;
-}
 /*            Styling for welcome messages                  */
 
 
@@ -261,38 +256,39 @@ nav button:hover {
 /* Styling Forms */
 
 .createFormContainer {
-    width: 50%;
+    color: antiquewhite;
     padding: 15px;
     margin-left: auto;  
     margin-right: auto;
-    background-color: var(--sunset);
+    width: fit-content;
+    background-color: var(--deepBlue);
+    box-shadow: 2px 2px 2px 2px var(--darkLiver);
     border-radius: 5px;
+    overflow: auto;
 }
 
 .createFormContainer fieldset {
     border: none;
 }
 
-#mainContainer h1 {
-    background-color: white;
+.sectionHeader {
+    background-color: var(--darkSage);
+    color: antiquewhite;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px var(--darkLiver);
     padding: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.noCards {
-    width: 50%;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: var(--lightSage);
-}
 
 /* *********** Styling Cards! **************** */
 
 .objCards {
-    width: 80%;
-    margin-top: 5%;
+    width: 90%;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -303,9 +299,19 @@ nav button:hover {
 }
 
 .cards {
+    color: var(--darkLiver);
     width: 200px;
     padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px var(--darkLiver);
+
+}
+
+.noCards {
+    width: 50%;
+    padding: 20px;
     border-radius: 5px;
+    background-color: var(--lightSage);
 }
 
 /* extra event card styling */
@@ -327,15 +333,31 @@ nav button:hover {
 /*   extra task card styling  */
 
 .incomplete {
-    background-color: var(--wine) ;
+    background-color: rgb(255, 107, 107) ;
 }
 
 .complete {
-    background-color: green !important;
+    background-color: var(--mediumSage);
+}
+
+.undoButton {
+    color: black;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: var(--mediumSage);
+    
+    
+}
+
+.undoButton:hover {
+    color: purple;
+    border-bottom: 1px dotted purple;
+    background-color: none;
+    transition: 0.1s ease;
 }
 
 .taskName h2:hover {
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid white;
 }
 
 /* ******* Begin My Profile Styling ********** */

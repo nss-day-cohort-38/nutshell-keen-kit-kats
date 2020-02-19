@@ -25,10 +25,10 @@ const taskExample =
 
         createTasksContainer() {
             return `
+            <h1 class="sectionHeader">Your To-Do List!</h1>
             <article class='createFormContainer' id='taskFormContainer'>
                 <button class='createFormButton' id='createTaskForm'>Create New Tasks</button>
             </article>
-            <h1>Your To-Do List!</h1>
             <article class='objCards' id='taskCardsContainer'>
     
             </article>
@@ -45,7 +45,7 @@ const taskExample =
                         <h3>Deadline: ${this.convertDateAndTime(task.completionDate)}</h3>
                     </div>
                     <div id="markCompleteContainer">
-                    ${task.isComplete ? `<p>Complete! <button id='markTaskCompletionStatus-${task.id}'>Undo</button?</p>` : `<p>Mark Complete? <input type='checkbox' id='markTaskCompletionStatus-${task.id}'></p>`}
+                    ${task.isComplete ? `<p>Complete! <button class="undoButton" id='markTaskCompletionStatus-${task.id}'>Undo</button?</p>` : `<p>Mark Complete? <input type='checkbox' id='markTaskCompletionStatus-${task.id}'></p>`}
                     </div>
                     <button class='deleteButton' id="deleteTask-${task.id}">Delete</button>
                 </figure>
