@@ -124,6 +124,8 @@ const eventListeners = {
       if (confirm("Are you sure you want to logout?")) {
         sessionStorage.clear();
         mainContainer.innerHTML = "";
+        document.getElementById("chatContainer").classList.toggle("hidden");
+        document.getElementById("body").classList.toggle("shrink");
         addToDom.addLoginForm();
         // making nav buttons disappear
         document.getElementById("resourceButtons").classList.toggle("hidden");

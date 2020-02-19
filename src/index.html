@@ -9,7 +9,7 @@
   <title>Everything In Your Nutshell</title>
 </head>
 
-<body>
+<body id="body">
 
   <img src="./images/fallSky.jpeg" class="background" alt="Fall Sky Image">
 
@@ -37,18 +37,18 @@
 
   <div id="chatContainer" class="hidden">
     <button id="chatButtonClose">Exit Chat</button>
-      <section>
-        <h1>Chat Room</h1>
-      </section>
-      <fieldset>
-      <div id="messages">
-      </div>
-    </fieldset>
-      <div class="chat-room-field">
-          <label for="writeMessage">Write Message!</label>
-          <input type="text" name="writeMessage" id="writeMessage">
-          <button id="sendMessage">Send</button>
-      </div>
+    <section>
+      <h1>Chat Room</h1>
+    </section>
+
+    <div id="message-list">
+    </div>
+
+    <div class="chat-room-field">
+      <label for="writeMessage">Write Message!</label>
+      <input type="text" name="writeMessage" id="writeMessage">
+      <button id="sendMessage">Send</button>
+    </div>
 
   </div>
   <div id="mainContainer">

@@ -1,171 +1,166 @@
 :root {
-    --background-color: rgb(255, 255, 240);
-    --mindaro: rgba(223, 239, 202, 1);
-    --lightSage: rgba(204, 221, 211, 1);
-    --mediumSage: rgb(145, 176, 159);
-    --darkSage: rgb(135, 164, 148);
-    --hansaYellow: rgba(255, 249, 165, 1);
-    --earthYellow: rgba(229, 178, 93, 1);
-    --brownSugar: rgb(167, 133, 104);
-    --darkLiver: rgba(82, 58, 52, 1);
-    --red: rgb(195, 69, 69);
-    --wine: rgb(185, 39, 39);
-    --plum: rgb(136, 112, 145);
-    --sunset: rgb(235, 150, 26);
-    --deepBlue: rgb(60, 111, 138);
+  --background-color: rgb(255, 255, 240);
+  --mindaro: rgba(223, 239, 202, 1);
+  --lightSage: rgba(204, 221, 211, 1);
+  --mediumSage: rgb(145, 176, 159);
+  --darkSage: rgb(135, 164, 148);
+  --hansaYellow: rgba(255, 249, 165, 1);
+  --earthYellow: rgba(229, 178, 93, 1);
+  --brownSugar: rgb(167, 133, 104);
+  --darkLiver: rgba(82, 58, 52, 1);
+  --red: rgb(195, 69, 69);
+  --wine: rgb(185, 39, 39);
+  --plum: rgb(136, 112, 145);
+  --sunset: rgb(235, 150, 26);
+  --deepBlue: rgb(60, 111, 138);
 }
 
 .hidden {
-    display: none !important;
-    transition: 1s ease;
+  display: none !important;
+  transition: 1s ease;
 }
 
-
 .background {
-    height: 100% !important;
-    width: 100% !important;
-    position: fixed !important;
-    z-index: -1;
-    top: 0;
-    left: 0;
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed !important;
+  z-index: -3;
+  top: 0;
+  left: 0;
 }
 
 button {
-    transition: 0.5s ease;
-    cursor: pointer;
+  transition: 0.5s ease;
+  cursor: pointer;
 }
-
 
 /* ******************************************************** */
 /*              Begin Header Styling                        */
 /* ******************************************************** */
 
 header {
-    background-color: var(--deepBlue);
-    border-top: 15px solid var(--darkLiver);
-    border-bottom: 2px solid var(--darkLiver);
-    height: 70px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    
+  background-color: var(--deepBlue);
+  border-top: 15px solid var(--darkLiver);
+  border-bottom: 2px solid var(--darkLiver);
+  height: 70px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
 }
 
 header section h1 {
-    margin-top: 21px;
-    margin-left: 25px;
-    font-family: Georgia, serif;
-    font-size: 25px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    color: #FFFFFF;
-    font-weight: 700;
-    text-decoration: none solid rgb(68, 68, 68);
-    font-style: italic;
-    font-variant: small-caps;
-    text-transform: capitalize;
-    position: fixed;
+  margin-top: 21px;
+  margin-left: 25px;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  position: fixed;
 }
 
 header section img {
-    width: 26px;
-    position: fixed;
-    margin-left: 158px;
-    margin-top: 24px;
+  width: 26px;
+  position: fixed;
+  margin-left: 158px;
+  margin-top: 24px;
 }
 
 nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position: fixed;
-    width: 60%;
-    right: 0;
-    margin-top: 22px;
-    margin-right: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: fixed;
+  width: 60%;
+  right: 0;
+  margin-top: 22px;
+  margin-right: 60px;
 }
 
 @media (max-width: 500px) {
-    nav { display: none; }
+  nav {
+    display: none;
+  }
 }
 
 nav button {
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    color: rgb(51, 38, 35);
-    background-color: var(--deepBlue);
-    box-shadow: none;
-    padding: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(51, 38, 35);
+  background-color: var(--deepBlue);
+  box-shadow: none;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 nav button:hover {
-    color: var(--mindaro);
-    background-color: var(--darkSage);
-    transition: 0.5s ease;
+  color: var(--mindaro);
+  background-color: var(--darkSage);
+  transition: 0.5s ease;
 }
 
 #profileIcon {
-    width: 26px;
-    transition: 0.5s ease;
-    position: fixed;
-    right: 0;
-    margin-top: 23px;
-    margin-right: 44px;
+  width: 26px;
+  transition: 0.5s ease;
+  position: fixed;
+  right: 0;
+  margin-top: 23px;
+  margin-right: 44px;
 }
 #profileIcon:hover {
-    cursor: pointer;
-    transition: 0.5s ease;
-    background-color: var(--mindaro);
-    padding: 7px;
-    border-radius: 50px;
-    margin-top: 16px;
-    margin-right: 37px;
-
+  cursor: pointer;
+  transition: 0.5s ease;
+  background-color: var(--mindaro);
+  padding: 7px;
+  border-radius: 50px;
+  margin-top: 16px;
+  margin-right: 37px;
 }
 
 #profileDropDown {
-    background-color: var(--mediumSage);
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 3px var(--darkLiver);
-    height: 150px;
-    width: 160px;
-    position: fixed;
-    right: 0;
-    margin-top: 59px;
-    margin-right: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+  background-color: var(--mediumSage);
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px var(--darkLiver);
+  height: 150px;
+  width: 160px;
+  position: fixed;
+  right: 0;
+  margin-top: 59px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 #profileDropDown button {
-    padding: 9px;
-    border: none;
-    background-color: var(--mediumSage);
-    color: white;
-    font-weight: bold;
-    
+  padding: 9px;
+  border: none;
+  background-color: var(--mediumSage);
+  color: white;
+  font-weight: bold;
 }
 
 #profileDropDown button:hover {
-    background-color: var(--deepBlue);
-    box-shadow: 1px 1px 1px var(--darkLiver);
-    transition: 0.5s ease;
-}   
-
-#logout:hover {
-    color: white;
-    background-color: var(--red) !important;
-    transition: 0.5s ease;
+  background-color: var(--deepBlue);
+  box-shadow: 1px 1px 1px var(--darkLiver);
+  transition: 0.5s ease;
 }
 
-
+#logout:hover {
+  color: white;
+  background-color: var(--red) !important;
+  transition: 0.5s ease;
+}
 
 /* ******************************************************** */
 /*                   Begin Body Styling                     */
@@ -174,231 +169,235 @@ nav button:hover {
 /*             mainContainer styling                        */
 
 #mainContainer {
-    margin-top: 115px;
-    text-align: center;
+  margin-top: 115px;
+  text-align: center;
 }
 
 /*            Styling for welcome messages                  */
 
-
 .welcomeContainer {
-    width: 50%;
-    max-width: 450px;
-    min-width: 250px;
-    border-radius: 30px;
-    box-shadow: 5px 5px var(--darkLiver);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px;
-    text-align: center;
-    background-color: var(--mediumSage);
+  width: 50%;
+  max-width: 450px;
+  min-width: 250px;
+  border-radius: 30px;
+  box-shadow: 5px 5px var(--darkLiver);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  text-align: center;
+  background-color: var(--mediumSage);
 }
 
 @media (max-width: 550px) {
-    .welcomeContainer { 
-        display: fixed;
-        margin-top: 120px; 
-    }
+  .welcomeContainer {
+    display: fixed;
+    margin-top: 120px;
+  }
 }
 
 .welcomeContainer h1 {
-    color: var(--darkLiver);
-    background-color: rgb(247, 255, 237);
-    border-radius: 6px;
-    box-shadow: 2px 2px var(--darkLiver);
-    width: 70%;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  color: var(--darkLiver);
+  background-color: rgb(247, 255, 237);
+  border-radius: 6px;
+  box-shadow: 2px 2px var(--darkLiver);
+  width: 70%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .welcomeContainer p {
-    color: var(--darkLiver);
-    background-color: var(--mindaro);
-    box-shadow: 2px 2px var(--darkLiver);
-    border-radius: 6px;
-    width: 50%;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  color: var(--darkLiver);
+  background-color: var(--mindaro);
+  box-shadow: 2px 2px var(--darkLiver);
+  border-radius: 6px;
+  width: 50%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-wrap {
-    margin-top: 150px;
-    width: 75%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 150px;
+  width: 75%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
-/* Message Board Styling */
-
+/* ********* Message Board Styling************** */
 
 #chatContainer {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 500px;
-    height: 400px;
-    margin-top: 100px;
-    background-color: aliceblue;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25%;
+  height: 400px;
+  margin-top: 100px;
+  background-color: aliceblue;
+  overflow: scroll;
+  z-index: -1;
 }
- .shrink {
-     width: 65% !important;
- }
+
+.shrink {
+  width: 65% !important;
+}
 
 #writeMessage {
-    width: 300px;
+  width: 300px;
 }
 .chat-room-field {
-    position: absolute;
-    bottom: 0;
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+}
+
+.edit-message-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Styling Forms */
 
 .createFormContainer {
-    color: antiquewhite;
-    padding: 15px;
-    margin-left: auto;  
-    margin-right: auto;
-    width: fit-content;
-    background-color: var(--deepBlue);
-    box-shadow: 2px 2px 2px 2px var(--darkLiver);
-    border-radius: 5px;
-    overflow: auto;
+  color: antiquewhite;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  background-color: var(--deepBlue);
+  box-shadow: 2px 2px 2px 2px var(--darkLiver);
+  border-radius: 5px;
+  overflow: auto;
 }
 
 .createFormContainer fieldset {
-    border: none;
+  border: none;
 }
 
 .sectionHeader {
-    background-color: var(--darkSage);
-    color: antiquewhite;
-    border-radius: 15px;
-    box-shadow: 3px 3px 3px var(--darkLiver);
-    padding: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: var(--darkSage);
+  color: antiquewhite;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px var(--darkLiver);
+  padding: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 /* *********** Styling Cards! **************** */
 
 .objCards {
-    width: 90%;
-    margin-top: 2%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+  width: 90%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
 .cards {
-    color: var(--darkLiver);
-    width: 200px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 3px var(--darkLiver);
-
+  color: var(--darkLiver);
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px var(--darkLiver);
 }
 
 .noCards {
-    width: 50%;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: var(--lightSage);
+  width: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: var(--lightSage);
 }
 
 /* extra event card styling */
 
 .firstCard {
-    background-color: rgba(99, 226, 198, 1);
-    margin: 5px;
-    text-shadow: 1px 2px 2px gray;
-    width: 300px;
-    border: 3px solid black;
-    box-shadow: 2px 2px 5px 2px black;
+  background-color: rgba(99, 226, 198, 1);
+  margin: 5px;
+  text-shadow: 1px 2px 2px gray;
+  width: 300px;
+  border: 3px solid black;
+  box-shadow: 2px 2px 5px 2px black;
 }
 
 .otherCards {
-    background-color: rgba(99, 226, 198, .7);
-    margin: 5px;
+  background-color: rgba(99, 226, 198, 0.7);
+  margin: 5px;
 }
 
-.newsCards__styles{
-    background-color: hsl(192, 54%, 40%);
-    margin: 5px;
+.newsCards__styles {
+  background-color: hsl(192, 54%, 40%);
+  margin: 5px;
 }
 
 /*   extra task card styling  */
 
 .incomplete {
-    background-color: rgb(255, 107, 107) ;
+  background-color: rgb(255, 107, 107);
 }
 
 .complete {
-    background-color: var(--mediumSage);
+  background-color: var(--mediumSage);
 }
 
 .undoButton {
-    color: black;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: var(--mediumSage);
-    
-    
+  color: black;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: var(--mediumSage);
 }
 
 .undoButton:hover {
-    color: purple;
-    border-bottom: 1px dotted purple;
-    background-color: none;
-    transition: 0.1s ease;
+  color: purple;
+  border-bottom: 1px dotted purple;
+  background-color: none;
+  transition: 0.1s ease;
 }
 
 .taskName h2:hover {
-    border-bottom: 2px solid white;
+  border-bottom: 2px solid white;
 }
 
 /* ******* Begin My Profile Styling ********** */
 
 #myProfileContainer {
-    width: 60%;
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 18%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(239, 168, 79);
-    box-shadow: 5px 5px 5px 5px var(--darkLiver);
-    border-radius: 5px;
+  width: 60%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(239, 168, 79);
+  box-shadow: 5px 5px 5px 5px var(--darkLiver);
+  border-radius: 5px;
+  z-index: 1;
 }
 
 #myProfileContainer img {
-    width: 30%;
-    box-shadow: 3px 3px 3px 3px var(--hansaYellow);
-    border-radius: 100%;
+  width: 30%;
+  box-shadow: 3px 3px 3px 3px var(--hansaYellow);
+  border-radius: 100%;
 }
 
 #myProfileContainer div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 250px;
-    height: 60px;
-    background-color: var(--hansaYellow);
-    padding: 8px;
-    box-shadow: 2px 2px 2px var(--darkLiver);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: var(--hansaYellow);
+  padding: 8px;
+  box-shadow: 2px 2px 2px var(--darkLiver);
 }
 
 /* #myProfileContainer p {

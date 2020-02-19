@@ -8,8 +8,13 @@ import tasksEventListeners from "./tasks/tasksEventListeners.js"
 import eventsRenderToDom from "./events/eventsRenderToDom.js";
 // import friendsEventListeners from "./friends/eventListeners.js"
 import chatButtonClickEvent from "./messages/eventListeners.js"
-//import messageButtonEventListener from "./messages/addMessagesToDOM.js"
-import addMessagesToDOM from "./messages/addMessagesToDOM.js"
+import init from "./messages/addMessagesToDOM.js"
+import messageAPIManager from "./messages/messagesManager.js"
+
+
+// Calling initial render of messages
+init()
+messageAPIManager.postSendMessage()
 
 // Calling check if logged in conditional function!
 addToDom.checkIfLoggedIn()
@@ -29,6 +34,16 @@ profileEventListeners.changeUsernameButtonEventListener()
 profileEventListeners.submitChangedUserNameEventListener()
 profileEventListeners.changePasswordButtonEventListener()
 profileEventListeners.submitChangedPasswordEventListener()
+//addMessagesToDOM.messageButtonEventListener()
+
+
+// Calling messages event listeners
+//chatButtonClickEvent.chatButtonFirstClick()
+chatButtonClickEvent.exitMessages()
+
+
+// Friends event listeners
+//friendsEventListeners.friendsButtonEventListener()
 
 
 
@@ -56,8 +71,3 @@ eventsEventListeners.addSaveEventButtonEventListener();
 eventsEventListeners.addDeleteEventButtonEventListener();
 eventsEventListeners.addEditEventButtonEventListener();
 eventsEventListeners.addNevermindButtonEventListener();
-
-// Chat event listeners
-chatButtonClickEvent.chatButtonFirstClick()
-addMessagesToDOM.messageButtonEventListener()
-addMessagesToDOM.exitMessages()
