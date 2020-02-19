@@ -94,7 +94,7 @@ const eventsRenderToDom = {
                 dbAPI.getObjectByResource('events', friendId)
                     .then(friendsEvents=> {
                         const friendsEventsContainer = document.getElementById('friendsEventsContainer')
-                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} Events</h1>`
+                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
                         friendsEvents.forEach(friendEvent => {
                         friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
                         })
