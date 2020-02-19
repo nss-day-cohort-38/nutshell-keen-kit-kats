@@ -52,7 +52,20 @@ const eventsRenderToDom = {
 
                     const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
 
-                    eventsSorted.forEach(event => eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+
+                    for (let i = 0; i < eventsSorted.length; i++) {
+                        let firstCard = eventsSorted[0]
+                        if (eventsSorted[i] === firstCard) {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+                        } else {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+                        }
+                    }
+
+                    //  eventsSorted.forEach(event => 
+                    //     eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(event))
+
+                    
 
                 }
             })

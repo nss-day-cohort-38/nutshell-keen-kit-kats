@@ -308,6 +308,18 @@ nav button:hover {
     border-radius: 5px;
 }
 
+/* extra event card styling */
+
+.firstCard {
+    background-color: rgba(99, 226, 198, 1);
+    margin: 5px;
+}
+
+.otherCards {
+    background-color: rgba(99, 226, 198, .7);
+    margin: 5px;
+}
+
 /*   extra task card styling  */
 
 .incomplete {

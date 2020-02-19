@@ -47,7 +47,20 @@ const eventHtmlComponents = {
     },
     createEventCard(event) {
         return `
-            <div class="cards" id="cards--${event.id}">
+            <div class="cards eventCards otherCards" id="cards--${event.id}">
+        
+                <h3>${event.name}</h3>
+                <h4>${event.location}</h4>
+                <p>${this.convertDateAndTime(event.date)}</p>
+                <button class="editFormButton" id="editFormButton--${event.id}">Edit Event</button>
+                <button class="deleteFormButton" id="deleteFormButton--${event.id}">Delete Event</button>
+
+            </div>
+        `
+    },
+    createFirstEventCard(event) {
+        return `
+            <div class="cards eventCards firstCard" id="cards--${event.id}">
         
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
