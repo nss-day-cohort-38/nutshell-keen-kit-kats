@@ -9,10 +9,7 @@ import friendsEventListeners from "./friends/friendEventListeners.js"
 import chatButtonClickEvent from "./messages/eventListeners.js"
 import init from "./messages/addMessagesToDOM.js"
 import messageAPIManager from "./messages/messagesManager.js"
-
-// import eventsRenderToDom from "./events/eventsRenderToDom.js"
-
-// eventsRenderToDom.renderFriendsEventsToDom()
+import { editMessagesButtonAction } from "./messages/editMessageEvent.js"
 
 // Calling initial render of messages
 init()
@@ -42,6 +39,7 @@ profileEventListeners.submitChangedPasswordEventListener()
 // Calling messages event listeners
 //chatButtonClickEvent.chatButtonFirstClick()
 chatButtonClickEvent.exitMessages()
+editMessagesButtonAction()
 
 
 // Friends event listeners

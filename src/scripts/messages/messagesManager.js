@@ -7,35 +7,71 @@ const messageAPIManager = {
     const sendButton = document.getElementById("sendMessage");
     sendButton.addEventListener("click", () => {
       const message = document.getElementById("writeMessage").value;
-      const userId = (JSON.parse(sessionStorage.getItem('user'))).id;
+      const userId = JSON.parse(sessionStorage.getItem("user")).id;
+      const hiddenMessageId = document.getElementById("hiddenMessageId").value;
 
       const resource = {
         userId,
         message,
+        id: hiddenMessageId,
       };
+      if (hiddenMessageId !== "") {
+        dbAPI
+          .editResource("messages", resource)
+          .then(() => {
+            document.getElementById("writeMessage").value = "";
 
-      dbAPI
-      .postObjectByResource("messages", resource)
-      .then((response) => {
-        console.log("Message created: ", response);
-        document.getElementById("writeMessage").value = '';
+            const chatContainer = document.getElementById("message-list");
+            chatContainer.innerHTML = "";
 
-        const chatContainer = document.getElementById("message-list");
-        chatContainer.innerHTML = '';
+            dbAPI.getMessagesExpanded().then(dataFromAPi => {
+              dataFromAPi.forEach(data => {
+                const message = data.message;
+                const userId = data.userId;
+                const username = data.user.username;
+                const messageId = data.id;
+                const hiddenId = data.id;
+                const chatHTML = createMessageBoard(
+                  message,
+                  userId,
+                  username,
+                  messageId,
+                  hiddenId
+                );
 
-        dbAPI.getMessagesExpanded().then(dataFromAPi => {
-          dataFromAPi.forEach(data => {
+                renderChatRoom(chatHTML);
+              });
+            });
+          })
+          .catch(err => console.log({ err }));
+      } else {
+        dbAPI.postObjectByResource("messages", resource).then(response => {
+          //console.log("Message created: ", response);
+          document.getElementById("writeMessage").value = "";
 
-            const message = data.message;
-            const userId = data.userId;
-            const username = data.user.username;
-            const chatHTML = createMessageBoard(message, userId, username);
+          const chatContainer = document.getElementById("message-list");
+          chatContainer.innerHTML = "";
 
-            renderChatRoom(chatHTML);
+          dbAPI.getMessagesExpanded().then(dataFromAPi => {
+            dataFromAPi.forEach(data => {
+              const message = data.message;
+              const userId = data.userId;
+              const username = data.user.username;
+              const messageId = data.id;
+              const hiddenId = data.id;
+              const chatHTML = createMessageBoard(
+                message,
+                userId,
+                username,
+                messageId,
+                hiddenId
+              );
+
+              renderChatRoom(chatHTML);
+            });
           });
         });
-      })
-      .catch(err => console.log({ err }));
+      }
     });
   }
 };
