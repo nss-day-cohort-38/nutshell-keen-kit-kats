@@ -124,8 +124,13 @@ const eventListeners = {
       if (confirm("Are you sure you want to logout?")) {
         sessionStorage.clear();
         mainContainer.innerHTML = "";
-        document.getElementById("chatContainer").classList.toggle("hidden");
+        if(document.getElementById("chatContainer").classList.value.includes('hidden')){
+          console.log('no need to toggle')
+        }else {
+          document.getElementById("chatContainer").classList.toggle("hidden");
         document.getElementById("body").classList.toggle("shrink");
+        }
+        
         addToDom.addLoginForm();
         // making nav buttons disappear
         document.getElementById("resourceButtons").classList.toggle("hidden");
@@ -134,6 +139,43 @@ const eventListeners = {
         document.getElementById("profileDropDown").classList.toggle("hidden");
       }
     });
+  }, 
+  loginTabListener() {
+    const signupContainer = document.getElementById('signup-tab-content')
+    const loginContainer = document.getElementById('login-tab-content')
+    const signupTab = document.getElementById('signup-tab')
+    const loginTab = document.getElementById('login-tab')
+
+    const mainContainer = document.getElementById("mainContainer");
+    mainContainer.addEventListener("click", event => {
+        if (event.target.id === 'login-tab' && signupContainer.classList.value == ""){
+            signupTab.classList.toggle('active')
+            signupTab.classList.toggle('inactive')
+            loginTab.classList.toggle('active')
+            loginTab.classList.toggle('inactive')
+            signupContainer.classList.toggle('hidden')
+            loginContainer.classList.toggle('hidden')
+        } 
+    })
+  },
+
+  signupTabListener() {
+    const signupContainer = document.getElementById('signup-tab-content')
+    const loginContainer = document.getElementById('login-tab-content')
+    const signupTab = document.getElementById('signup-tab')
+    const loginTab = document.getElementById('login-tab')
+
+    const mainContainer = document.getElementById("mainContainer");
+    mainContainer.addEventListener("click", event => {
+        if (event.target.id === 'signup-tab' && loginContainer.classList.value == ""){
+            signupTab.classList.toggle('active')
+            signupTab.classList.toggle('inactive')
+            loginTab.classList.toggle('active')
+            loginTab.classList.toggle('inactive')
+            signupContainer.classList.toggle('hidden')
+            loginContainer.classList.toggle('hidden')
+        } 
+    })
   }
 };
 export default eventListeners;

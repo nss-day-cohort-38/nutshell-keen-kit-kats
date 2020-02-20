@@ -1,14 +1,14 @@
 const createObjects = {
-    newUserObjectCreator(newUsername, newEmail, newPassword) {
+	newUserObjectCreator(newUsername, newEmail, newPassword) {
 		return {
 			"username": newUsername,
 			"email": newEmail,
 			"password": newPassword
 		}
 	},
-	
+
 	// this function creates a key/value pair to be PATCHed
-	patchedKeyValueObjectCreator (key, value) {
+	patchedKeyValueObjectCreator(key, value) {
 		return { [key]: value }
 	}
 }
@@ -17,7 +17,7 @@ const createHTML = {
 
 	createNewUserWelcomeMessage() {
 		const loggedInUserObj = (JSON.parse(sessionStorage.getItem('user')))
-		
+
 		return `
 			<article class='welcomeContainer' id="welcomeNewUserContainer">
 				<h1 class='welcomeHeader' id='welcomeNewUserHeader'>
@@ -47,15 +47,15 @@ const createHTML = {
 		`
 	},
 
-    createLoginForm() {
-        return `
+	createLoginForm() {
+		return `
         <div class="form-wrap">
 		<div class="tabs">
-			<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>
-			<h3 class="login-tab"><a href="#login-tab-content">Login</a></h3>
+			<h3 id="signup-tab" class="inactive">Sign Up</h3>
+			<h3 id="login-tab" class="active">Login</h3>
 		</div><!--.tabs-->
 		<div class="tabs-content">
-			<div id="signup-tab-content" class="active">
+			<div id="signup-tab-content" class="hidden">
 				<form class="signup-form">
 					<input type="text" class="input" id="new-username" autocomplete="off" placeholder="Username">
 					<input type="email" class="input" id="new-userEmail" autocomplete="off" placeholder="Email">
@@ -71,21 +71,16 @@ const createHTML = {
 				<form class="login-form">
 					<input type="text" class="input" id="userEmail" autocomplete="off" placeholder="Email">
 					<input type="password" class="input" id="userPassword" autocomplete="off" placeholder="Password">
-					<input type="checkbox" class="checkbox" id="remember_me">
-					<label for="remember_me">Remember me</label>
 					<button type="button" class="button" id="loginButton">Login</button>
 				</form><!--.login-form-->
-				<div class="help-text">
-					<p><a href="#">Forget your password?</a></p>
-				</div><!--.help-text-->
 			</div><!--.login-tab-content-->
 		</div><!--.tabs-content-->
 	</div><!--.form-wrap-->`
 
-    },
+	},
 
-    createMainButtons(userId) {
-        return `
+	createMainButtons(userId) {
+		return `
         <nav id="resourceButtons">
             <button type="button" id="myFriends-${userId}">Friends</button>
             <button type="button" id="myNews-${userId}">News</button>
@@ -95,9 +90,9 @@ const createHTML = {
 			<button type="button" id="logout-${userId}">Logout</button> 
       </nav>
         `
-    }
+	}
 }
 
 
 
-export {createHTML, createObjects} 
+export { createHTML, createObjects } 
