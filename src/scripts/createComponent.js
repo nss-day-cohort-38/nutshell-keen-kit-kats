@@ -1,24 +1,23 @@
 const createObjects = {
-    newUserObjectCreator(newUsername, newEmail, newPassword) {
-		return {
-			"username": newUsername,
-			"email": newEmail,
-			"password": newPassword
-		}
-	},
-	
-	// this function creates a key/value pair to be PATCHed
-	patchedKeyValueObjectCreator (key, value) {
-		return { [key]: value }
-	}
-}
+  newUserObjectCreator(newUsername, newEmail, newPassword) {
+    return {
+      username: newUsername,
+      email: newEmail,
+      password: newPassword
+    };
+  },
+
+  // this function creates a key/value pair to be PATCHed
+  patchedKeyValueObjectCreator(key, value) {
+    return { [key]: value };
+  }
+};
 
 const createHTML = {
+  createNewUserWelcomeMessage() {
+    const loggedInUserObj = JSON.parse(sessionStorage.getItem("user"));
 
-	createNewUserWelcomeMessage() {
-		const loggedInUserObj = (JSON.parse(sessionStorage.getItem('user')))
-		
-		return `
+    return `
 			<article class='welcomeContainer' id="welcomeNewUserContainer">
 				<h1 class='welcomeHeader' id='welcomeNewUserHeader'>
 					Welcome ${loggedInUserObj.username}!
@@ -29,13 +28,13 @@ const createHTML = {
 					Click on the tabs above to explore and create the content that matters to you most!
 				</p>
 			</article>
-		`
-	},
+		`;
+  },
 
-	createReturningUserWelcomeMessage() {
-		const loggedInUserObj = (JSON.parse(sessionStorage.getItem('user')))
+  createReturningUserWelcomeMessage() {
+    const loggedInUserObj = JSON.parse(sessionStorage.getItem("user"));
 
-		return `
+    return `
 			<article class='welcomeContainer' id="welcomeReturningUserContainer">
 				<h1 class='welcomeHeader' id='welcomeReturningUserHeader'>
 					Welcome back ${loggedInUserObj.username}!
@@ -44,11 +43,11 @@ const createHTML = {
 					Keep exploring and creating everything in <em>YOUR</em> Nutshell.
 				</p>
 			</article>
-		`
-	},
+		`;
+  },
 
-    createLoginForm() {
-        return `
+  createLoginForm() {
+    return `
         <div class="form-wrap">
 		<div class="tabs">
 			<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>
@@ -80,12 +79,11 @@ const createHTML = {
 				</div><!--.help-text-->
 			</div><!--.login-tab-content-->
 		</div><!--.tabs-content-->
-	</div><!--.form-wrap-->`
+	</div><!--.form-wrap-->`;
+  },
 
-    },
-
-    createMainButtons(userId) {
-        return `
+  createMainButtons(userId) {
+    return `
         <nav id="resourceButtons">
             <button type="button" id="myFriends-${userId}">Friends</button>
             <button type="button" id="myNews-${userId}">News</button>
@@ -94,10 +92,8 @@ const createHTML = {
 			<button type="button" id="myAll-${userId}">See All</button> 
 			<button type="button" id="logout-${userId}">Logout</button> 
       </nav>
-        `
-    }
-}
+        `;
+  }
+};
 
-
-
-export {createHTML, createObjects} 
+export { createHTML, createObjects };

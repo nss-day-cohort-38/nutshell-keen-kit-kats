@@ -234,6 +234,23 @@ nav button:hover {
 }
 /* ********* Message Board Styling************** */
 
+#chatHeader {
+  margin-top: 15px;
+  margin-left: 15px;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: black;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  position: fixed;
+  border-bottom: solid black;
+}
+
 #chatContainer {
   border: 4px ridge var(--darkLiver);
   box-shadow: 2px 2px 2px 2px gray;
@@ -248,7 +265,6 @@ nav button:hover {
   background-color: aliceblue;
   overflow: hidden;
   z-index: -1;
-  
 }
 
 .shrink {
@@ -256,7 +272,7 @@ nav button:hover {
 }
 
 #writeMessage {
-  width: 300px;
+  width: 250px;
 }
 
 #message-list {
@@ -277,12 +293,55 @@ nav button:hover {
   position: absolute;
   bottom: 0;
   z-index: 3;
-  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.edit-message-button-container {
+.chat-room-landing-page {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#chatButtonClose {
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  width: 50px;
+  height: 30px;
+
+  background: #8a2387;
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  position: relative;
+  text-align: center;
+  padding: 5px 0 0;
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px 2px var(--darkLiver);
+  border-radius: 5px;
+}
+
+.message-edit-button {
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px 2px var(--darkLiver);
+  border-radius: 5px;
+}
+
+#sendMessage {
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  width: 50px;
+  height: 30px;
+
+  background: #8a2387;
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  padding: 5px 0 0;
+  font-weight: 200;
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px 2px var(--darkLiver);
+  border-radius: 5px;
 }
 
 /* Styling Forms */
@@ -335,7 +394,7 @@ nav button:hover {
 .friendCard {
   background-color: var(--hansaYellow);
 }
-.friendCard h1{
+.friendCard h1 {
   color: white;
   background-color: var(--deepBlue);
   padding: 5px;
@@ -376,7 +435,7 @@ nav button:hover {
   font-style: italic;
 }
 
-.friendCardName{
+.friendCardName {
   color: white;
   background-color: var(--deepBlue);
   box-shadow: 3px 3px var(--darkLiver);
