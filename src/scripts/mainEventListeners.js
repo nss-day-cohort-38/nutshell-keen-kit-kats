@@ -187,9 +187,10 @@ const eventListeners = {
 
     const mainContainer = document.getElementById("mainContainer");
 
-    const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
     seeAllButton.addEventListener("click", () => {
+
+      const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
       // render News containters to DOM
 
