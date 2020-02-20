@@ -10,11 +10,11 @@ A dashboard for people to use to organize their daily tasks, events, news articl
     $ npm install -g json-server
     ```
     
-2. Select 'Clone or Download' in GitHub Repo
+2. Select 'Clone or Download' in GitHub Repo, copy the SSH key, and type the following into your terminal:
     
     ex.
      ```shell session
-    $ git@github.com:nss-day-cohort-38/nutshell-keen-kit-kats.git
+    $ git clone git@github.com:nss-day-cohort-38/nutshell-keen-kit-kats.git
 
      ```
 3. In the root directory, create an api directory and make a file 'database.json'
@@ -37,12 +37,14 @@ A dashboard for people to use to organize their daily tasks, events, news articl
             "tasks": [],
             "events": []
         }
+6. The database.json file follows the following ERD:
+![Photo of ERD](src/images/ERD.png "ERD")    
 
-6. Go back to your terminal and open a new tab. cd to the src directory, then:
+7. Go back to your terminal and open a new tab, cd to the src directory, then:
     ```shell session
     $ hs -o
     ```
-7. Open another new tab in your terminal and cd to the api directory, then:
+8. Open another new tab in your terminal and cd to the api directory, then:
     ```shell session
     $ json-server -p 8088 -w database.json
     ```
@@ -69,7 +71,7 @@ Once you have added friends to your account, you will see your friends' saved ev
 
 ### Tasks
 
-In the tasks tab, you can click 'create new tasks' to create and save a task you'd like to complete. Once saved, you have the ability to edit the task name and mark it complete when you've finished that task. 
+In the tasks tab, you can click 'create new tasks' to create and save a task you'd like to complete. Once saved, you have the ability to edit the task name and mark it complete when you've finished that task. You can also delete the task when ready to. 
 
 ### See All
 
@@ -79,11 +81,17 @@ If you have added friends, you will also see their news articles and events list
 
 ### Your Profile
 
-If you click on your profile picture in the top right corner and go to the my profile tab. 
+If you click on your profile picture in the top right corner and go to the my profile tab, you can edit your username and change your password. 
 
 ### Your Friends
 
+If you click on your profile picture in the top right corner and go to the my friends tab, you can see the friends you've added and unfriend them if need be. 
+
 ### Open Chat
 
+If you click on your profile picture in top right corner and go to the open chat tab, you will see a chat board appear on your screen where you can send public messages visible to anyone on the Nutshell platform. You can click on the namenames of the users on the chat board and either friend or unfriend them. The chat can be used while you are on any tab in the app. If you'd like to close the chat, click 'exit chat' at the top left corner of the chat. 
+
 ### Logout
+
+If you click on your profile picture in the top right corner and click 'logout,' you can log out of your account. 
 
