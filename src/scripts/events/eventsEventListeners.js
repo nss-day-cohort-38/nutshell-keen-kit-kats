@@ -5,47 +5,40 @@ const mainContainer = document.getElementById("mainContainer");
 
 const eventsEventListeners = {
     addEventButtonEventListener() {
-
         const eventButton = document.getElementById("myEvents");
-
         eventButton.addEventListener("click", () => {
-
             const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
-
             dbAPI.getObjectByResource("events", loggedInUserId)
-                    .then(events => { 
+                .then(events => {
                     const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
-
-                    const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
-
+                    const localTime = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
                     let month = localTime.split("/")[0]
-    
                     if (month.length < 2) {
                         month = "0" + month
-                    } 
-                    
+                    }
                     let day = localTime.split("/")[1]
-    
                     if (day.length < 2) {
                         day = "0" + day
-                    } 
-    
-                    let year = localTime.split("/")[2].split(",")[0]
-    
-                    const currentDate = year + "-" + month + "-" + day
-
-                    for (let i = 0; i < eventsSorted.length; i++) {
-                        if (eventsSorted[i].date < currentDate) {
-                            dbAPI.deleteObjectByResource("events", eventsSorted[i].id)
-                            .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
-                            .then(eventsRenderToDom.renderEventCards)
-                             
-                        } else {
-                            eventsRenderToDom.renderEventsContainersAndHeaders()
-                            eventsRenderToDom.renderEventCards()
-                        }
                     }
-                    eventsRenderToDom.renderFriendsEventsToDom()
+                    let year = localTime.split("/")[2].split(",")[0]
+                    const currentDate = year + "-" + month + "-" + day
+                    if (eventsSorted.length === 0) {
+                        eventsRenderToDom.renderEventsContainersAndHeaders()
+                        eventsRenderToDom.renderEventCards()
+                        eventsRenderToDom.renderFriendsEventsToDom()
+                    } else {
+                        for (let i = 0; i < eventsSorted.length; i++) {
+                            if (eventsSorted[i].date < currentDate) {
+                                dbAPI.deleteObjectByResource("events", eventsSorted[i].id)
+                                    .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
+                                    .then(eventsRenderToDom.renderEventCards)
+                            } else {
+                                eventsRenderToDom.renderEventsContainersAndHeaders()
+                                eventsRenderToDom.renderEventCards()
+                            }
+                        }
+                        eventsRenderToDom.renderFriendsEventsToDom()
+                    }
                 })
         })
     },
@@ -69,19 +62,19 @@ const eventsEventListeners = {
                 const eventLocationInput = document.getElementById("event_location");
                 const eventIdInput = document.getElementById("event_id")
 
-                const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
+                const localTime = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
 
                 let month = localTime.split("/")[0]
 
                 if (month.length < 2) {
                     month = "0" + month
-                } 
-                
+                }
+
                 let day = localTime.split("/")[1]
 
                 if (day.length < 2) {
                     day = "0" + day
-                } 
+                }
 
                 let year = localTime.split("/")[2].split(",")[0]
 
@@ -91,10 +84,10 @@ const eventsEventListeners = {
 
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
                     alert("Please fill out all fields before saving event.")
-                } 
+                }
                 else if (eventDate < currentDate) {
-                    alert("Please create a future event. Past dates are not accepted.") 
-                } 
+                    alert("Please create a future event. Past dates are not accepted.")
+                }
                 else {
 
                     const event = {
