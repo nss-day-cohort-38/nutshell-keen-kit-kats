@@ -31,6 +31,25 @@ const domAdditionHandler = {
 
         reviewInPlaceContainer.innerHTML = ""
         reviewInPlaceContainer.innerHTML = createNewsComponents.createEditForm(articleObject)
+    },
+    renderFriendsNewsToDom(){
+        const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id;
+
+        dbAPI.getFriends(currentUserId).then(friendDataArray => {
+            friendDataArray.forEach(friendObj => {
+                const friendId = friendObj.user.id;
+                dbAPI.getObjectByResource('news', friendId)
+                    .then(friendsNews=> {
+                        const friendsNewsContainer = document.getElementById('friendsNewsContainer')
+                        friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} News</h1>`
+                        friendsNews.forEach(friendArticle => {
+                        friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
+                        })
+                    })
+                    .catch(err => console.log(err));
+                
+            })
+        });
     }
 }
 
