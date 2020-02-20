@@ -17,6 +17,7 @@ const eventHtmlComponents = {
         
         `
     },
+
     createEventForm() {
         return `
         <input type="hidden" id="event_id" value=""/>

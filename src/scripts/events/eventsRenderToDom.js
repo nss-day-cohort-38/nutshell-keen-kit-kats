@@ -40,7 +40,7 @@ const eventsRenderToDom = {
                 if (events.length === 0) {
 
                     // if events array is empty, print no events message
-                    
+
                     eventsRenderToDom.renderEventsContainersAndHeaders()
 
                     eventsRenderToDom.renderNoEventsMessage()

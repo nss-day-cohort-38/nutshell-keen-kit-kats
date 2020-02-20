@@ -16,10 +16,26 @@ const eventsEventListeners = {
                     .then(events => { 
                     const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
 
-                    const todayDate = new Date().toISOString().slice(0, 10);
+                    const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
+
+                    let month = localTime.split("/")[0]
+    
+                    if (month.length < 2) {
+                        month = "0" + month
+                    } 
+                    
+                    let day = localTime.split("/")[1]
+    
+                    if (day.length < 2) {
+                        day = "0" + day
+                    } 
+    
+                    let year = localTime.split("/")[2].split(",")[0]
+    
+                    const currentDate = year + "-" + month + "-" + day
 
                     for (let i = 0; i < eventsSorted.length; i++) {
-                        if (eventsSorted[i].date < todayDate) {
+                        if (eventsSorted[i].date < currentDate) {
                             dbAPI.deleteObjectByResource("events", eventsSorted[i].id)
                             .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
                             .then(eventsRenderToDom.renderEventCards)
@@ -72,9 +88,6 @@ const eventsEventListeners = {
                 const currentDate = year + "-" + month + "-" + day
 
                 const eventDate = eventDateInput.value.split("T")[0]
-
-                console.log(currentDate)
-                console.log(eventDate)
 
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
                     alert("Please fill out all fields before saving event.")

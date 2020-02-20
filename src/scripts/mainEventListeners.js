@@ -1,6 +1,9 @@
 import dbAPI from "./dbAPI.js";
 import addToDom from "./addToDom.js";
 import { createHTML, createObjects } from "./createComponent.js";
+import eventsRenderToDom from './events/eventsRenderToDom.js';
+import tasksAddToDom from './tasks/tasksAddToDom.js';
+
 const passwordMinLength = 3;
 const eventListeners = {
   loginButtonEventListener() {
@@ -134,6 +137,27 @@ const eventListeners = {
         document.getElementById("profileDropDown").classList.toggle("hidden");
       }
     });
-  }
+  },
+  addSeeAllButtonEventListener() {
+    const seeAllButton = document.getElementById("myAll")
+
+    const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+
+    seeAllButton.addEventListener("click", () => {
+
+        dbAPI.getObjectByResource("events", loggedInUserId)
+          .then(() => {
+            eventsRenderToDom.renderEventsContainersAndHeaders(),
+            eventsRenderToDom.renderEventCards(),
+            eventsRenderToDom.renderFriendsEventsToDom()
+          })
+
+          dbAPI.getObjectByResource("tasks", loggedInUserId)
+          .then(() => {
+            tasksAddToDom.addTasksContainers(),
+            tasksAddToDom.addTaskCards()
+          })
+    })
+},
 };
 export default eventListeners;
