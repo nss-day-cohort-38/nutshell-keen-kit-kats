@@ -20,7 +20,7 @@ const createNewsComponents = {
         </article>
         <article class="objCards" id="newsCardsContainer">
         </article>
-        <h1 class ="sectionHeader" id="friendNewsHeader">Friends News</h1>
+        <h1 class ="sectionHeader" id="friendNewsHeader">Friends' News</h1>
         <article class="objCards friendsCards" id="friendsNewsContainer"></article>
         </article>
         
@@ -47,7 +47,7 @@ const createNewsComponents = {
        <figure class="cards newsCards__styles" id="newsCard--${newsObject.id}">
        <h1 class="userName hidden" id="friendName">${newsObject.user.username}</h1> 
         <div>
-          <p><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
+          <p class="newsTitle"><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
           </p>
           <p>
           ${newsObject.synopsis}
@@ -65,7 +65,7 @@ const createNewsComponents = {
        <figure class="cards friendCard" id="newsCard--${newsObject.id}">
        <h1 class="userName hidden" id="friendName">${newsObject.user.username}</h1> 
         <div>
-          <p><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
+          <p class="newsTitle"><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
           </p>
           <p>
           ${newsObject.synopsis}

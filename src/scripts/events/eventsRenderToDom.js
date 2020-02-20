@@ -85,21 +85,24 @@ const eventsRenderToDom = {
                 eventDiv.innerHTML = eventHtmlComponents.createEditEventForm(filteredEvents[0])
             })
     },
-    renderFriendsEventsToDom(){
+    renderFriendsEventsToDom() {
         const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id;
 
         dbAPI.getFriends(currentUserId).then(friendDataArray => {
             friendDataArray.forEach(friendObj => {
                 const friendId = friendObj.user.id
                 dbAPI.getObjectByResource('events', friendId)
-                    .then(friendsEvents=> {
-                        const friendsEventsContainer = document.getElementById('friendsEventsContainer')
-                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
-                        friendsEvents.forEach(friendEvent => {
-                        friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
-                        })
+                    .then(friendsEvents => {
+                        if (friendsEvents.length !== 0) {
+                            const friendsEventsContainer = document.getElementById('friendsEventsContainer')
+                            friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1><br>`
+                            friendsEvents.forEach(friendEvent => {
+                                friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
+                            })
+                        }
+
                     })
-                
+
             })
         });
     }

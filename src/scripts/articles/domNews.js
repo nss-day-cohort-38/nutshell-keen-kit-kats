@@ -40,14 +40,14 @@ const domAdditionHandler = {
                 const friendId = friendObj.user.id;
                 dbAPI.getObjectByResource('news', friendId)
                     .then(friendsNews=> {
-                        const friendsNewsContainer = document.getElementById('friendsNewsContainer')
-                        friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} News</h1>`
-                        friendsNews.forEach(friendArticle => {
-                        friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
-                        })
+                        if (friendsNews.length !== 0) {
+                            const friendsNewsContainer = document.getElementById('friendsNewsContainer')
+                            friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s News</h1>`
+                            friendsNews.forEach(friendArticle => {
+                            friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
+                            })
+                        }
                     })
-                    .catch(err => console.log(err));
-                
             })
         });
     }
