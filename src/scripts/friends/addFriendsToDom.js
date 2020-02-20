@@ -14,14 +14,12 @@ const addFriendsToDom = {
     addFriendCards() {
         const friendCardContainer = document.getElementById('friendsContainer')
         const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
-
+        friendCardContainer.innerHTML = ""
         dbAPI.getFriends(currentUserId).then(friendData => {
             friendData.forEach(friendObj => {
-                friendCardContainer.innerHTML += createFriendsHTML.createFriendCard(friendObj.user)
+                friendCardContainer.innerHTML += createFriendsHTML.createFriendCard(friendObj)
             })
         });
-
-
     }
 
 

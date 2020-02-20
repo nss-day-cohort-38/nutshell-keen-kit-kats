@@ -73,11 +73,6 @@ Once you have added friends to your account, you will see your friends' saved ev
 
 In the tasks tab, you can click 'create new tasks' to create and save a task you'd like to complete. Once saved, you have the ability to edit the task name and mark it complete when you've finished that task. You can also delete the task when ready to. 
 
-### See All
-
-In the see all tab, you can see all of your news articles, events, and tasks listed.
-
-If you have added friends, you will also see their news articles and events listed. 
 
 ### Your Profile
 
