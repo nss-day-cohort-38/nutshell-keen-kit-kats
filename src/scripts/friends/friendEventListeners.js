@@ -91,16 +91,49 @@ const friendsEventListeners = {
     }
     })
   },
-  // fiendAddButtonEventListener() {
-  //   if (document.getElementById('addFriendButton') !== null) {
-  //     const addFriendButton = document.getElementById('selectUsers')
+  fiendAddButtonEventListener() {
+    const mainContainer = document.getElementById('mainContainer')
+    
+    mainContainer.addEventListener('click', event => {
+      if (event.target.id.startsWith('addFriendB')) {
+      const friendSelectedId = document.getElementById('selectUsers').value.split('-')[0]
+      const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
+      const selectedUserName = document.getElementById('selectUsers').value.split('-')[1]
+        
+        dbAPI.getFriends(currentUserId)
+          .then(friends => {
+            const alreadyFriend = friends.filter(friend => {
+                return friend.user.id === parseInt(friendSelectedId)
+              })
+            if(selectedUserName === (JSON.parse(sessionStorage.getItem('user'))).username) {
+              alert(`You can't add yourself silly!`)
+            }
+            else if(alreadyFriend.length !== 0){
+              alert(`You are already friends with ${selectedUserName}!`)
+            } else {
+              const newFriendObj = {
+                'userId': parseInt(friendSelectedId),
+                'loggedInUserId': currentUserId
+              };
+              if(confirm(`Add ${selectedUserName} as a friend?`)){
+                dbAPI.postObjectByResource('friends', newFriendObj)
+                  .then(()=>{
+                    if(document.getElementById('friendsContainer') !== null) {
+                      addFriendsToDom.addFriendCards()
+                    }
+                  }).then(alert(`You are now following ${selectedUserName}`))
+              }
 
-  //     addFriendButton.addEventListener('click', (event) => {
+            }
+          })
+  
+      
+  
+      }
 
-  //     })
 
-  //   }
-  // }
+    })
+  }
 
 };
 
