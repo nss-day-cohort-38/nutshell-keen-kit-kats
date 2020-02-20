@@ -1,5 +1,5 @@
 const eventHtmlComponents = {
-    createEventContainerWithCreateEventButton() {
+    createEventsContainersAndHeaders() {
         return `
         <h1 class="sectionHeader">Your Events:</h1>
 
@@ -17,6 +17,7 @@ const eventHtmlComponents = {
         
         `
     },
+
     createEventForm() {
         return `
         <input type="hidden" id="event_id" value=""/>
@@ -61,7 +62,7 @@ const eventHtmlComponents = {
     createFriendEventCard(event){
         return `
             <figure class="cards eventCards friendCard" id="cards--${event.id}">
-            <h1 class="userName" id="friendName">${event.user.username}</h1> 
+             
                 <h3>${event.name}</h3>
                 <h4>${event.location}</h4>
                 <p>${this.convertDateAndTime(event.date)}</p>
@@ -72,7 +73,6 @@ const eventHtmlComponents = {
     createFirstEventCard(event) {
         return `
             <figure class="cards eventCards firstCard" id="cards--${event.id}">
-
                 <h2>${event.name}</h2>
                 <h3>${event.location}</h3>
                 <p><strong>${this.convertDateAndTime(event.date)}</strong></p>

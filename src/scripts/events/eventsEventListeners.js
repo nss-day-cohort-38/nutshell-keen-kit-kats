@@ -13,9 +13,38 @@ const eventsEventListeners = {
             const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
             dbAPI.getObjectByResource("events", loggedInUserId)
-                .then(() => {
-                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
-                    eventsRenderToDom.renderEventCards()
+                    .then(events => { 
+                    const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+                    const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
+
+                    let month = localTime.split("/")[0]
+    
+                    if (month.length < 2) {
+                        month = "0" + month
+                    } 
+                    
+                    let day = localTime.split("/")[1]
+    
+                    if (day.length < 2) {
+                        day = "0" + day
+                    } 
+    
+                    let year = localTime.split("/")[2].split(",")[0]
+    
+                    const currentDate = year + "-" + month + "-" + day
+
+                    for (let i = 0; i < eventsSorted.length; i++) {
+                        if (eventsSorted[i].date < currentDate) {
+                            dbAPI.deleteObjectByResource("events", eventsSorted[i].id)
+                            .then(eventsRenderToDom.renderEventContainerWithCreateEventButton)
+                            .then(eventsRenderToDom.renderEventCards)
+                             
+                        } else {
+                            eventsRenderToDom.renderEventsContainersAndHeaders()
+                            eventsRenderToDom.renderEventCards()
+                        }
+                    }
                     eventsRenderToDom.renderFriendsEventsToDom()
                 })
         })
@@ -40,9 +69,33 @@ const eventsEventListeners = {
                 const eventLocationInput = document.getElementById("event_location");
                 const eventIdInput = document.getElementById("event_id")
 
+                const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
+
+                let month = localTime.split("/")[0]
+
+                if (month.length < 2) {
+                    month = "0" + month
+                } 
+                
+                let day = localTime.split("/")[1]
+
+                if (day.length < 2) {
+                    day = "0" + day
+                } 
+
+                let year = localTime.split("/")[2].split(",")[0]
+
+                const currentDate = year + "-" + month + "-" + day
+
+                const eventDate = eventDateInput.value.split("T")[0]
+
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
-                    alert("Please fill out all fields before saving event")
-                } else {
+                    alert("Please fill out all fields before saving event.")
+                } 
+                else if (eventDate < currentDate) {
+                    alert("Please create a future event. Past dates are not accepted.") 
+                } 
+                else {
 
                     const event = {
                         "userId": loggedInUserId,
@@ -101,7 +154,7 @@ const eventsEventListeners = {
         mainContainer.addEventListener("click", (event) => {
             if (event.target.id.startsWith("nevermindFormButton--")) {
 
-                eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                eventsRenderToDom.renderEventsContainersAndHeaders()
 
                 dbAPI.postObjectByResource("events", event)
                     .then(() => {
@@ -116,3 +169,6 @@ const eventsEventListeners = {
 }
 
 export default eventsEventListeners;
+
+
+
