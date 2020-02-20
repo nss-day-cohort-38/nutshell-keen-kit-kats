@@ -49,7 +49,7 @@ chatButtonClickEvent.exitMessages()
 // Friends event listeners
 friendsEventListeners.friendsButtonEventListener()
 friendsEventListeners.addNewFriendEventListener()
-
+friendsEventListeners.unfriendButtonEventListener()
 
 
     // News section Event Listeners

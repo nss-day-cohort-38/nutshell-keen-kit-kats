@@ -17,11 +17,9 @@ const addFriendsToDom = {
         friendCardContainer.innerHTML = ""
         dbAPI.getFriends(currentUserId).then(friendData => {
             friendData.forEach(friendObj => {
-                friendCardContainer.innerHTML += createFriendsHTML.createFriendCard(friendObj.user)
+                friendCardContainer.innerHTML += createFriendsHTML.createFriendCard(friendObj)
             })
         });
-
-
     }
 
 
