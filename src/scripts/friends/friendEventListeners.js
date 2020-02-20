@@ -95,7 +95,13 @@ const friendsEventListeners = {
   //   if (document.getElementById('addFriendButton') !== null) {
   //     const addFriendButton = document.getElementById('selectUsers')
 
-  //     addFriendButton.addEventListener('click', (event)
+  //     addFriendButton.addEventListener('click', (event) => {
+
+  //     })
+
+  //   }
+  // }
+
 };
 
 export default friendsEventListeners;
