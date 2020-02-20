@@ -25,6 +25,7 @@ const newsEventListeners = {
             domAdditionHandler.renderNewsContainers()
 
             domAdditionHandler.addArticlesToDOM()
+            domAdditionHandler.renderFriendsNewsToDom()
         })
     },
 
@@ -52,6 +53,7 @@ const newsEventListeners = {
                         const newsCardsContainer = document.getElementById("newsCardsContainer")
                         newsCardsContainer.innerHTML = "";
                         domAdditionHandler.addArticlesToDOM()
+                        domAdditionHandler.renderFriendsNewsToDom()
                         clearFormFields()
                     });
 
@@ -64,6 +66,7 @@ const newsEventListeners = {
                             const newsCardsContainer = document.getElementById("newsCardsContainer")
                             newsCardsContainer.innerHTML = "";
                             domAdditionHandler.addArticlesToDOM()
+                            domAdditionHandler.renderFriendsNewsToDom()
                         })
                 }
             } else if (event.target.id.startsWith("newsEditButton")) {
@@ -97,6 +100,7 @@ const newsEventListeners = {
                             const newsCardsContainer = document.getElementById("newsCardsContainer")
                             newsCardsContainer.innerHTML = "";
                             domAdditionHandler.addArticlesToDOM()
+                            domAdditionHandler.renderFriendsNewsToDom()
                         })
                 } else {
                     alert("Too many edit boxes open at once")

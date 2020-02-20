@@ -20,7 +20,10 @@ const createNewsComponents = {
         </article>
         <article class="objCards" id="newsCardsContainer">
         </article>
-        <article class="objCards friendsCards" id=friendsNewsContainer></article>
+        <h1 class ="sectionHeader" id="friendNewsHeader">Friends News</h1>
+        <article class="objCards friendsCards" id="friendsNewsContainer"></article>
+        </article>
+        
         `
     },
     createNewsArticleInput() {
@@ -55,7 +58,21 @@ const createNewsComponents = {
           <button class="deleteFormButton" id="newsDeleteButton--${newsObject.id}">Delete News Article</button>  
         </div>
        </figure>
-        `
+        `;
+    },
+    createFriendsNewsCard(newsObject) {
+        return `
+       <figure class="cards friendCard" id="newsCard--${newsObject.id}">
+       <h1 class="userName hidden" id="friendName">${newsObject.user.username}</h1> 
+        <div>
+          <p><a target="_blank" href="${newsObject.url}">${newsObject.title}</a>
+          </p>
+          <p>
+          ${newsObject.synopsis}
+          </p>
+        </div> 
+       </figure>
+        `;
     },
     createEditForm(newsObject) {
         return `
