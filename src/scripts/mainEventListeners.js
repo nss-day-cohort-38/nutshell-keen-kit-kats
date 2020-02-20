@@ -129,57 +129,56 @@ const eventListeners = {
       if (confirm("Are you sure you want to logout?")) {
         sessionStorage.clear();
         mainContainer.innerHTML = "";
-        if(document.getElementById("chatContainer").classList.value.includes('hidden')){
-          console.log('no need to toggle')
-        }else {
+        if (document.getElementById("chatContainer").classList.value.includes('hidden') === false) {
           document.getElementById("chatContainer").classList.toggle("hidden");
-        document.getElementById("body").classList.toggle("shrink");
+          document.getElementById("body").classList.toggle("shrink");
         }
-        
-        addToDom.addLoginForm();
         // making nav buttons disappear
         document.getElementById("resourceButtons").classList.toggle("hidden");
         document.getElementById("profileIcon").classList.toggle("hidden");
         // making drop-down disappear
         document.getElementById("profileDropDown").classList.toggle("hidden");
+        addToDom.addLoginForm()
       }
     });
-  }, 
+  },
   loginTabListener() {
-    const signupContainer = document.getElementById('signup-tab-content')
-    const loginContainer = document.getElementById('login-tab-content')
-    const signupTab = document.getElementById('signup-tab')
-    const loginTab = document.getElementById('login-tab')
 
     const mainContainer = document.getElementById("mainContainer");
     mainContainer.addEventListener("click", event => {
-        if (event.target.id === 'login-tab' && signupContainer.classList.value == ""){
-            signupTab.classList.toggle('active')
-            signupTab.classList.toggle('inactive')
-            loginTab.classList.toggle('active')
-            loginTab.classList.toggle('inactive')
-            signupContainer.classList.toggle('hidden')
-            loginContainer.classList.toggle('hidden')
-        } 
+      const signupContainer = document.getElementById('signup-tab-content')
+      const loginContainer = document.getElementById('login-tab-content')
+      const signupTab = document.getElementById('signup-tab')
+      const loginTab = document.getElementById('login-tab')
+      
+      if (event.target.id === 'login-tab' && signupContainer.classList.value == "") {
+        signupTab.classList.toggle('active')
+        signupTab.classList.toggle('inactive')
+        loginTab.classList.toggle('active')
+        loginTab.classList.toggle('inactive')
+        signupContainer.classList.toggle('hidden')
+        loginContainer.classList.toggle('hidden')
+      }
     })
   },
 
   signupTabListener() {
-    const signupContainer = document.getElementById('signup-tab-content')
-    const loginContainer = document.getElementById('login-tab-content')
-    const signupTab = document.getElementById('signup-tab')
-    const loginTab = document.getElementById('login-tab')
 
     const mainContainer = document.getElementById("mainContainer");
     mainContainer.addEventListener("click", event => {
-        if (event.target.id === 'signup-tab' && loginContainer.classList.value == ""){
-            signupTab.classList.toggle('active')
-            signupTab.classList.toggle('inactive')
-            loginTab.classList.toggle('active')
-            loginTab.classList.toggle('inactive')
-            signupContainer.classList.toggle('hidden')
-            loginContainer.classList.toggle('hidden')
-        } 
+      const loginContainer = document.getElementById('login-tab-content')
+      const signupContainer = document.getElementById('signup-tab-content')
+      const signupTab = document.getElementById('signup-tab')
+      const loginTab = document.getElementById('login-tab')
+
+      if (event.target.id === 'signup-tab' && loginContainer.classList.value == "") {
+        signupTab.classList.toggle('active')
+        signupTab.classList.toggle('inactive')
+        loginTab.classList.toggle('active')
+        loginTab.classList.toggle('inactive')
+        signupContainer.classList.toggle('hidden')
+        loginContainer.classList.toggle('hidden')
+      }
     })
   },
   addSeeAllButtonEventListener() {
@@ -199,114 +198,114 @@ const eventListeners = {
       // render News cards to DOM
 
       dbAPI.getObjectByResource('news', loggedInUserId)
-            .then(arrayOfNewsArticles => {
-                const sortedArrayOfNews = arrayOfNewsArticles.sort(function (a, b) {
-                    return new Date(b.timestamp) - new Date(a.timestamp)
-                })
-
-                sortedArrayOfNews.forEach(article => {
-                    const newsCardsContainer = document.getElementById("newsCardsContainer")
-                    newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article)
-
-                })
-            })
-
-          // render Friends container and cards to DOM
-
-          dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
-            friendDataArray.forEach(friendObj => {
-                const friendId = friendObj.user.id;
-                dbAPI.getObjectByResource('news', friendId)
-                .then(friendsNews=> {
-                  if (friendsNews.length !== 0) {
-                      const friendsNewsContainer = document.getElementById('friendsNewsContainer')
-                      friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s News</h1>`
-                      friendsNews.forEach(friendArticle => {
-                      friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
-                      })
-                  }
-              })
-            })
-        })
-
-        // render Events containers
-
-        mainContainer.innerHTML += eventHtmlComponents.createEventsContainersAndHeaders()
-
-        // render Event cards
-
-        dbAPI.getObjectByResource("events", loggedInUserId)
-            .then(events => {
-
-                if (events.length === 0) {
-
-                    // eventsRenderToDom.renderEventsContainersAndHeaders()
-
-                    eventsRenderToDom.renderNoEventsMessage()
-
-                } else {
-
-                    // eventsRenderToDom.renderEventsContainersAndHeaders()
-
-                    const eventCardsContainer = document.getElementById("objCards--events");
-
-                    const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
-
-                    for (let i = 0; i < eventsSorted.length; i++) {
-                        let firstCard = eventsSorted[0]
-                        if (eventsSorted[i] === firstCard) {
-                            eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
-                        } else {
-                            eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
-                        }
-                    }
-                }
-            })
-
-            // render friend's events
-
-            dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
-              friendDataArray.forEach(friendObj => {
-                  const friendId = friendObj.user.id
-                  dbAPI.getObjectByResource('events', friendId)
-                  .then(friendsEvents => {
-                    if (friendsEvents.length !== 0) {
-                        const friendsEventsContainer = document.getElementById('friendsEventsContainer')
-                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
-                        friendsEvents.forEach(friendEvent => {
-                            friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
-                        })
-                    }
-
-                })
-                  
-              })
+        .then(arrayOfNewsArticles => {
+          const sortedArrayOfNews = arrayOfNewsArticles.sort(function (a, b) {
+            return new Date(b.timestamp) - new Date(a.timestamp)
           })
 
-          // render Tasks containers
+          sortedArrayOfNews.forEach(article => {
+            const newsCardsContainer = document.getElementById("newsCardsContainer")
+            newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article)
 
-          mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
+          })
+        })
 
-          // render Tasks cards
+      // render Friends container and cards to DOM
 
-          const tasksContainer = document.getElementById('taskCardsContainer')
-
-        dbAPI.getObjectByResource('tasks',loggedInUserId)
-            .then(tasks => {
-
-                if(tasks.length === 0) {
-                    tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
-                } else{
-                    const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
-
-                    tasksSorted.forEach(task => {
-                    tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
+      dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+        friendDataArray.forEach(friendObj => {
+          const friendId = friendObj.user.id;
+          dbAPI.getObjectByResource('news', friendId)
+            .then(friendsNews => {
+              if (friendsNews.length !== 0) {
+                const friendsNewsContainer = document.getElementById('friendsNewsContainer')
+                friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s News</h1>`
+                friendsNews.forEach(friendArticle => {
+                  friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
                 })
-                }
+              }
+            })
+        })
+      })
+
+      // render Events containers
+
+      mainContainer.innerHTML += eventHtmlComponents.createEventsContainersAndHeaders()
+
+      // render Event cards
+
+      dbAPI.getObjectByResource("events", loggedInUserId)
+        .then(events => {
+
+          if (events.length === 0) {
+
+            // eventsRenderToDom.renderEventsContainersAndHeaders()
+
+            eventsRenderToDom.renderNoEventsMessage()
+
+          } else {
+
+            // eventsRenderToDom.renderEventsContainersAndHeaders()
+
+            const eventCardsContainer = document.getElementById("objCards--events");
+
+            const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+            for (let i = 0; i < eventsSorted.length; i++) {
+              let firstCard = eventsSorted[0]
+              if (eventsSorted[i] === firstCard) {
+                eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+              } else {
+                eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+              }
+            }
+          }
+        })
+
+      // render friend's events
+
+      dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+        friendDataArray.forEach(friendObj => {
+          const friendId = friendObj.user.id
+          dbAPI.getObjectByResource('events', friendId)
+            .then(friendsEvents => {
+              if (friendsEvents.length !== 0) {
+                const friendsEventsContainer = document.getElementById('friendsEventsContainer')
+                friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
+                friendsEvents.forEach(friendEvent => {
+                  friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
+                })
+              }
 
             })
+
+        })
+      })
+
+      // render Tasks containers
+
+      mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
+
+      // render Tasks cards
+
+      const tasksContainer = document.getElementById('taskCardsContainer')
+
+      dbAPI.getObjectByResource('tasks', loggedInUserId)
+        .then(tasks => {
+
+          if (tasks.length === 0) {
+            tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
+          } else {
+            const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
+
+            tasksSorted.forEach(task => {
+              tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
+            })
+          }
+
+        })
     })
   }
 }
-  
+
 export default eventListeners;
