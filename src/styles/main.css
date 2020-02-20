@@ -502,8 +502,18 @@ nav button:hover {
 }
 
 .newsCards__styles {
-  background-color: hsl(192, 54%, 40%);
-  /* margin: 5px; */
+  background-color: var(--sunset);
+}
+
+.newsTitle {
+    border-radius: 3px;
+    background-color: var(--plum);
+    padding: 4px;
+    box-shadow: 1px 1px black;
+}
+
+.newsTitle a {
+    color: white;
 }
 
 /*   extra task card styling  */

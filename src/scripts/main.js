@@ -76,4 +76,4 @@ eventsEventListeners.addDeleteEventButtonEventListener();
 eventsEventListeners.addEditEventButtonEventListener();
 eventsEventListeners.addNevermindButtonEventListener();
 
-// eventListeners.addSeeAllButtonEventListener();
+eventListeners.addSeeAllButtonEventListener();

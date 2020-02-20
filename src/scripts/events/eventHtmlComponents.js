@@ -12,7 +12,7 @@ const eventHtmlComponents = {
         <article class="objCards" id="objCards--events">
         </article>
         <article class="objCards friendsCards" id="friendsEventsContainer">
-        <h1 class ="sectionHeader" id="friendEventsHeader">Friends Events</h1>
+        <h1 class ="sectionHeader" id="friendEventsHeader">Friends' Events</h1>
         </article>
         
         `

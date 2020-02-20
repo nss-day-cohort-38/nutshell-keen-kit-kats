@@ -181,122 +181,131 @@ const eventListeners = {
             loginContainer.classList.toggle('hidden')
         } 
     })
-  }
-  // addSeeAllButtonEventListener() {
-  //   const seeAllButton = document.getElementById("myAll")
+  },
+  addSeeAllButtonEventListener() {
+    const seeAllButton = document.getElementById("myAll")
 
-  //   const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+    const mainContainer = document.getElementById("mainContainer");
 
-  //   seeAllButton.addEventListener("click", () => {
+    const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
 
-  //       dbAPI.getObjectByResource("news", loggedInUserId)
-  //         .then(() => {
-  //           const mainContainer = document.getElementById("mainContainer")
-  //           mainContainer.innerHTML = ""
-  //           mainContainer.innerHTML = createNewsComponents.createHTMLNewsContainers()
+    seeAllButton.addEventListener("click", () => {
 
-  //           dbAPI.getObjectByResource('news', loggedInUserId)
-  //           .then(arrayOfNewsArticles => {
-  //               const sortedArrayOfNews = arrayOfNewsArticles.sort(function (a, b) {
-  //                   return new Date(b.timestamp) - new Date(a.timestamp)
-  //               })
+      // render News containters to DOM
 
-  //               sortedArrayOfNews.forEach(article => {
-  //                   const newsCardsContainer = document.getElementById("newsCardsContainer")
-  //                   newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article)
+      mainContainer.innerHTML = createNewsComponents.createHTMLNewsContainers()
 
-  //               })
-  //           })
+      // render News cards to DOM
 
-  //           dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
-  //             friendDataArray.forEach(friendObj => {
-  //                 const friendId = friendObj.user.id;
-  //                 dbAPI.getObjectByResource('news', friendId)
-  //                     .then(friendsNews=> {
-  //                         const friendsNewsContainer = document.getElementById('friendsNewsContainer')
-  //                         friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} News</h1>`
-  //                         friendsNews.forEach(friendArticle => {
-  //                         friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
-  //                         })
-  //                     })
+      dbAPI.getObjectByResource('news', loggedInUserId)
+            .then(arrayOfNewsArticles => {
+                const sortedArrayOfNews = arrayOfNewsArticles.sort(function (a, b) {
+                    return new Date(b.timestamp) - new Date(a.timestamp)
+                })
+
+                sortedArrayOfNews.forEach(article => {
+                    const newsCardsContainer = document.getElementById("newsCardsContainer")
+                    newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article)
+
+                })
+            })
+
+          // render Friends container and cards to DOM
+
+          dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+            friendDataArray.forEach(friendObj => {
+                const friendId = friendObj.user.id;
+                dbAPI.getObjectByResource('news', friendId)
+                .then(friendsNews=> {
+                  if (friendsNews.length !== 0) {
+                      const friendsNewsContainer = document.getElementById('friendsNewsContainer')
+                      friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s News</h1>`
+                      friendsNews.forEach(friendArticle => {
+                      friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
+                      })
+                  }
+              })
+            })
+        })
+
+        // render Events containers
+
+        mainContainer.innerHTML += eventHtmlComponents.createEventsContainersAndHeaders()
+
+        // render Event cards
+
+        dbAPI.getObjectByResource("events", loggedInUserId)
+            .then(events => {
+
+                if (events.length === 0) {
+
+                    // eventsRenderToDom.renderEventsContainersAndHeaders()
+
+                    eventsRenderToDom.renderNoEventsMessage()
+
+                } else {
+
+                    // eventsRenderToDom.renderEventsContainersAndHeaders()
+
+                    const eventCardsContainer = document.getElementById("objCards--events");
+
+                    const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+                    for (let i = 0; i < eventsSorted.length; i++) {
+                        let firstCard = eventsSorted[0]
+                        if (eventsSorted[i] === firstCard) {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+                        } else {
+                            eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+                        }
+                    }
+                }
+            })
+
+            // render friend's events
+
+            dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+              friendDataArray.forEach(friendObj => {
+                  const friendId = friendObj.user.id
+                  dbAPI.getObjectByResource('events', friendId)
+                  .then(friendsEvents => {
+                    if (friendsEvents.length !== 0) {
+                        const friendsEventsContainer = document.getElementById('friendsEventsContainer')
+                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
+                        friendsEvents.forEach(friendEvent => {
+                            friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
+                        })
+                    }
+
+                })
                   
-  //             })
-  //         })
-  //         }
+              })
+          })
 
-  //         )
+          // render Tasks containers
 
-  //     // -------------------EVENTS DATA-----------------------
+          mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
 
-  //       .then(dbAPI.getObjectByResource("events", loggedInUserId)
-  //         .then((events) => {
-  //           mainContainer.innerHTML += eventHtmlComponents.createEventsContainersAndHeaders()
+          // render Tasks cards
 
-  //           if (events.length === 0) {
+          const tasksContainer = document.getElementById('taskCardsContainer')
 
-  //             eventsRenderToDom.renderEventsContainersAndHeaders()
+        dbAPI.getObjectByResource('tasks',loggedInUserId)
+            .then(tasks => {
 
-  //             eventsRenderToDom.renderNoEventsMessage()
+                if(tasks.length === 0) {
+                    tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
+                } else{
+                    const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
 
-  //         } else {
+                    tasksSorted.forEach(task => {
+                    tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
+                })
+                }
 
-  //             eventsRenderToDom.renderEventsContainersAndHeaders()
-
-  //             const eventCardsContainer = document.getElementById("objCards--events");
-
-
-  //             const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
-
-  //             for (let i = 0; i < eventsSorted.length; i++) {
-  //                 let firstCard = eventsSorted[0]
-  //                 if (eventsSorted[i] === firstCard) {
-  //                     eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
-  //                 } else {
-  //                     eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
-  //                 }
-  //             }
-  //         }
-
-  //         dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
-  //           friendDataArray.forEach(friendObj => {
-  //               const friendId = friendObj.user.id
-  //               dbAPI.getObjectByResource('events', friendId)
-  //                   .then(friendsEvents=> {
-  //                       const friendsEventsContainer = document.getElementById('friendsEventsContainer')
-  //                       friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
-  //                       friendsEvents.forEach(friendEvent => {
-  //                       friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
-  //                       })
-  //                   })
-                
-  //           })
-  //       })
-  //         }))
-
-  //         // ------------------------ TASKS DATA -----------------------
-  //         .then(dbAPI.getObjectByResource("tasks", loggedInUserId)
-  //         .then(() => {
-  //           mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
-
-            
-  //           dbAPI.getObjectByResource('tasks', loggedInUserId)
-  //           .then(tasks => {
-
-  //               if(tasks.length === 0) {
-  //                   tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
-  //               } else{
-  //                   const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
-
-  //                   tasksSorted.forEach(task => {
-  //                     const tasksContainer = document.getElementById('taskCardsContainer')
-  //                   tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
-  //               })
-  //               }
-
-  //           })
-  //         }))
-  //   })
-  // }
+            })
+    })
+  }
 }
   
 export default eventListeners;
