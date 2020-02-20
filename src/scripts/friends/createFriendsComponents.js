@@ -31,7 +31,7 @@ const createFriendsHTML = {
     },
 
     userFriendOptionCreator(userObj) {
-        return `<option id='userOption-${userObj.id}'>${userObj.username}</option>`
+        return `<option id='userOption-${userObj.username}' value="${userObj.id}-${userObj.username}">${userObj.username}</option>`
     }
 
 

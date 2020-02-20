@@ -48,6 +48,7 @@ editMessagesButtonAction()
 friendsEventListeners.friendsButtonEventListener()
 friendsEventListeners.addNewFriendEventListener()
 friendsEventListeners.unfriendButtonEventListener()
+friendsEventListeners.fiendAddButtonEventListener()
 
 
     // News section Event Listeners
