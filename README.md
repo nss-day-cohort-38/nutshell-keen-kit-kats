@@ -65,9 +65,11 @@ Once you have added friends to your account, you will see your friends' saved ne
 
 In the events tab, you can click 'create event' to create and save a future event that interests you. Once saved, you have the ability to edit and delete the saved event. 
 
-Once you have added friends to your account, you will see your friends' saved events displayed under your news articles. 
+Once you have added friends to your account, you will see your friends' saved events displayed under your events. 
 
 ### Tasks
+
+In the tasks tab, you can click 'create new tasks' to create and save a task you'd like to complete. Once saved, you have the ability to edit the task name and mark it complete when you've finished that task. 
 
 ### See All
 
