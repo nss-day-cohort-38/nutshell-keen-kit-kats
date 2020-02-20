@@ -1,6 +1,6 @@
 import dbAPI from "../dbAPI.js";
 import renderChatRoom from "./renderMessages.js";
-import createMessageBoard from "./messageContainerFactory.js";
+import {createMessageBoard, differentUserMessage } from "./messageContainerFactory.js";
 
 const messageAPIManager = {
   postSendMessage() {
