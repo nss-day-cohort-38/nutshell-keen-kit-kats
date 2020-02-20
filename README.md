@@ -1,114 +1,92 @@
-# Nutshell: The Information Dashboard
+# Nutshell: README
 
-## Setup: Follow these steps exactly
+A dashboard for people to use to organize their daily tasks, events, news articles, friends, and chat messages.
 
-1. Clone this repository
-1. `cd` into the directory it creates
-1. Make a `database.json` file in the `api` directory
-1. `cd` into the `src` directory
-1. Run `hs -o .` to verify everything works
+***
 
-## Instructions
+## Initialization Instructions
+1. Install [http-server](https://www.npmjs.com/package/http-server) & json-server
+    ```shell session
+    $ npm install -g json-server
+    ```
+    
+2. Select 'Clone or Download' in GitHub Repo, copy the SSH key, and type the following into your terminal:
+    
+    ex.
+     ```shell session
+    $ git clone git@github.com:nss-day-cohort-38/nutshell-keen-kit-kats.git
 
-Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
+     ```
+3. In the root directory, create an api directory and make a file 'database.json'
+    ```shell session
+    $ mkdir api
+    $ cd api
+    $ touch database.json
+    ```
+4. Then cd back to the root directory and open your code editor
+    ```shell session
+    $ code .
+    ```
+5. Open database.json and paste this into the file:
+    ```json
+        {
+            "users": [],
+            "messages": [],
+            "friends": [],
+            "news": [],
+            "tasks": [],
+            "events": []
+        }
+6. The database.json file follows the following ERD:
+![Photo of ERD](src/images/ERD.png "ERD")    
 
-You will be utilizing all of the skills and concepts that you've learned up to this point in the course.
+7. Go back to your terminal and open a new tab, cd to the src directory, then:
+    ```shell session
+    $ hs -o
+    ```
+8. Open another new tab in your terminal and cd to the api directory, then:
+    ```shell session
+    $ json-server -p 8088 -w database.json
+    ```
+***
+## USING THE APP
 
-1. Functions
-1. Databases/API ([JSON Server Documentation](https://github.com/typicode/json-server))
-1. Github
-1. Objects
-1. CSS/Flexbox
-1. Array methods
-1. Handling user events
-1. Factory functions
-1. Implementing CRUD operations
-1. Modular code with Webpack
-1. Relational data
+### Sign Up or Log In
 
-To start you off, here's an example of what the resources in your API should look like once it's populated with some data from your application.
+If you are a new user, click the 'sign up' button and enter a username, your email, and password.
 
-### Users
-
-```json
-{ "id": 1, "username": "Steve", "email": "me@me.com" }
-```
-
-### Messages
-
-```json
-{ "id": 1, "userId": 1, "message": "What's up?" }
-```
+If you are a returning user, click the 'log in' button and enter in your email and password. 
 
 ### News
 
-```json
-{
-    "id": 1,
-    "userId": 2,
-    "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-    "title": "Wormholes Allow Information to Escape Black Holes",
-    "synopsis": "Check out this recent discovery about workholes"
-}
-```
+In the news tab, you can click 'create new article' to create and save a news article that interests you. Once saved, you have the ability to edit and delete the saved article. 
 
-### Friends
+Once you have added friends to your account, you will see your friends' saved news articles displayed under your news articles. 
 
-```json
-{ "id": 1, "userId": 1, "loggedInUserId": 3 }
-```
+### Events
+
+In the events tab, you can click 'create event' to create and save a future event that interests you. Once saved, you have the ability to edit and delete the saved event. 
+
+Once you have added friends to your account, you will see your friends' saved events displayed under your events. 
 
 ### Tasks
 
-```json
-{ "id": 1, "userId": 3, "task": "Take out garbage" }
-```
+In the tasks tab, you can click 'create new tasks' to create and save a task you'd like to complete. Once saved, you have the ability to edit the task name and mark it complete when you've finished that task. You can also delete the task when ready to. 
 
-## Professional Requirements
 
-1. All teammates must be using Webpack to compile their code.
-1. Each module should have a comment at the top with the following info: author(s) and purpose of module
-1. The README for your project should include instructions on how another person can download and run the application
-1. An ERD showing the database relationships. A screenshot/image should be included on your README.
+### Your Profile
 
-## How to Handle Authentication
+If you click on your profile picture in the top right corner and go to the my profile tab, you can edit your username and change your password. 
 
-Be very clear that what you will be implemting is not real authentication. It is a simulation of it using very simplistic tools.
+### Your Friends
 
-You will be using session storage to keep track of which user has logged into Nutshell. When the user fills out the registration form, you will POST their username and password to the `users` collection in your API. You will then immediately take the `id` of the object in the response and save it to session storage.
+If you click on your profile picture in the top right corner and go to the my friends tab, you can see the friends you've added and unfriend them if need be. 
 
-```js
-sessionStorage.setItem("activeUser", user.id)
-```
+### Open Chat
 
-If you want to add a Logout feature, all you need to do it remove the session storage item.
+If you click on your profile picture in top right corner and go to the open chat tab, you will see a chat board appear on your screen where you can send public messages visible to anyone on the Nutshell platform. You can click on the namenames of the users on the chat board and either friend or unfriend them. The chat can be used while you are on any tab in the app. If you'd like to close the chat, click 'exit chat' at the top left corner of the chat. 
 
-```js
-sessionStorage.removeItem("activeUser")
-```
+### Logout
 
-## Visual Feature List
+If you click on your profile picture in the top right corner and click 'logout,' you can log out of your account. 
 
-To help you along, here is a visualization of a few features, as envisioned by one of your predecessors.
-
-![nutshell features](./Nutshell.png)
-
-## Keep in mind some tips for a good usable app
-
-1. Use acceptable conventions
-   * Logo positioned at top left
-   * Navigation across the top or down the left side
-2. Visual hierarchy
-   * Most important information is the most prominent
-3. Break pages up into defined sections
-   * Logically related content should be related visually
-4. That which is clickable should be obviously clickable.
-5. Eliminate distractions
-   * Use only two typefaces
-   * Limit color pallet (3 colors with black and white)
-   * Use a grid
-6. Support scanning (users don't read)
-   * Use plenty of headings
-   * Short paragraphs
-   * Bulleted lists
-7. Strive for consistency.

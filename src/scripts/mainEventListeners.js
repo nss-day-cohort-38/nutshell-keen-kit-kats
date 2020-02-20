@@ -1,6 +1,11 @@
 import dbAPI from "./dbAPI.js";
 import addToDom from "./addToDom.js";
 import { createHTML, createObjects } from "./createComponent.js";
+import eventsRenderToDom from './events/eventsRenderToDom.js';
+import eventHtmlComponents from './events/eventHtmlComponents.js';
+import tasksCreateHTML from './tasks/tasksComponentCreators.js';
+import createNewsComponents from './articles/componentNews.js';
+
 const passwordMinLength = 3;
 const eventListeners = {
   loginButtonEventListener() {
@@ -177,5 +182,120 @@ const eventListeners = {
         } 
     })
   }
-};
+}
+//   addSeeAllButtonEventListener() {
+//     const seeAllButton = document.getElementById("myAll")
+
+//     const loggedInUserId = (JSON.parse(sessionStorage.getItem("user"))).id
+
+//     seeAllButton.addEventListener("click", () => {
+
+//         dbAPI.getObjectByResource("news", loggedInUserId)
+//           .then(() => {
+//             const mainContainer = document.getElementById("mainContainer")
+//             mainContainer.innerHTML = ""
+//             mainContainer.innerHTML = createNewsComponents.createHTMLNewsContainers()
+
+//             dbAPI.getObjectByResource('news', loggedInUserId)
+//             .then(arrayOfNewsArticles => {
+//                 const sortedArrayOfNews = arrayOfNewsArticles.sort(function (a, b) {
+//                     return new Date(b.timestamp) - new Date(a.timestamp)
+//                 })
+
+//                 sortedArrayOfNews.forEach(article => {
+//                     const newsCardsContainer = document.getElementById("newsCardsContainer")
+//                     newsCardsContainer.innerHTML += createNewsComponents.createNewsCard(article)
+
+//                 })
+//             })
+
+//             dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+//               friendDataArray.forEach(friendObj => {
+//                   const friendId = friendObj.user.id;
+//                   dbAPI.getObjectByResource('news', friendId)
+//                       .then(friendsNews=> {
+//                           const friendsNewsContainer = document.getElementById('friendsNewsContainer')
+//                           friendsNewsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} News</h1>`
+//                           friendsNews.forEach(friendArticle => {
+//                           friendsNewsContainer.innerHTML += createNewsComponents.createFriendsNewsCard(friendArticle)
+//                           })
+//                       })
+                  
+//               })
+//           })
+//           }
+
+//           )
+
+//       // -------------------EVENTS DATA-----------------------
+
+//         .then(dbAPI.getObjectByResource("events", loggedInUserId)
+//           .then((events) => {
+//             mainContainer.innerHTML += eventHtmlComponents.createEventsContainersAndHeaders()
+
+//             if (events.length === 0) {
+
+//               eventsRenderToDom.renderEventsContainersAndHeaders()
+
+//               eventsRenderToDom.renderNoEventsMessage()
+
+//           } else {
+
+//               eventsRenderToDom.renderEventsContainersAndHeaders()
+
+//               const eventCardsContainer = document.getElementById("objCards--events");
+
+
+//               const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+//               for (let i = 0; i < eventsSorted.length; i++) {
+//                   let firstCard = eventsSorted[0]
+//                   if (eventsSorted[i] === firstCard) {
+//                       eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+//                   } else {
+//                       eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+//                   }
+//               }
+//           }
+
+//           dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+//             friendDataArray.forEach(friendObj => {
+//                 const friendId = friendObj.user.id
+//                 dbAPI.getObjectByResource('events', friendId)
+//                     .then(friendsEvents=> {
+//                         const friendsEventsContainer = document.getElementById('friendsEventsContainer')
+//                         friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
+//                         friendsEvents.forEach(friendEvent => {
+//                         friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
+//                         })
+//                     })
+                
+//             })
+//         })
+//           }))
+
+//           // ------------------------ TASKS DATA -----------------------
+//           .then(dbAPI.getObjectByResource("tasks", loggedInUserId)
+//           .then(() => {
+//             mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
+
+            
+//             dbAPI.getObjectByResource('tasks', loggedInUserId)
+//             .then(tasks => {
+
+//                 if(tasks.length === 0) {
+//                     tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
+//                 } else{
+//                     const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
+
+//                     tasksSorted.forEach(task => {
+//                       const tasksContainer = document.getElementById('taskCardsContainer')
+//                     tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
+//                 })
+//                 }
+
+//             })
+//           }))
+//     })
+// },
 export default eventListeners;

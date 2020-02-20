@@ -7,7 +7,7 @@ const addFriendsToDom = {
 
     addFriendsContainers(){
         const mainContainer = document.getElementById('mainContainer')
-        
+
         mainContainer.innerHTML += createFriendsHTML.createFriendsContainers()
     },
 

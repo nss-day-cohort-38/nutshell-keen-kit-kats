@@ -2,8 +2,11 @@ import dbAPI from "../dbAPI.js";
 import createMessageBoard from "./messageContainerFactory.js";
 import renderChatRoom from "./renderMessages.js";
 
+//function()
 const init = () => {
   const chatButton = document.getElementById("chatButton");
+  //document.getElementById("messageList").scrollIntoView(true);
+  
   chatButton.addEventListener("click", () => {
     document.getElementById("chatContainer").classList.toggle("hidden");
     document.getElementById("body").classList.toggle("shrink");
@@ -16,12 +19,19 @@ const init = () => {
         const message = data.message;
         const userId = data.userId;
         const username = data.user.username;
-
-        const chatHTML = createMessageBoard(message, userId, username);
-        renderChatRoom(chatHTML);
+        const messageId = data.id;
+        const chatHTML = createMessageBoard(
+          message,
+          userId,
+          username,
+          messageId
+          );
+          renderChatRoom(chatHTML);
+        })
+        const messageContainerScroll = document.querySelector(".chat-room-landing-page");
+        messageContainerScroll.scrollIntoView(false);
       });
     });
-  });
 };
 
-export { init as default };
+export { init as default }; 

@@ -14,11 +14,10 @@ const createObjects = {
 }
 
 const createHTML = {
+  createNewUserWelcomeMessage() {
+    const loggedInUserObj = JSON.parse(sessionStorage.getItem("user"));
 
-	createNewUserWelcomeMessage() {
-		const loggedInUserObj = (JSON.parse(sessionStorage.getItem('user')))
-
-		return `
+    return `
 			<article class='welcomeContainer' id="welcomeNewUserContainer">
 				<h1 class='welcomeHeader' id='welcomeNewUserHeader'>
 					Welcome ${loggedInUserObj.username}!
@@ -29,13 +28,13 @@ const createHTML = {
 					Click on the tabs above to explore and create the content that matters to you most!
 				</p>
 			</article>
-		`
-	},
+		`;
+  },
 
-	createReturningUserWelcomeMessage() {
-		const loggedInUserObj = (JSON.parse(sessionStorage.getItem('user')))
+  createReturningUserWelcomeMessage() {
+    const loggedInUserObj = JSON.parse(sessionStorage.getItem("user"));
 
-		return `
+    return `
 			<article class='welcomeContainer' id="welcomeReturningUserContainer">
 				<h1 class='welcomeHeader' id='welcomeReturningUserHeader'>
 					Welcome back ${loggedInUserObj.username}!
@@ -44,8 +43,8 @@ const createHTML = {
 					Keep exploring and creating everything in <em>YOUR</em> Nutshell.
 				</p>
 			</article>
-		`
-	},
+		`;
+  },
 
 	createLoginForm() {
 		return `

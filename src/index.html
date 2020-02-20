@@ -23,7 +23,7 @@
       <button type="button" id="myNews">News</button>
       <button type="button" id="myEvents">Events</button>
       <button type="button" id="myTasks">Tasks</button>
-      <button type="button" id="myAll">See All</button>
+      <!-- <button type="button" id="myAll">See All</button> -->
     </nav>
     <img id="profileIcon" class="hidden" src="./images/profileIcon2.png" alt="">
     <div class="hidden" id="profileDropDown">
@@ -36,15 +36,16 @@
 
 
   <div id="chatContainer" class="hidden">
-    <button id="chatButtonClose">Exit Chat</button>
+    <button id="chatButtonClose">Exit</button>
     <section>
-      <h1>Chat Room</h1>
+      <h1 id="chatHeader">Chat Room</h1>
     </section>
 
     <div id="message-list">
     </div>
 
     <div class="chat-room-field">
+      <input type="hidden" id="hiddenMessageId" value=""/>
       <label for="writeMessage">Write Message!</label>
       <input type="text" name="writeMessage" id="writeMessage" autofocus>
       <button id="sendMessage">Send</button>

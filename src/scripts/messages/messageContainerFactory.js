@@ -1,12 +1,10 @@
-const createMessageBoard = (message, userId, username, id) => {
+const createMessageBoard = (message, userId, username, messageId) => {
   return `
       <div class="chat-room-landing-page">
         <div id="messages" data-user-id="${userId}">
           <p><em class='chatUsername' id="username--${userId}">${username}</em>: ${message}</p>
-          <section class="edit-message-button">
-          <button id="editMessage--${id}>Edit</button>
-          </section>
         </div>
+        <button id="editMessage--${messageId}" class="message-edit-button">Edit</button>
       </div>
   `;
 };

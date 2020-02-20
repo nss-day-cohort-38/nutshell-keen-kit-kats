@@ -4,9 +4,9 @@ import dbAPI from '../dbAPI.js';
 const mainContainer = document.getElementById("mainContainer");
 
 const eventsRenderToDom = {
-    renderEventContainerWithCreateEventButton() {
+    renderEventsContainersAndHeaders() {
 
-        mainContainer.innerHTML = eventHtmlComponents.createEventContainerWithCreateEventButton()
+        mainContainer.innerHTML = eventHtmlComponents.createEventsContainersAndHeaders()
     },
     renderEventForm() {
 
@@ -35,20 +35,29 @@ const eventsRenderToDom = {
             .then(events => {
                 mainContainer.innerHTML = "";
 
-                if (events.length === 0) {
-                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                // below conditional checks to see if there are any events in the events array 
 
+                if (events.length === 0) {
+
+                    // if events array is empty, print no events message
+
+                    eventsRenderToDom.renderEventsContainersAndHeaders()
 
                     eventsRenderToDom.renderNoEventsMessage()
 
                 } else {
 
-                    eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                    // if events array is not empty, render event cards
+
+                    eventsRenderToDom.renderEventsContainersAndHeaders()
 
                     const eventCardsContainer = document.getElementById("objCards--events");
 
+                    // the below array method sorts the events by their dates and orders them to display the most upcoming date first
+
                     const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
 
+                    // the below for loop creates a unique event card with specific styling to just the most upcoming event and applies the standard event card to all other events
 
                     for (let i = 0; i < eventsSorted.length; i++) {
                         let firstCard = eventsSorted[0]
@@ -85,7 +94,7 @@ const eventsRenderToDom = {
                 dbAPI.getObjectByResource('events', friendId)
                     .then(friendsEvents=> {
                         const friendsEventsContainer = document.getElementById('friendsEventsContainer')
-                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username} Events</h1>`
+                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
                         friendsEvents.forEach(friendEvent => {
                         friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
                         })
