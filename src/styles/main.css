@@ -171,6 +171,7 @@ nav button:hover {
 #mainContainer {
   margin-top: 115px;
   text-align: center;
+  margin-bottom: 15%;
 }
 
 /*            Styling for welcome messages                  */
@@ -464,3 +465,22 @@ nav button:hover {
 /* ******************************************************** */
 /*                Begin Footer Styling                      */
 /* ******************************************************** */
+#footerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: var(--deepBlue);
+  border-top: 2px solid var(--darkLiver);
+  border-bottom: 2px solid var(--darkLiver);
+  height: 55px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  padding-top: 1%;
+}
+
+.githubImageLinks {
+  border: ridge 2px white;
+}
+
