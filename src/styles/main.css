@@ -300,6 +300,12 @@ nav button:hover {
   z-index: -1;
   
 }
+.chatUsername:hover {
+  transition: 0.1s ease;
+  color: purple;
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
 
 .shrink {
   width: 65% !important;

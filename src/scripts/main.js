@@ -48,6 +48,7 @@ chatButtonClickEvent.exitMessages()
 
 // Friends event listeners
 friendsEventListeners.friendsButtonEventListener()
+friendsEventListeners.addNewFriendEventListener()
 
 
 
