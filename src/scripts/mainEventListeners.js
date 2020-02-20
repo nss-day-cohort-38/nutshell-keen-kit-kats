@@ -2,7 +2,8 @@ import dbAPI from "./dbAPI.js";
 import addToDom from "./addToDom.js";
 import { createHTML, createObjects } from "./createComponent.js";
 import eventsRenderToDom from './events/eventsRenderToDom.js';
-import tasksAddToDom from './tasks/tasksAddToDom.js';
+import eventHtmlComponents from './events/eventHtmlComponents.js';
+import tasksCreateHTML from './tasks/tasksComponentCreators.js';
 
 const passwordMinLength = 3;
 const eventListeners = {
@@ -145,17 +146,72 @@ const eventListeners = {
 
     seeAllButton.addEventListener("click", () => {
 
+      // -------------------EVENTS DATA-----------------------
+
         dbAPI.getObjectByResource("events", loggedInUserId)
-          .then(() => {
-            eventsRenderToDom.renderEventsContainersAndHeaders(),
-            eventsRenderToDom.renderEventCards(),
-            eventsRenderToDom.renderFriendsEventsToDom()
+          .then((events) => {
+            mainContainer.innerHTML = eventHtmlComponents.createEventsContainersAndHeaders()
+
+            if (events.length === 0) {
+
+              eventsRenderToDom.renderEventsContainersAndHeaders()
+
+              eventsRenderToDom.renderNoEventsMessage()
+
+          } else {
+
+              eventsRenderToDom.renderEventsContainersAndHeaders()
+
+              const eventCardsContainer = document.getElementById("objCards--events");
+
+
+              const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+
+              for (let i = 0; i < eventsSorted.length; i++) {
+                  let firstCard = eventsSorted[0]
+                  if (eventsSorted[i] === firstCard) {
+                      eventCardsContainer.innerHTML += eventHtmlComponents.createFirstEventCard(firstCard)
+                  } else {
+                      eventCardsContainer.innerHTML += eventHtmlComponents.createEventCard(eventsSorted[i])
+                  }
+              }
+          }
+
+          dbAPI.getFriends(loggedInUserId).then(friendDataArray => {
+            friendDataArray.forEach(friendObj => {
+                const friendId = friendObj.user.id
+                dbAPI.getObjectByResource('events', friendId)
+                    .then(friendsEvents=> {
+                        const friendsEventsContainer = document.getElementById('friendsEventsContainer')
+                        friendsEventsContainer.innerHTML += `<h1 class ="objCards friendCardName">${friendObj.user.username}'s Events</h1>`
+                        friendsEvents.forEach(friendEvent => {
+                        friendsEventsContainer.innerHTML += eventHtmlComponents.createFriendEventCard(friendEvent)
+                        })
+                    })
+                
+            })
+        })
           })
 
+          // ------------------------ TASKS DATA -----------------------
           dbAPI.getObjectByResource("tasks", loggedInUserId)
           .then(() => {
-            tasksAddToDom.addTasksContainers(),
-            tasksAddToDom.addTaskCards()
+            mainContainer.innerHTML += tasksCreateHTML.createTasksContainer()
+            
+            dbAPI.getObjectByResource('tasks',currentUserId)
+            .then(tasks => {
+
+                if(tasks.length === 0) {
+                    tasksContainer.innerHTML = `<figure class='noCards'>You don't have any tasks yet. Click the button up top to create a new task!</figure>`
+                } else{
+                    const tasksSorted = tasks.sort((a, b) => { return new Date(a.completionDate) - new Date(b.completionDate) });
+
+                    tasksSorted.forEach(task => {
+                    tasksContainer.innerHTML += tasksCreateHTML.createTaskCard(task)
+                })
+                }
+
+            })
           })
     })
 },
