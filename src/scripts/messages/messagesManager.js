@@ -1,6 +1,6 @@
 import dbAPI from "../dbAPI.js";
 import renderChatRoom from "./renderMessages.js";
-import createMessageBoard from "./messageContainerFactory.js";
+import {createMessageBoard, differentUserMessage } from "./messageContainerFactory.js";
 
 const messageAPIManager = {
   postSendMessage() {
@@ -31,6 +31,7 @@ const messageAPIManager = {
                 const username = data.user.username;
                 const messageId = data.id;
                 const hiddenId = data.id;
+                
                 const chatHTML = createMessageBoard(
                   message,
                   userId,
@@ -59,15 +60,26 @@ const messageAPIManager = {
               const username = data.user.username;
               const messageId = data.id;
               const hiddenId = data.id;
-              const chatHTML = createMessageBoard(
-                message,
-                userId,
-                username,
-                messageId,
-                hiddenId
-              );
+              const currentUserId = (JSON.parse(sessionStorage.getItem('user'))).id
 
-              renderChatRoom(chatHTML);
+              if (userId === currentUserId) {
+                const chatHTML = createMessageBoard(
+                  message,
+                  userId,
+                  username,
+                  messageId
+                  );
+                  renderChatRoom(chatHTML); 
+              } else {
+                const chatHTML = differentUserMessage(
+                  message,
+                  userId,
+                  username,
+                  messageId
+                  );
+                  renderChatRoom(chatHTML); 
+      
+              }
             });
           });
         });
