@@ -54,7 +54,6 @@ const tasksEventListeners = {
                     .then(() => {
                         tasksAddToDom.addTasksContainers()
                         tasksAddToDom.addTaskCards()
-                        console.log(completionDateTime)
                     })
 
             }
@@ -81,6 +80,7 @@ const tasksEventListeners = {
                 const taskId = event.target.id.split('-')[1]
 
                 const taskPromise = fetch(`http://localhost:8088/tasks/${taskId}`).then(resp=>resp.json())
+                
                 Promise.all([taskPromise])
                     .then(array => array[0])
                     .then(task => {
@@ -96,6 +96,8 @@ const tasksEventListeners = {
                         document.getElementById('taskCardsContainer').innerHTML = ""
                         tasksAddToDom.addTaskCards()
                     })
+
+
             }
         })
     },

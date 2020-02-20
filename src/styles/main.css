@@ -174,6 +174,57 @@ nav button:hover {
   margin-bottom: 15%;
 }
 
+/* Login Styling */
+.tabs{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tabs .active{
+  background-color: var(--wine);
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+}
+.tabs .inactive{
+  background-color: gainsboro;
+  border:1px solid black;
+  padding: 10px;
+}
+.tabs .active:hover {
+  cursor: pointer;
+}
+.tabs .inactive:hover{
+  cursor: pointer;
+}
+.tabs-content {
+  background-color: var(--mediumSage);
+  box-shadow: 3px 3px var(--darkLiver);
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-form{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* align-content: center; */
+  /* align-items: ; */
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*            Styling for welcome messages                  */
 
 .welcomeContainer {
@@ -266,6 +317,12 @@ nav button:hover {
   overflow: hidden;
   z-index: -1;
 }
+.chatUsername:hover {
+  transition: 0.1s ease;
+  color: purple;
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
 
 .shrink {
   width: 65% !important;
@@ -326,6 +383,7 @@ nav button:hover {
   border: 2px solid black;
   box-shadow: 2px 2px 2px 2px var(--darkLiver);
   border-radius: 5px;
+  height: 50%;
 }
 
 #sendMessage {
