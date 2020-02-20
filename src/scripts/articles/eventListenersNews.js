@@ -25,6 +25,7 @@ const newsEventListeners = {
             domAdditionHandler.renderNewsContainers()
 
             domAdditionHandler.addArticlesToDOM()
+            domAdditionHandler.renderFriendsNewsToDom()
         })
     },
 
@@ -70,7 +71,7 @@ const newsEventListeners = {
                 const focusedArticleId = event.target.id.split("--")[1]
 
 
-                dbAPI.getObjectByIdAndResource('news', focusedArticleId)
+                dbAPI.fetchObjectById('news', focusedArticleId)
                     .then(newsObject => {
                         domAdditionHandler.editArticleInPlace(focusedArticleId, newsObject)
                     })
