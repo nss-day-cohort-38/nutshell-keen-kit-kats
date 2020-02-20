@@ -73,7 +73,13 @@ In the tasks tab, you can click 'create new tasks' to create and save a task you
 
 ### See All
 
+In the see all tab, you can see all of your news articles, events, and tasks listed.
+
+If you have added friends, you will also see their news articles and events listed. 
+
 ### Your Profile
+
+If you click on your profile picture in the top right corner and go to the my profile tab. 
 
 ### Your Friends
 
