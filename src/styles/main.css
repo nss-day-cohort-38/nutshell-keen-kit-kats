@@ -360,9 +360,10 @@ nav button:hover {
 
 .firstCard {
   background-color: var(--earthYellow);
-  width: 300px;
+  width: 400px;
   border: 3px solid black;
   box-shadow: 2px 2px 5px 2px black;
+  text-shadow: 1px 1px 1px beige;
 }
 
 .otherCards {

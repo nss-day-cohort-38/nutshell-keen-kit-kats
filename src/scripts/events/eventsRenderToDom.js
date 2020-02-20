@@ -35,20 +35,10 @@ const eventsRenderToDom = {
             .then(events => {
                 mainContainer.innerHTML = "";
 
-                const todayDate = new Date().toISOString().slice(0, 10);
-
-                const pastEventIdToDelete = events.date
-
                 if (events.length === 0) {
                     eventsRenderToDom.renderEventContainerWithCreateEventButton()
 
-
                     eventsRenderToDom.renderNoEventsMessage()
-
-                } else if (pastEventIdToDelete < todayDate) {
-
-                    dbAPI.deleteObjectByResource("events", event.date)
-                        .then(eventsRenderToDom.renderEventCards)
 
                 } else {
 
@@ -57,7 +47,6 @@ const eventsRenderToDom = {
                     const eventCardsContainer = document.getElementById("objCards--events");
 
                     const eventsSorted = events.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
-
 
                     for (let i = 0; i < eventsSorted.length; i++) {
                         let firstCard = eventsSorted[0]
