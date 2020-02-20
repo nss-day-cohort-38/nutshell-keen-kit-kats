@@ -25,7 +25,7 @@ const eventsEventListeners = {
                             .then(eventsRenderToDom.renderEventCards)
                              
                         } else {
-                            eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                            eventsRenderToDom.renderEventsContainersAndHeaders()
                             eventsRenderToDom.renderEventCards()
                         }
                     }
@@ -56,29 +56,30 @@ const eventsEventListeners = {
                 const localTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"})
 
                 let month = localTime.split("/")[0]
-                
+
                 if (month.length < 2) {
                     month = "0" + month
-                } else {
-                    month = month
-                }
+                } 
                 
                 let day = localTime.split("/")[1]
 
                 if (day.length < 2) {
                     day = "0" + day
-                } else {
-                    day = day
-                }
+                } 
 
                 let year = localTime.split("/")[2].split(",")[0]
 
                 const currentDate = year + "-" + month + "-" + day
 
+                const eventDate = eventDateInput.value.split("T")[0]
+
+                console.log(currentDate)
+                console.log(eventDate)
+
                 if (eventNameInput.value.length === 0 || eventDateInput.value.length === 0 || eventLocationInput.value.length === 0) {
                     alert("Please fill out all fields before saving event.")
                 } 
-                else if (eventDateInput.value < currentDate) {
+                else if (eventDate < currentDate) {
                     alert("Please create a future event. Past dates are not accepted.") 
                 } 
                 else {
@@ -140,7 +141,7 @@ const eventsEventListeners = {
         mainContainer.addEventListener("click", (event) => {
             if (event.target.id.startsWith("nevermindFormButton--")) {
 
-                eventsRenderToDom.renderEventContainerWithCreateEventButton()
+                eventsRenderToDom.renderEventsContainersAndHeaders()
 
                 dbAPI.postObjectByResource("events", event)
                     .then(() => {

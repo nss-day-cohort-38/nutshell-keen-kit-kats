@@ -1,5 +1,5 @@
 const eventHtmlComponents = {
-    createEventContainerWithCreateEventButton() {
+    createEventsContainersAndHeaders() {
         return `
         <h1 class="sectionHeader">Your Events:</h1>
 
